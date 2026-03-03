@@ -1,9 +1,17 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import localFont from "next/font/local";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { AuthProvider } from "@/contexts/AuthContext";
 import KakaoFloatingButton from "@/components/KakaoFloatingButton";
 import ScrollToTop from "@/components/ScrollToTop";
+import "./globals.css";
+
+const pretendard = localFont({
+  src: "./fonts/PretendardVariable.woff2",
+  display: "swap",
+  weight: "45 920",
+  variable: "--font-pretendard",
+});
 
 const SITE_URL = "https://www.gmeremit.com";
 const SITE_NAME = "GME Remit";
@@ -80,8 +88,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" className={pretendard.variable}>
+      <body className={pretendard.className}>
         <AuthProvider>
           <LanguageProvider>
             {children}
