@@ -47,70 +47,64 @@ export default function BoardForm({
     onChange({ ...formData, ...partial })
   }
 
+  const inputClass = "w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-[15px]"
+  const labelClass = "block text-[13px] font-semibold text-gray-600 mb-2"
+
   return (
-    <form onSubmit={onSubmit} className="bg-white rounded-lg shadow-lg p-8">
+    <form onSubmit={onSubmit} className="bg-white rounded-2xl border border-gray-100 p-8">
       <div className="space-y-6">
-        {/* Type */}
+        {/* Type - Segmented Control */}
         <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-2">
-            게시글 유형 *
-          </label>
-          <div className="flex gap-4">
+          <label className={labelClass}>게시글 유형 *</label>
+          <div className="inline-flex items-center gap-1 bg-gray-100 rounded-xl p-1">
             {(['notice', 'press', 'blog'] as BoardEntryType[]).map((type) => (
-              <label key={type} className="flex items-center gap-2 cursor-pointer">
-                <input
-                  type="radio"
-                  name="type"
-                  value={type}
-                  checked={formData.type === type}
-                  onChange={(e) => update({ type: e.target.value as BoardEntryType })}
-                  className="w-4 h-4 text-primary focus:ring-primary"
-                />
-                <span className="text-gray-700">
-                  {type === 'notice' ? '공지사항' : type === 'press' ? '언론보도' : '블로그'}
-                </span>
-              </label>
+              <button
+                key={type}
+                type="button"
+                onClick={() => update({ type })}
+                className={`px-5 py-2 rounded-lg text-[13px] font-semibold transition-all cursor-pointer ${
+                  formData.type === type
+                    ? 'bg-white text-gray-900 shadow-sm'
+                    : 'text-gray-500 hover:text-gray-700'
+                }`}
+              >
+                {type === 'notice' ? '공지사항' : type === 'press' ? '언론보도' : '블로그'}
+              </button>
             ))}
           </div>
         </div>
 
         {/* Title */}
         <div>
-          <label htmlFor="title" className="block text-sm font-semibold text-gray-700 mb-2">
-            제목 *
-          </label>
+          <label htmlFor="title" className={labelClass}>제목 *</label>
           <input
             id="title"
             type="text"
             value={formData.title}
             onChange={(e) => update({ title: e.target.value })}
             required
-            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+            className={inputClass}
             placeholder="제목을 입력하세요"
           />
         </div>
 
         {/* Date */}
         <div>
-          <label htmlFor="date" className="block text-sm font-semibold text-gray-700 mb-2">
-            날짜 *
-          </label>
+          <label htmlFor="date" className={labelClass}>날짜 *</label>
           <input
             id="date"
             type="date"
             value={formData.date}
             onChange={(e) => update({ date: e.target.value })}
             required
-            className="px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+            className="px-4 py-3 rounded-xl border border-gray-200 bg-white focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-[15px]"
           />
         </div>
 
         {/* Content */}
         {formData.type !== 'blog' && (
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
-              내용 *
-            </label>
+            <label className={labelClass}>내용 *</label>
             <TiptapEditor
               content={formData.content}
               onChange={(content) => update({ content })}
@@ -122,7 +116,7 @@ export default function BoardForm({
 
         {/* Important (Notice only) */}
         {formData.type === 'notice' && (
-          <div className="flex items-center gap-2">
+          <label htmlFor="important" className="flex items-center gap-3 px-4 py-3 bg-gray-50 rounded-xl cursor-pointer hover:bg-gray-100 transition-colors">
             <input
               id="important"
               type="checkbox"
@@ -130,49 +124,44 @@ export default function BoardForm({
               onChange={(e) => update({ isImportant: e.target.checked })}
               className="w-4 h-4 text-primary focus:ring-primary rounded"
             />
-            <label htmlFor="important" className="text-sm text-gray-700">
-              중요 공지 (상단 고정)
-            </label>
-          </div>
+            <div>
+              <span className="text-[14px] font-medium text-gray-700">중요 공지 (상단 고정)</span>
+              <p className="text-[12px] text-gray-400">체크하면 게시판 상단에 고정됩니다</p>
+            </div>
+          </label>
         )}
 
         {/* Press-specific fields */}
         {formData.type === 'press' && (
           <>
             <div>
-              <label htmlFor="source" className="block text-sm font-semibold text-gray-700 mb-2">
-                언론사
-              </label>
+              <label htmlFor="source" className={labelClass}>언론사</label>
               <input
                 id="source"
                 type="text"
                 value={formData.source}
                 onChange={(e) => update({ source: e.target.value })}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+                className={inputClass}
                 placeholder="예: 매일경제"
               />
             </div>
             <div>
-              <label htmlFor="excerpt" className="block text-sm font-semibold text-gray-700 mb-2">
-                요약
-              </label>
+              <label htmlFor="excerpt" className={labelClass}>요약</label>
               <textarea
                 id="excerpt"
                 value={formData.excerpt}
                 onChange={(e) => update({ excerpt: e.target.value })}
                 rows={3}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+                className={inputClass}
                 placeholder="간단한 요약을 입력하세요"
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
-                기사 썸네일
-              </label>
+              <label className={labelClass}>기사 썸네일</label>
               <div className="flex items-center gap-4">
-                <label className="flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-700 rounded-lg cursor-pointer hover:bg-gray-200 transition-colors">
+                <label className="flex items-center gap-2 px-4 py-2.5 bg-gray-50 text-gray-600 rounded-xl border border-gray-200 border-dashed cursor-pointer hover:bg-gray-100 hover:border-gray-300 transition-colors">
                   <HiArrowUpTray className="w-5 h-5" />
-                  <span>이미지 선택</span>
+                  <span className="text-[14px]">이미지 선택</span>
                   <input
                     type="file"
                     accept="image/*"
@@ -180,14 +169,14 @@ export default function BoardForm({
                     className="hidden"
                   />
                 </label>
-                {imageFile && <span className="text-sm text-gray-600">{imageFile.name}</span>}
+                {imageFile && <span className="text-[13px] text-gray-500">{imageFile.name}</span>}
               </div>
               {imagePreview && (
                 <div className="mt-4">
                   <img
                     src={imagePreview}
                     alt="Preview"
-                    className="w-full max-w-md h-48 object-cover rounded-lg"
+                    className="w-full max-w-md h-48 object-cover rounded-xl"
                   />
                 </div>
               )}
@@ -199,22 +188,18 @@ export default function BoardForm({
         {formData.type === 'blog' && (
           <>
             <div>
-              <label htmlFor="description" className="block text-sm font-semibold text-gray-700 mb-2">
-                설명
-              </label>
+              <label htmlFor="description" className={labelClass}>설명</label>
               <input
                 id="description"
                 type="text"
                 value={formData.description}
                 onChange={(e) => update({ description: e.target.value })}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+                className={inputClass}
                 placeholder="짧은 설명을 입력하세요"
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
-                내용 *
-              </label>
+              <label className={labelClass}>내용 *</label>
               <TiptapEditor
                 content={formData.content}
                 onChange={(content) => update({ content })}
@@ -223,13 +208,11 @@ export default function BoardForm({
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
-                썸네일 이미지
-              </label>
+              <label className={labelClass}>썸네일 이미지</label>
               <div className="flex items-center gap-4">
-                <label className="flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-700 rounded-lg cursor-pointer hover:bg-gray-200 transition-colors">
+                <label className="flex items-center gap-2 px-4 py-2.5 bg-gray-50 text-gray-600 rounded-xl border border-gray-200 border-dashed cursor-pointer hover:bg-gray-100 hover:border-gray-300 transition-colors">
                   <HiArrowUpTray className="w-5 h-5" />
-                  <span>이미지 선택</span>
+                  <span className="text-[14px]">이미지 선택</span>
                   <input
                     type="file"
                     accept="image/*"
@@ -237,14 +220,14 @@ export default function BoardForm({
                     className="hidden"
                   />
                 </label>
-                {imageFile && <span className="text-sm text-gray-600">{imageFile.name}</span>}
+                {imageFile && <span className="text-[13px] text-gray-500">{imageFile.name}</span>}
               </div>
               {imagePreview && (
                 <div className="mt-4">
                   <img
                     src={imagePreview}
                     alt="Preview"
-                    className="w-full max-w-md h-48 object-cover rounded-lg"
+                    className="w-full max-w-md h-48 object-cover rounded-xl"
                   />
                 </div>
               )}
@@ -255,27 +238,25 @@ export default function BoardForm({
         {/* Attachment (optional) */}
         {onAttachmentChange && (
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
-              첨부파일
-            </label>
+            <label className={labelClass}>첨부파일</label>
             <div className="flex items-center gap-4">
-              <label className="flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-700 rounded-lg cursor-pointer hover:bg-gray-200 transition-colors">
+              <label className="flex items-center gap-2 px-4 py-2.5 bg-gray-50 text-gray-600 rounded-xl border border-gray-200 border-dashed cursor-pointer hover:bg-gray-100 hover:border-gray-300 transition-colors">
                 <HiArrowUpTray className="w-5 h-5" />
-                <span>파일 선택</span>
+                <span className="text-[14px]">파일 선택</span>
                 <input
                   type="file"
                   onChange={onAttachmentChange}
                   className="hidden"
                 />
               </label>
-              {attachmentFile && <span className="text-sm text-gray-600">{attachmentFile.name}</span>}
+              {attachmentFile && <span className="text-[13px] text-gray-500">{attachmentFile.name}</span>}
             </div>
           </div>
         )}
 
         {/* Submit Buttons */}
-        <div className="flex gap-4 pt-6 border-t border-gray-200">
-          <Button type="submit" disabled={submitting} className="disabled:opacity-50 disabled:cursor-not-allowed">
+        <div className="flex gap-3 pt-8 border-t border-gray-100">
+          <Button type="submit" disabled={submitting} className="disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_2px_8px_rgba(237,28,36,0.25)]">
             {submitting ? submittingLabel : submitLabel}
           </Button>
           <Button as="link" href="/gme-backoffice/dashboard" variant="secondary">

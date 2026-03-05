@@ -20,7 +20,7 @@ export default function LoanPage() {
     const img = loanBenefitImages[key];
     return {
       key,
-      icon: <Image src={img.src} alt={img.alt} width={42} height={42} className={img.className} />,
+      icon: <Image src={img.src} alt={img.alt} width={42} height={42} className="object-contain" />,
     };
   });
 

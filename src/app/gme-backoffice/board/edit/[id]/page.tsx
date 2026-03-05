@@ -132,24 +132,24 @@ export default function EditBoardEntryPage() {
 
   if (loading) {
     return (
-      <div className="text-center py-12">
-        <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-gray-300 border-t-primary" />
+      <div className="bg-white rounded-2xl border border-gray-100 p-16 text-center">
+        <div className="inline-block animate-spin rounded-full h-8 w-8 border-[3px] border-gray-200 border-t-primary" />
       </div>
     )
   }
 
   return (
     <div>
-      {/* Header */}
       <div className="mb-8">
         <Link
           href="/gme-backoffice/dashboard"
-          className="inline-flex items-center gap-2 text-gray-600 hover:text-primary mb-4 transition-colors"
+          className="inline-flex items-center gap-1.5 text-[13px] text-gray-400 hover:text-gray-600 mb-5 transition-colors"
         >
-          <HiArrowLeft className="w-5 h-5" />
-          <span>대시보드로 돌아가기</span>
+          <HiArrowLeft className="w-4 h-4" />
+          <span>돌아가기</span>
         </Link>
-        <h1 className="typo-stat">게시글 수정</h1>
+        <h1 className="text-[22px] font-bold text-gray-900">게시글 수정</h1>
+        <p className="text-[14px] text-gray-500 mt-1">게시글 내용을 수정합니다</p>
       </div>
 
       <BoardForm

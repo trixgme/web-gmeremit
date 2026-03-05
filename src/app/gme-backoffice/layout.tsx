@@ -4,7 +4,13 @@ import { useAuth } from '@/contexts/AuthContext'
 import { useRouter, usePathname } from 'next/navigation'
 import { useEffect } from 'react'
 import Link from 'next/link'
-import { HiLogout } from 'react-icons/hi'
+import Image from 'next/image'
+import {
+  HiOutlineHome,
+  HiOutlinePlusCircle,
+  HiOutlineArrowTopRightOnSquare,
+  HiArrowRightOnRectangle,
+} from 'react-icons/hi2'
 
 export default function AdminLayout({
   children,
@@ -27,10 +33,10 @@ export default function AdminLayout({
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-[#f8f9fa] flex items-center justify-center">
         <div className="text-center">
-          <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-gray-300 border-t-primary" />
-          <p className="mt-4 text-gray-600">Loading...</p>
+          <div className="inline-block animate-spin rounded-full h-10 w-10 border-[3px] border-gray-200 border-t-primary" />
+          <p className="mt-4 text-[14px] text-gray-400">로딩 중...</p>
         </div>
       </div>
     )
@@ -45,54 +51,83 @@ export default function AdminLayout({
     router.push('/gme-backoffice/login')
   }
 
+  const navItems = [
+    { href: '/gme-backoffice/dashboard', icon: HiOutlineHome, label: '게시글 관리' },
+    { href: '/gme-backoffice/board/create', icon: HiOutlinePlusCircle, label: '새 게시글' },
+  ]
+
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-8">
-              <h1 className="typo-feature-title">
-                GME Remit Admin
-              </h1>
-              <nav className="hidden md:flex items-center gap-4">
-                <Link
-                  href="/gme-backoffice/dashboard"
-                  className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-                    pathname === '/gme-backoffice/dashboard'
-                      ? 'bg-primary text-white'
-                      : 'text-gray-600 hover:bg-gray-100'
-                  }`}
-                >
-                  대시보드
-                </Link>
-                <Link
-                  href="/"
-                  target="_blank"
-                  className="px-4 py-2 rounded-lg font-medium text-gray-600 hover:bg-gray-100 transition-colors"
-                >
-                  사이트 보기
-                </Link>
-              </nav>
-            </div>
-            <div className="flex items-center gap-4">
-              <span className="text-sm text-gray-600">{user.email}</span>
-              <button
-                onClick={handleSignOut}
-                className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-primary transition-colors cursor-pointer"
-              >
-                <HiLogout className="w-5 h-5" />
-                <span className="hidden sm:inline">로그아웃</span>
-              </button>
-            </div>
-          </div>
+    <div className="min-h-screen flex bg-[#f8f9fa]">
+      {/* Sidebar */}
+      <aside className="fixed inset-y-0 left-0 w-60 bg-white border-r border-gray-100 flex flex-col z-20">
+        {/* Logo */}
+        <div className="px-6 py-5 border-b border-gray-100">
+          <Image
+            src="/images/common/GME-LOGO-HD.png"
+            alt="GME Remit"
+            width={100}
+            height={28}
+            className="object-contain"
+          />
         </div>
-      </header>
+
+        {/* Navigation */}
+        <nav className="flex-1 px-3 py-4 space-y-1">
+          {navItems.map((item) => {
+            const isActive = pathname === item.href || (item.href === '/gme-backoffice/dashboard' && pathname.startsWith('/gme-backoffice/board/edit'))
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-[14px] font-medium transition-all ${
+                  isActive
+                    ? 'bg-red-50 text-primary'
+                    : 'text-gray-500 hover:bg-gray-50 hover:text-gray-900'
+                }`}
+              >
+                <item.icon className="w-[18px] h-[18px]" />
+                {item.label}
+              </Link>
+            )
+          })}
+
+          <div className="border-b border-gray-100 my-3" />
+
+          <a
+            href="/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[14px] font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900 transition-all"
+          >
+            <HiOutlineArrowTopRightOnSquare className="w-[18px] h-[18px]" />
+            사이트 보기
+          </a>
+        </nav>
+
+        {/* User Info */}
+        <div className="px-4 py-4 border-t border-gray-100">
+          <div className="flex items-center gap-3 mb-3">
+            <div className="w-8 h-8 rounded-full bg-red-50 text-primary text-xs font-bold flex items-center justify-center flex-shrink-0">
+              {user.email?.[0]?.toUpperCase()}
+            </div>
+            <span className="text-[13px] text-gray-600 truncate">{user.email}</span>
+          </div>
+          <button
+            onClick={handleSignOut}
+            className="flex items-center gap-2 w-full px-3 py-2 text-[13px] text-gray-400 hover:text-primary hover:bg-red-50 rounded-lg transition-all cursor-pointer"
+          >
+            <HiArrowRightOnRectangle className="w-4 h-4" />
+            로그아웃
+          </button>
+        </div>
+      </aside>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {children}
-      </main>
+      <div className="flex-1 ml-60 flex flex-col min-h-screen">
+        <main className="flex-1 px-8 py-8">
+          {children}
+        </main>
+      </div>
     </div>
   )
 }

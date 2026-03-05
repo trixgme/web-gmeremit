@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useTranslation } from "@/hooks/useTranslation";
 import CTAButton from "@/components/ui/CTAButton";
 import { loanBenefitImages } from "@/data/loan";
@@ -59,10 +60,12 @@ export default function LoanSection() {
                   className="rounded-xl bg-gray-50 p-3 sm:p-4 text-center hover:bg-gray-100 transition-colors duration-250 ease-out"
                 >
                   <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center mx-auto mb-2 shadow-sm">
-                    <img
+                    <Image
                       src={loanBenefitImages[key].src}
                       alt={loanBenefitImages[key].alt}
-                      className={loanBenefitImages[key].className}
+                      width={loanBenefitImages[key].width}
+                      height={loanBenefitImages[key].height}
+                      className="object-contain"
                     />
                   </div>
                   <p className="text-xs font-bold text-dark">{t(`features.${key}.label`)}</p>

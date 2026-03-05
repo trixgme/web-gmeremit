@@ -1,11 +1,11 @@
 export const loanBenefitKeys = ["countries", "success", "support", "realtime", "simple"] as const;
 
-export const loanBenefitImages: Record<string, { src: string; alt: string; className: string }> = {
-  countries: { src: "/images/common/globe.png", alt: "Globe", className: "w-12 h-12 object-contain" },
-  success: { src: "/images/common/success.png", alt: "success", className: "w-9 h-9 object-contain" },
-  support: { src: "/images/common/support.png", alt: "support", className: "w-8 h-8 object-contain" },
-  realtime: { src: "/images/common/realtime.png", alt: "realtime", className: "w-8 h-8 object-contain" },
-  simple: { src: "/images/common/phone.png", alt: "Phone", className: "w-8 h-8 object-contain" },
+export const loanBenefitImages: Record<string, { src: string; alt: string; width: number; height: number }> = {
+  countries: { src: "/images/common/globe.png", alt: "Globe", width: 48, height: 48 },
+  success: { src: "/images/common/success.png", alt: "success", width: 36, height: 36 },
+  support: { src: "/images/common/support.png", alt: "support", width: 32, height: 32 },
+  realtime: { src: "/images/common/realtime.png", alt: "realtime", width: 32, height: 32 },
+  simple: { src: "/images/common/phone.png", alt: "Phone", width: 32, height: 32 },
 };
 
 export const productKeys = ["gme_loan", "house_loan", "business_loan", "student_loan", "property_loan", "vacation_loan", "car_loan"];

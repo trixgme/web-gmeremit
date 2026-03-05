@@ -1,9 +1,18 @@
 "use client";
 
 import { useState, useMemo, useRef, useEffect } from "react";
+import dynamic from "next/dynamic";
 import { HiLocationMarker, HiPhone, HiClock, HiChevronDown } from "react-icons/hi";
-import KakaoMap from "@/components/KakaoMap";
 import { useTranslation } from "@/hooks/useTranslation";
+
+const KakaoMap = dynamic(() => import("@/components/KakaoMap"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-full bg-gray-100 rounded-2xl animate-pulse flex items-center justify-center">
+      <span className="text-gray-400 text-sm">지도 로딩 중...</span>
+    </div>
+  ),
+});
 import { branchesData, type BranchData } from "@/data/branches";
 
 interface Branch extends BranchData {

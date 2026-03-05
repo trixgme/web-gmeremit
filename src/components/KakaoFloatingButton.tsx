@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 export default function KakaoFloatingButton() {
   return (
     <a
@@ -10,9 +12,11 @@ export default function KakaoFloatingButton() {
       style={{ boxShadow: '0 4px 14px rgba(0, 0, 0, 0.15)' }}
       aria-label="KakaoTalk Chat"
     >
-      <img
+      <Image
         src="/images/common/kakaotalk.png"
         alt="KakaoTalk"
+        width={64}
+        height={64}
         className="w-full h-full rounded-full"
       />
     </a>

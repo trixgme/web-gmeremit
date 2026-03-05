@@ -122,16 +122,16 @@ export default function CreateBoardEntryPage() {
 
   return (
     <div>
-      {/* Header */}
       <div className="mb-8">
         <Link
           href="/gme-backoffice/dashboard"
-          className="inline-flex items-center gap-2 text-gray-600 hover:text-primary mb-4 transition-colors"
+          className="inline-flex items-center gap-1.5 text-[13px] text-gray-400 hover:text-gray-600 mb-5 transition-colors"
         >
-          <HiArrowLeft className="w-5 h-5" />
-          <span>대시보드로 돌아가기</span>
+          <HiArrowLeft className="w-4 h-4" />
+          <span>돌아가기</span>
         </Link>
-        <h1 className="typo-stat">새 게시글 작성</h1>
+        <h1 className="text-[22px] font-bold text-gray-900">새 게시글 작성</h1>
+        <p className="text-[14px] text-gray-500 mt-1">새로운 게시글을 작성합니다</p>
       </div>
 
       <BoardForm
