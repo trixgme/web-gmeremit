@@ -10,6 +10,7 @@ import LoanSection from "@/components/home/LoanSection";
 import CardsSection from "@/components/home/CardsSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 import AppDownloadCTA from "@/components/home/AppDownloadCTA";
+import HeroSection from "@/components/HeroSection";
 
 export default function Home() {
   return (
@@ -18,9 +19,12 @@ export default function Home() {
       <ScrollSnap />
       <SectionNav />
 
-      <main className="pt-5 lg:pt-[10px]">
+      <main className="pt-0">
         {/* Hero Section */}
         <HeroMain />
+
+        {/* Exchange Calculator */}
+        <HeroSection />
 
         {/* Main Services */}
         <MainServices />

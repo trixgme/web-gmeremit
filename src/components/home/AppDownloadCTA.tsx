@@ -6,7 +6,7 @@ import { useTranslation } from "@/hooks/useTranslation";
 export default function AppDownloadCTA() {
   const { t, tArray } = useTranslation("home.app_download");
   return (
-    <section id="app-download" className="bg-[var(--surface-0)] py-16 lg:py-24 snap-section">
+    <section id="app-download" className="bg-[var(--surface-0)] py-12 lg:py-16 snap-section">
       <div className="max-w-[1540px] mx-auto px-4 sm:px-6 lg:px-10">
         <div className="relative overflow-hidden rounded-2xl sm:rounded-[36px] bg-neutral-950 px-5 py-10 sm:px-10 sm:py-12 lg:px-16 lg:py-16 text-white shadow-[0_40px_100px_rgba(15,23,42,0.3)]">
           <div className="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-primary/30 blur-3xl" />

@@ -42,7 +42,7 @@ export default function PaymentsSection() {
   const { t } = useTranslation("home.global_payments");
 
   return (
-    <section id="payments-section" className="relative overflow-hidden flex items-center snap-section lg:min-h-screen py-14 sm:py-16 lg:py-0">
+    <section id="payments-section" className="relative overflow-hidden flex items-center snap-section lg:min-h-screen py-10 sm:py-12 lg:py-0">
       <div className="absolute inset-0 bg-gradient-to-br from-[#fafbff] via-[#f5f8ff] to-[#eff6ff]" />
       <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-payments/[0.04] blur-3xl" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-payments-light/[0.05] blur-3xl" />

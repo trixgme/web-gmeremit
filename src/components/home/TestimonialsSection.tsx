@@ -9,7 +9,7 @@ export default function TestimonialsSection() {
   const { t } = useTranslation("home.testimonials");
 
   return (
-    <section id="testimonials" className="relative overflow-hidden bg-[var(--surface-warm)] py-16 lg:py-20 snap-section">
+    <section id="testimonials" className="relative overflow-hidden bg-[var(--surface-warm)] py-12 lg:py-16 snap-section">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 select-none text-primary opacity-[0.045]"

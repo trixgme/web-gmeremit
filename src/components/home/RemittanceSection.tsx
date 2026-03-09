@@ -17,7 +17,7 @@ const featureIcons: ReactNode[] = [
 export default function RemittanceSection() {
   const { t } = useTranslation("home.remittance");
   return (
-    <section id="overseas-remittance" className="relative overflow-hidden flex items-center snap-section lg:min-h-screen py-14 sm:py-16 lg:py-0">
+    <section id="overseas-remittance" className="relative overflow-hidden flex items-center snap-section lg:min-h-screen py-10 sm:py-12 lg:py-0">
       <div className="absolute inset-0 bg-gradient-to-br from-[#fffafa] via-[#fff8f8] to-[#fff5f5]" />
       <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-primary/[0.04] blur-3xl" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-secondary/[0.05] blur-3xl" />

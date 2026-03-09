@@ -44,7 +44,7 @@ export default function MainServices() {
   const { t } = useTranslation("home.services");
 
   return (
-    <section id="gme-payments" className="relative overflow-hidden bg-gray-100 py-14 sm:py-16 lg:py-20 flex items-center snap-section lg:min-h-screen">
+    <section id="gme-payments" className="relative overflow-hidden bg-gray-100 py-10 sm:py-12 lg:py-16 flex items-center snap-section lg:min-h-screen">
       <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
         <div className="text-center mb-6 sm:mb-12">
           <h2 className="typo-section-title">

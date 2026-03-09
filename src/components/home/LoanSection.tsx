@@ -11,7 +11,7 @@ export default function LoanSection() {
   const { t } = useTranslation("home.loan");
 
   return (
-    <section id="online-loan" className="relative overflow-hidden flex items-center snap-section lg:min-h-screen py-14 sm:py-16 lg:py-0">
+    <section id="online-loan" className="relative overflow-hidden flex items-center snap-section lg:min-h-screen py-10 sm:py-12 lg:py-0">
       <div className="absolute inset-0 bg-gradient-to-br from-[#fffefb] via-[#fffdf7] to-[#fefce8]" />
       <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-loan/[0.04] blur-3xl" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-loan-light/[0.05] blur-3xl" />
