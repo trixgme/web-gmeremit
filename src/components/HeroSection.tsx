@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useTranslation } from "@/hooks/useTranslation";
+import { useClickOutside } from "@/hooks/useClickOutside";
 import { countryConfigs, CountryConfig } from "@/data/countries";
 
 interface ExRateResponse {
@@ -15,6 +16,14 @@ interface ExRateResponse {
   msg: string | null;
 }
 
+const formatNumber = (num: string) => num.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+const parseNumber = (str: string) => str.replace(/,/g, "");
+
+const DELIVERY_METHODS = [
+  { value: "1", key: "calculator.bank_deposit" },
+  { value: "2", key: "calculator.cash_payment" },
+] as const;
+
 export default function HeroSection() {
   const { t } = useTranslation("home.exchange");
   const [sendAmount, setSendAmount] = useState("1000000");
@@ -22,23 +31,18 @@ export default function HeroSection() {
   const [isOpen, setIsOpen] = useState(false);
   const [receiveAmount, setReceiveAmount] = useState("");
   const [exchangeRate, setExchangeRate] = useState(0);
-  const [calBy, setCalBy] = useState<"C" | "P">("C");
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [deliveryMethod, setDeliveryMethod] = useState("1");
   const debounceRef = useRef<ReturnType<typeof setTimeout>>(undefined);
-
-  const formatNumber = (num: string) => num.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  const parseNumber = (str: string) => str.replace(/,/g, "");
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   // 포맷 변경 후 커서 위치 보정
   const restoreCursor = (input: HTMLInputElement, rawValue: string, prevFormatted: string, cursorPos: number) => {
     const formatted = formatNumber(rawValue);
-    // 커서 앞의 콤마를 제외한 실제 숫자 위치 계산
     const commasBefore = (prevFormatted.slice(0, cursorPos).match(/,/g) || []).length;
     const rawCursorPos = cursorPos - commasBefore;
-    // formatted 문자열에서 해당 숫자 위치 찾기
     let rawCount = 0;
     let newPos = 0;
     for (let i = 0; i < formatted.length; i++) {
@@ -78,14 +82,11 @@ export default function HeroSection() {
       const data: ExRateResponse = await res.json();
 
       if (data.errorCode === "0" && data.pAmt && data.exRate) {
-        const exRateNum = Number(data.exRate);
-        setExchangeRate(exRateNum);
+        setExchangeRate(Number(data.exRate));
         if (direction === "C") {
-          const pAmtNum = Number(data.pAmt.replace(/,/g, ""));
-          setReceiveAmount(Math.floor(pAmtNum).toString());
+          setReceiveAmount(Math.floor(Number(data.pAmt.replace(/,/g, ""))).toString());
         } else {
-          const collAmtNum = Number((data.collAmt || "0").replace(/,/g, ""));
-          setSendAmount(Math.floor(collAmtNum).toString());
+          setSendAmount(Math.floor(Number((data.collAmt || "0").replace(/,/g, ""))).toString());
         }
       } else {
         if (direction === "C") setReceiveAmount("");
@@ -115,6 +116,7 @@ export default function HeroSection() {
   // 초기 로드 + 국가/송금방식 변경 시 호출
   useEffect(() => {
     fetchExRate(selectedCountry, sendAmount, "C");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedCountry, deliveryMethod]);
 
   // 송금액 변경 시 디바운스 호출
@@ -126,7 +128,6 @@ export default function HeroSection() {
     if (/^\d*$/.test(value)) {
       restoreCursor(input, value, prevFormatted, cursorPos);
       setSendAmount(value);
-      setCalBy("C");
       if (debounceRef.current) clearTimeout(debounceRef.current);
       debounceRef.current = setTimeout(() => {
         fetchExRate(selectedCountry, value, "C");
@@ -143,7 +144,6 @@ export default function HeroSection() {
     if (/^\d*$/.test(value)) {
       restoreCursor(input, value, prevFormatted, cursorPos);
       setReceiveAmount(value);
-      setCalBy("P");
       if (debounceRef.current) clearTimeout(debounceRef.current);
       debounceRef.current = setTimeout(() => {
         fetchExRate(selectedCountry, value, "P");
@@ -156,17 +156,7 @@ export default function HeroSection() {
     setIsOpen(false);
   };
 
-  const dropdownRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setIsOpen(false);
-      }
-    };
-    if (isOpen) document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [isOpen]);
+  useClickOutside(dropdownRef, () => setIsOpen(false), isOpen);
 
   return (
     <section id="app" className="relative lg:min-h-screen bg-gradient-to-b from-gray-100 to-white py-12 lg:py-24 overflow-hidden snap-section flex items-center">
@@ -251,32 +241,24 @@ export default function HeroSection() {
                   <p className="text-xs text-red-500 mt-1.5 ml-1">{t(`calculator.${errorMsg}`)}</p>
                 )}
               </div>
-            {/* Delivery Method */}
+              {/* Delivery Method */}
               <div className="space-y-2 mb-5">
                 <label className="text-[13px] font-medium text-neutral-500">{t("calculator.delivery_method")}</label>
                 <div className="flex bg-gray-100 rounded-xl p-1">
-                  <button
-                    type="button"
-                    onClick={() => setDeliveryMethod("1")}
-                    className={`flex-1 py-2.5 text-sm font-medium rounded-lg transition-all cursor-pointer ${
-                      deliveryMethod === "1"
-                        ? "bg-white text-dark shadow-sm"
-                        : "text-neutral-400 hover:text-neutral-600"
-                    }`}
-                  >
-                    {t("calculator.bank_deposit")}
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setDeliveryMethod("2")}
-                    className={`flex-1 py-2.5 text-sm font-medium rounded-lg transition-all cursor-pointer ${
-                      deliveryMethod === "2"
-                        ? "bg-white text-dark shadow-sm"
-                        : "text-neutral-400 hover:text-neutral-600"
-                    }`}
-                  >
-                    {t("calculator.cash_payment")}
-                  </button>
+                  {DELIVERY_METHODS.map((method) => (
+                    <button
+                      key={method.value}
+                      type="button"
+                      onClick={() => setDeliveryMethod(method.value)}
+                      className={`flex-1 py-2.5 text-sm font-medium rounded-lg transition-all cursor-pointer ${
+                        deliveryMethod === method.value
+                          ? "bg-white text-dark shadow-sm"
+                          : "text-neutral-400 hover:text-neutral-600"
+                      }`}
+                    >
+                      {t(method.key)}
+                    </button>
+                  ))}
                 </div>
               </div>
               {/* Country Select */}

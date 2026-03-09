@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useMemo, useRef, useEffect } from "react";
+import { useState, useMemo, useRef } from "react";
 import dynamic from "next/dynamic";
 import { HiLocationMarker, HiPhone, HiClock, HiChevronDown } from "react-icons/hi";
 import { useTranslation } from "@/hooks/useTranslation";
+import { useClickOutside } from "@/hooks/useClickOutside";
 
 const KakaoMap = dynamic(() => import("@/components/KakaoMap"), {
   ssr: false,
@@ -46,15 +47,7 @@ export default function BranchesPage() {
     setDropdownOpen(false);
   };
 
-  useEffect(() => {
-    function handleClickOutside(e: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setDropdownOpen(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  useClickOutside(dropdownRef, () => setDropdownOpen(false));
 
   return (
     <div className="flex flex-col gap-4 lg:grid lg:grid-cols-5 lg:gap-6">
