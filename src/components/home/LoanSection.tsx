@@ -13,9 +13,9 @@ export default function LoanSection() {
   return (
     <section id="online-loan" className="relative overflow-hidden flex items-center snap-section lg:min-h-screen py-10 sm:py-12 lg:py-0">
       <div className="absolute inset-0 bg-gradient-to-br from-[#fffefb] via-[#fffdf7] to-[#fefce8]" />
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-loan/[0.04] blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-loan-light/[0.05] blur-3xl" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-loan/[0.02] blur-3xl" />
+      <div className="hidden lg:block absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-loan/[0.04] blur-3xl" />
+      <div className="hidden lg:block absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-loan-light/[0.05] blur-3xl" />
+      <div className="hidden lg:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-loan/[0.02] blur-3xl" />
 
       <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:min-h-screen flex items-center">
         <div className="w-full grid lg:grid-cols-2 gap-8 lg:gap-20 items-center">
