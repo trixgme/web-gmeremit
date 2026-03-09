@@ -169,18 +169,18 @@ export default function HeroSection() {
   }, [isOpen]);
 
   return (
-    <section id="app" className="relative min-h-screen bg-gradient-to-b from-gray-100 to-white py-14 lg:py-24 overflow-hidden snap-section flex items-center">
+    <section id="app" className="relative lg:min-h-screen bg-gradient-to-b from-gray-100 to-white py-12 lg:py-24 overflow-hidden snap-section flex items-center">
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/3 left-[10%] w-[400px] h-[400px] rounded-full bg-primary/[0.10] blur-[100px]" />
         <div className="absolute bottom-1/3 left-[5%] w-[300px] h-[300px] rounded-full bg-primary-light/[0.08] blur-[100px]" />
       </div>
 
-      <div className="relative w-full max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
+      <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
         <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-16 lg:gap-24 items-center">
 
           {/* Left Content */}
-          <div className="order-2 lg:order-1">
+          <div className="order-2 lg:order-1 hidden lg:block">
             <p className="text-sm font-semibold tracking-widest text-primary mb-4">EXCHANGE CALCULATOR</p>
             <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold text-dark leading-[1.1] tracking-tight mb-6">
               {t("title1")}
@@ -207,39 +207,42 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Right Calculator */}
-          <div className="order-1 lg:order-2 relative">
-            <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-payments-light/[0.25] blur-2xl" />
-            <div className="absolute -bottom-6 -left-6 w-28 h-28 rounded-full bg-sky-400/[0.20] blur-2xl" />
+          {/* Calculator */}
+          <div className="order-1 lg:order-2 relative max-w-md mx-auto lg:max-w-none w-full overflow-hidden lg:overflow-visible">
+            <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-payments-light/[0.25] blur-2xl hidden lg:block" />
+            <div className="absolute -bottom-6 -left-6 w-28 h-28 rounded-full bg-sky-400/[0.20] blur-2xl hidden lg:block" />
 
-            <div className="relative bg-gradient-to-b from-gray-50 to-gray-200 rounded-[2rem] p-3 shadow-[0_12px_40px_rgba(15,23,42,0.12)] border border-gray-300/50">
-              <div className="bg-white rounded-[1.5rem] p-8 lg:p-10 shadow-[inset_0_2px_4px_rgba(0,0,0,0.02)]">
-              <div className="pointer-events-none absolute inset-2 rounded-[1.25rem] shadow-[inset_0_1px_0_rgba(255,255,255,0.9)]" />
+            <div className="relative bg-gradient-to-b from-gray-50 to-gray-200 rounded-2xl lg:rounded-[2rem] p-2 lg:p-3 shadow-[0_12px_40px_rgba(15,23,42,0.12)] border border-gray-300/50">
+              <div className="bg-white rounded-xl lg:rounded-[1.5rem] p-5 sm:p-8 lg:p-10 shadow-[inset_0_2px_4px_rgba(0,0,0,0.02)]">
+              <div className="pointer-events-none absolute inset-2 rounded-[1.25rem] shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] hidden lg:block" />
               {/* Calculator Header */}
-              <div className="flex items-center justify-between mb-7">
-                <h2 className="text-lg font-semibold text-dark">{t("calculator.title")}</h2>
-                <div className={`flex items-center gap-2 rounded-full px-3.5 py-1.5 text-sm font-semibold ${
-                  hasError ? "bg-red-50 text-red-600" : "bg-emerald-50 text-green-800"
-                }`}>
-                  <span className={`w-2 h-2 rounded-full ${
-                    isLoading ? "bg-yellow-400 animate-pulse" : hasError ? "bg-red-400" : "bg-success"
-                  }`} />
-                  {isLoading ? t("calculator.loading") : hasError ? t("calculator.error") : t("calculator.realtime")}
+              <div className="mb-6 lg:mb-7">
+                <div className="lg:flex lg:items-center lg:justify-between">
+                  <h2 className="text-lg font-semibold text-dark">{t("calculator.title")}</h2>
+                  <div className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium mt-1.5 lg:mt-0 lg:gap-2 lg:px-3.5 lg:py-1.5 lg:text-sm lg:font-semibold ${
+                    hasError ? "bg-red-50 text-red-600" : "bg-emerald-50 text-green-800"
+                  }`}>
+                    <span className={`w-1.5 h-1.5 lg:w-2 lg:h-2 rounded-full ${
+                      isLoading ? "bg-yellow-400 animate-pulse" : hasError ? "bg-red-400" : "bg-success"
+                    }`} />
+                    {isLoading ? t("calculator.loading") : hasError ? t("calculator.error") : t("calculator.realtime")}
+                  </div>
                 </div>
               </div>
 
               {/* Send Input */}
               <div className="space-y-2 mb-5">
                 <label className="text-[13px] font-medium text-neutral-500">{t("calculator.send_amount")}</label>
-                <div className="flex items-center gap-3 bg-white rounded-2xl px-5 py-4 border border-gray-200/80 focus-within:ring-2 focus-within:ring-primary/15 transition-shadow">
+                <div className="flex items-center gap-3 bg-white rounded-2xl px-3 py-3 lg:px-5 lg:py-4 border border-gray-200/80 focus-within:ring-2 focus-within:ring-primary/15 transition-shadow">
                   <input
                     type="text"
+                    inputMode="numeric"
                     value={formatNumber(sendAmount)}
                     onChange={handleSendAmountChange}
-                    className="flex-1 bg-transparent text-[1.5rem] font-semibold text-dark outline-none tabular-nums"
+                    className="flex-1 min-w-0 bg-transparent text-xl lg:text-[1.5rem] font-semibold text-dark outline-none tabular-nums"
                     placeholder="0"
                   />
-                  <div className="flex items-center gap-2 pl-4 border-l border-gray-200/80">
+                  <div className="flex items-center gap-2 pl-4 border-l border-gray-200/80 shrink-0">
                     <span className="text-lg">🇰🇷</span>
                     <span className="text-sm font-semibold text-dark">KRW</span>
                   </div>
@@ -282,12 +285,12 @@ export default function HeroSection() {
                 <button
                   type="button"
                   onClick={() => setIsOpen(!isOpen)}
-                  className="w-full flex items-center gap-3 bg-white rounded-2xl px-5 py-4 border border-gray-200/80 hover:bg-slate-50 transition-colors cursor-pointer"
+                  className="w-full flex items-center gap-2 lg:gap-3 bg-white rounded-2xl px-3 py-2.5 lg:px-5 lg:py-4 border border-gray-200/80 hover:bg-slate-50 transition-colors cursor-pointer"
                 >
-                  <span className="text-2xl">{selectedCountry.flag}</span>
-                  <div className="flex-1 text-left">
-                    <span className="font-semibold text-dark">{t(`countries.names.${selectedCountry.countryCode}`, { ns: "home.hero" })}</span>
-                    <span className="text-neutral-500 ml-2">{selectedCountry.code}</span>
+                  <span className="text-lg lg:text-2xl">{selectedCountry.flag}</span>
+                  <div className="flex-1 text-left min-w-0 truncate">
+                    <span className="text-sm lg:text-base font-semibold text-dark">{t(`countries.names.${selectedCountry.countryCode}`, { ns: "home.hero" })}</span>
+                    <span className="text-xs lg:text-base text-neutral-500 ml-1.5 lg:ml-2">{selectedCountry.code}</span>
                   </div>
                   <svg className={`w-5 h-5 text-neutral-400 transition-transform ${isOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -319,12 +322,10 @@ export default function HeroSection() {
                 )}
               </div>
 
-           
-
               {/* Exchange Rate Display */}
               <div className="flex items-center gap-4 mb-5">
                 <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
-                <span className="text-xs font-semibold text-gray bg-gray-100 px-3 py-1 rounded-full tabular-nums">
+                <span className="text-xs font-semibold text-gray bg-gray-100 px-3 py-1 rounded-full tabular-nums whitespace-nowrap">
                   {exchangeRate > 0
                     ? `1 ${selectedCountry.code} = ₩${(1 / exchangeRate).toLocaleString(undefined, { maximumFractionDigits: 2 })}`
                     : "---"
@@ -336,7 +337,7 @@ export default function HeroSection() {
               {/* Receive Input */}
               <div className="space-y-2 mb-6">
                 <label className="text-[13px] font-medium text-neutral-500">{t("calculator.receive_amount")}</label>
-                <div className="relative flex items-center gap-3 bg-gradient-to-br from-teal-500/65 to-teal-700/60 backdrop-blur-2xl rounded-2xl px-5 py-5 border border-teal-300/28 shadow-[inset_0_1px_1px_rgba(255,255,255,0.13)]">
+                <div className="relative flex items-center gap-3 bg-gradient-to-br from-teal-500/65 to-teal-700/60 backdrop-blur-2xl rounded-2xl px-3 py-3 lg:px-5 lg:py-5 border border-teal-300/28 shadow-[inset_0_1px_1px_rgba(255,255,255,0.13)]">
                   <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-teal-300/18 via-teal-400/10 to-transparent pointer-events-none" />
                   <div className="absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
                   <div className="absolute inset-0 rounded-2xl shadow-[inset_0_-1px_1px_rgba(94,234,212,0.08)] pointer-events-none" />
@@ -345,9 +346,9 @@ export default function HeroSection() {
                     value={hasError ? "" : formatNumber(receiveAmount)}
                     onChange={handleReceiveAmountChange}
                     placeholder={hasError ? "---" : "0"}
-                    className={`relative flex-1 text-[1.75rem] font-bold text-white tabular-nums bg-transparent outline-none placeholder-white/50 ${isLoading ? "opacity-50" : ""}`}
+                    className={`relative flex-1 min-w-0 text-xl lg:text-[1.75rem] font-bold text-white tabular-nums bg-transparent outline-none placeholder-white/50 ${isLoading ? "opacity-50" : ""}`}
                   />
-                  <div className="relative flex items-center gap-2 pl-4 border-l border-white/20">
+                  <div className="relative flex items-center gap-2 pl-4 border-l border-white/20 shrink-0">
                     <span className="text-lg">{selectedCountry.flag}</span>
                     <span className="text-sm font-semibold text-white">{selectedCountry.code}</span>
                   </div>
