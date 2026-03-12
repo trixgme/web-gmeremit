@@ -207,7 +207,6 @@
 .typo-stat {
   font-size: 1.25rem;     /* 20px mobile */
   font-weight: 700;
-  color: var(--color-dark);
 }
 @media (min-width: 640px) {
   .typo-stat {

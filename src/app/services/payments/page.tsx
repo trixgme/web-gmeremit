@@ -10,7 +10,7 @@ import { solutions as solutionsData, paymentFeatureKeys, partnerLogos, paymentPr
 import SectionHeader from "@/components/ui/SectionHeader";
 
 export default function PaymentsPage() {
-  const { t } = useTranslation("business");
+  const { t, tArray } = useTranslation("business");
   useLenis();
 
   const solutions = solutionsData.map((sol) => ({
@@ -137,7 +137,7 @@ export default function PaymentsPage() {
                   </p>
 
                   <div className="grid grid-cols-2 gap-2.5">
-                    {(t(`solutions.${sol.key}.features`) as unknown as string[]).map(
+                    {tArray(`solutions.${sol.key}.features`).map(
                       (feature: string, idx: number) => (
                         <div key={idx} className="flex items-center gap-2.5 text-sm text-gray-600">
                           <svg className="w-4 h-4 flex-shrink-0" style={{ color: sol.color }} fill="currentColor" viewBox="0 0 20 20">

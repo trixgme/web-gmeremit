@@ -186,12 +186,12 @@ export default function HeroSection() {
 
             <div className="flex items-center gap-8">
               <div>
-                <p className="typo-stat">{t("stats.countries")}</p>
+                <p className="typo-stat text-dark">{t("stats.countries")}</p>
                 <p className="text-sm text-gray-400 mt-1">{t("stats.countries_label")}</p>
               </div>
               <div className="w-px h-12 bg-gray-400" />
               <div>
-                <p className="typo-stat">{t("stats.service")}</p>
+                <p className="typo-stat text-dark">{t("stats.service")}</p>
                 <p className="text-sm text-gray-400 mt-1">{t("stats.service_label")}</p>
               </div>
             </div>

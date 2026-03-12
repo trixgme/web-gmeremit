@@ -11,6 +11,7 @@ import {
   HiOutlineArrowTopRightOnSquare,
   HiArrowRightOnRectangle,
 } from 'react-icons/hi2'
+import { ToastProvider } from '@/components/ui/Toast'
 
 export default function AdminLayout({
   children,
@@ -28,7 +29,7 @@ export default function AdminLayout({
   }, [user, loading, pathname, router])
 
   if (pathname === '/gme-backoffice/login') {
-    return children
+    return <ToastProvider>{children}</ToastProvider>
   }
 
   if (loading) {
@@ -125,7 +126,7 @@ export default function AdminLayout({
       {/* Main Content */}
       <div className="flex-1 ml-60 flex flex-col min-h-screen">
         <main className="flex-1 px-8 py-8">
-          {children}
+          <ToastProvider>{children}</ToastProvider>
         </main>
       </div>
     </div>

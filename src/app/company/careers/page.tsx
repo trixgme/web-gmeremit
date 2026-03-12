@@ -21,6 +21,7 @@ export default function CareersPage() {
             <Image
               src="/images/company/careers/icons/logo_icon.png"
               alt=""
+              aria-hidden="true"
               width={400}
               height={400}
               className="w-[280px] lg:w-[380px] h-auto"

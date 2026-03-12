@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import PublicLayout from "@/components/layout/PublicLayout";
 import CompanyTabs from "@/components/CompanyTabs";
 import { useEffect, useLayoutEffect, useRef, useState, useMemo } from "react";
@@ -155,10 +156,12 @@ export default function HistoryPage() {
                 <div className="relative p-3 pb-0 sm:p-8 lg:p-10 mb-0 sm:mb-8">
                   {/* 장식용 작은 이미지 */}
                   <div className="absolute top-3 right-5 w-32 h-20 lg:w-64 lg:h-45 rounded-md overflow-hidden shadow-lg opacity-90">
-                    <img
+                    <Image
                       src="/images/branch_bg.jpg"
                       alt=""
-                      className="w-full h-full object-cover"
+                      aria-hidden="true"
+                      fill
+                      className="object-cover"
                     />
                   </div>
 
@@ -206,9 +209,11 @@ export default function HistoryPage() {
                                 style={{ animationDelay: `${idx * 0.2}s` }}
                               >
                                 <div className="relative w-full overflow-visible transition-all duration-300 hover:scale-[1.02]">
-                                  <img
+                                  <Image
                                     src={imageSrc}
                                     alt={`${t(`events.${event.textKey}`)} ${idx + 1}`}
+                                    width={600}
+                                    height={400}
                                     className="w-full h-auto object-contain transition-all duration-500 group-hover:scale-[1.02] opacity-95 cursor-pointer rounded-lg"
                                     style={{ filter: 'drop-shadow(0 8px 24px rgba(25,28,31,0.12))' }}
                                     onClick={() => setModalImageSrc(imageSrc)}
@@ -226,9 +231,11 @@ export default function HistoryPage() {
                             style={{ animationDelay: `${idx * 0.12}s`, opacity: 0 }}
                           >
                             <div className="relative w-full lg:w-full overflow-visible transition-all duration-300 hover:scale-[1.02]">
-                              <img
+                              <Image
                                 src={imageSrc}
                                 alt={`${t(`events.${event.textKey}`)} ${idx + 1}`}
+                                width={600}
+                                height={400}
                                 className="w-full h-auto object-contain transition-all duration-500 opacity-95 group-hover:scale-[1.02] cursor-pointer rounded-lg"
                                 style={{ filter: 'drop-shadow(0 8px 24px rgba(25,28,31,0.12))' }}
                                 onClick={() => setModalImageSrc(imageSrc)}
@@ -257,7 +264,7 @@ export default function HistoryPage() {
                       <div className={`sticky top-[60px] sm:top-[140px] z-40 py-3 ${yearIndex === 0 ? '' : 'mt-8'}`}>
                         <div className="absolute -top-10 inset-x-0 bottom-0 bg-white -mx-4" />
                         <div className="relative flex items-center gap-3">
-                          <span className="typo-stat">{yearData.year}</span>
+                          <span className="typo-stat text-dark">{yearData.year}</span>
                           <div className="flex-1 h-px bg-gradient-to-r from-primary/30 via-gray-200 to-transparent" />
                         </div>
                       </div>
@@ -334,9 +341,11 @@ export default function HistoryPage() {
             >
               ×
             </button>
-            <img
+            <Image
               src={modalImageSrc}
               alt="History preview"
+              width={1200}
+              height={800}
               className="max-h-[85vh] max-w-[90vw] rounded-xl bg-white object-contain shadow-2xl"
             />
           </div>

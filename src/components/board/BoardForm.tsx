@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { BoardEntryType } from '@/types/board'
 import { HiArrowUpTray } from 'react-icons/hi2'
 import TiptapEditor from '@/components/editor/TiptapEditor'
@@ -28,6 +29,49 @@ interface BoardFormProps {
   submitting: boolean
   submitLabel: string
   submittingLabel: string
+}
+
+function FileUpload({
+  label,
+  accept,
+  fileName,
+  preview,
+  onChange,
+}: {
+  label: string
+  accept?: string
+  fileName?: string
+  preview?: string | null
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+}) {
+  return (
+    <div>
+      <div className="flex items-center gap-4">
+        <label className="flex items-center gap-2 px-4 py-2.5 bg-gray-50 text-gray-600 rounded-xl border border-gray-200 border-dashed cursor-pointer hover:bg-gray-100 hover:border-gray-300 transition-colors">
+          <HiArrowUpTray className="w-5 h-5" />
+          <span className="text-[14px]">{label}</span>
+          <input
+            type="file"
+            accept={accept}
+            onChange={onChange}
+            className="hidden"
+          />
+        </label>
+        {fileName && <span className="text-[13px] text-gray-500">{fileName}</span>}
+      </div>
+      {preview && (
+        <div className="mt-4">
+          <Image
+            src={preview}
+            alt="Preview"
+            width={448}
+            height={192}
+            className="w-full max-w-md h-48 object-cover rounded-xl"
+          />
+        </div>
+      )}
+    </div>
+  )
 }
 
 export default function BoardForm({
@@ -158,28 +202,13 @@ export default function BoardForm({
             </div>
             <div>
               <label className={labelClass}>기사 썸네일</label>
-              <div className="flex items-center gap-4">
-                <label className="flex items-center gap-2 px-4 py-2.5 bg-gray-50 text-gray-600 rounded-xl border border-gray-200 border-dashed cursor-pointer hover:bg-gray-100 hover:border-gray-300 transition-colors">
-                  <HiArrowUpTray className="w-5 h-5" />
-                  <span className="text-[14px]">이미지 선택</span>
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={onImageChange}
-                    className="hidden"
-                  />
-                </label>
-                {imageFile && <span className="text-[13px] text-gray-500">{imageFile.name}</span>}
-              </div>
-              {imagePreview && (
-                <div className="mt-4">
-                  <img
-                    src={imagePreview}
-                    alt="Preview"
-                    className="w-full max-w-md h-48 object-cover rounded-xl"
-                  />
-                </div>
-              )}
+              <FileUpload
+                label="이미지 선택"
+                accept="image/*"
+                fileName={imageFile?.name}
+                preview={imagePreview}
+                onChange={onImageChange}
+              />
             </div>
           </>
         )}
@@ -209,28 +238,13 @@ export default function BoardForm({
             </div>
             <div>
               <label className={labelClass}>썸네일 이미지</label>
-              <div className="flex items-center gap-4">
-                <label className="flex items-center gap-2 px-4 py-2.5 bg-gray-50 text-gray-600 rounded-xl border border-gray-200 border-dashed cursor-pointer hover:bg-gray-100 hover:border-gray-300 transition-colors">
-                  <HiArrowUpTray className="w-5 h-5" />
-                  <span className="text-[14px]">이미지 선택</span>
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={onImageChange}
-                    className="hidden"
-                  />
-                </label>
-                {imageFile && <span className="text-[13px] text-gray-500">{imageFile.name}</span>}
-              </div>
-              {imagePreview && (
-                <div className="mt-4">
-                  <img
-                    src={imagePreview}
-                    alt="Preview"
-                    className="w-full max-w-md h-48 object-cover rounded-xl"
-                  />
-                </div>
-              )}
+              <FileUpload
+                label="이미지 선택"
+                accept="image/*"
+                fileName={imageFile?.name}
+                preview={imagePreview}
+                onChange={onImageChange}
+              />
             </div>
           </>
         )}
@@ -239,18 +253,11 @@ export default function BoardForm({
         {onAttachmentChange && (
           <div>
             <label className={labelClass}>첨부파일</label>
-            <div className="flex items-center gap-4">
-              <label className="flex items-center gap-2 px-4 py-2.5 bg-gray-50 text-gray-600 rounded-xl border border-gray-200 border-dashed cursor-pointer hover:bg-gray-100 hover:border-gray-300 transition-colors">
-                <HiArrowUpTray className="w-5 h-5" />
-                <span className="text-[14px]">파일 선택</span>
-                <input
-                  type="file"
-                  onChange={onAttachmentChange}
-                  className="hidden"
-                />
-              </label>
-              {attachmentFile && <span className="text-[13px] text-gray-500">{attachmentFile.name}</span>}
-            </div>
+            <FileUpload
+              label="파일 선택"
+              fileName={attachmentFile?.name}
+              onChange={onAttachmentChange}
+            />
           </div>
         )}
 

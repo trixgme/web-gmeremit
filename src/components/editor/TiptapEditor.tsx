@@ -9,6 +9,7 @@ import { TableHeader } from '@tiptap/extension-table-header'
 import { TableCell } from '@tiptap/extension-table-cell'
 import { useCallback, useRef } from 'react'
 import { createClient } from '@/lib/supabase/client'
+import { useToast } from '@/components/ui/Toast'
 import {
   HiBold,
   HiItalic,
@@ -28,6 +29,7 @@ interface TiptapEditorProps {
 
 export default function TiptapEditor({ content, onChange, placeholder, bucketName = 'press-images' }: TiptapEditorProps) {
   const supabase = createClient()
+  const toast = useToast()
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   const editor = useEditor({
@@ -77,9 +79,9 @@ export default function TiptapEditor({ content, onChange, placeholder, bucketNam
         editor.chain().focus().setImage({ src: publicUrl }).run()
       }
     } catch (error) {
-      alert('이미지 업로드 중 오류가 발생했습니다.')
+      toast.error('이미지 업로드 중 오류가 발생했습니다.')
     }
-  }, [editor, supabase, bucketName])
+  }, [editor, supabase, bucketName, toast])
 
   const handleFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
@@ -103,6 +105,7 @@ export default function TiptapEditor({ content, onChange, placeholder, bucketNam
             editor.isActive('bold') ? 'bg-gray-300' : ''
           }`}
           title="Bold"
+          aria-label="굵게"
         >
           <HiBold className="w-5 h-5" />
         </button>
@@ -113,6 +116,7 @@ export default function TiptapEditor({ content, onChange, placeholder, bucketNam
             editor.isActive('italic') ? 'bg-gray-300' : ''
           }`}
           title="Italic"
+          aria-label="기울임"
         >
           <HiItalic className="w-5 h-5" />
         </button>
@@ -159,6 +163,7 @@ export default function TiptapEditor({ content, onChange, placeholder, bucketNam
             editor.isActive('bulletList') ? 'bg-gray-300' : ''
           }`}
           title="Bullet List"
+          aria-label="글머리 목록"
         >
           <HiListBullet className="w-5 h-5" />
         </button>
@@ -169,6 +174,7 @@ export default function TiptapEditor({ content, onChange, placeholder, bucketNam
             editor.isActive('orderedList') ? 'bg-gray-300' : ''
           }`}
           title="Numbered List"
+          aria-label="번호 목록"
         >
           <HiQueueList className="w-5 h-5" />
         </button>
@@ -182,6 +188,7 @@ export default function TiptapEditor({ content, onChange, placeholder, bucketNam
             editor.isActive('codeBlock') ? 'bg-gray-300' : ''
           }`}
           title="Code Block"
+          aria-label="코드 블록"
         >
           <HiCodeBracket className="w-5 h-5" />
         </button>
@@ -199,6 +206,7 @@ export default function TiptapEditor({ content, onChange, placeholder, bucketNam
           }}
           className="p-2 rounded hover:bg-gray-200 transition-colors"
           title="Insert Table"
+          aria-label="표 삽입"
         >
           <HiTableCells className="w-5 h-5" />
         </button>
@@ -210,6 +218,7 @@ export default function TiptapEditor({ content, onChange, placeholder, bucketNam
           onClick={() => fileInputRef.current?.click()}
           className="p-2 rounded hover:bg-gray-200 transition-colors"
           title="Insert Image"
+          aria-label="이미지 삽입"
         >
           <HiPhoto className="w-5 h-5" />
         </button>

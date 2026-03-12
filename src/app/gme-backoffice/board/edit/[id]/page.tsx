@@ -6,12 +6,14 @@ import { createClient } from '@/lib/supabase/client'
 import { HiArrowLeft } from 'react-icons/hi2'
 import Link from 'next/link'
 import BoardForm, { BoardFormData } from '@/components/board/BoardForm'
+import { useToast } from '@/components/ui/Toast'
 
 export default function EditBoardEntryPage() {
   const router = useRouter()
   const params = useParams()
   const id = params.id as string
   const supabase = createClient()
+  const toast = useToast()
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const [formData, setFormData] = useState<BoardFormData>({
@@ -40,7 +42,7 @@ export default function EditBoardEntryPage() {
       .single()
 
     if (error) {
-      alert('게시글을 불러올 수 없습니다.')
+      toast.error('게시글을 불러올 수 없습니다.')
       router.push('/gme-backoffice/dashboard')
     } else {
       // Convert date format from YYYY.MM.DD to YYYY-MM-DD
@@ -120,10 +122,10 @@ export default function EditBoardEntryPage() {
 
       if (error) throw error
 
-      alert('게시글이 수정되었습니다.')
-      router.push('/gme-backoffice/dashboard')
+      toast.success('게시글이 수정되었습니다.')
+      setTimeout(() => router.push('/gme-backoffice/dashboard'), 800)
     } catch (error) {
-      alert('게시글 수정 중 오류가 발생했습니다.')
+      toast.error('게시글 수정 중 오류가 발생했습니다.')
     } finally {
       setSaving(false)
     }

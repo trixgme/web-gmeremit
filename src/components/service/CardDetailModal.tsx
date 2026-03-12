@@ -11,7 +11,7 @@ interface CardDetailModalProps {
 }
 
 export default function CardDetailModal({ selectedCard, onClose }: CardDetailModalProps) {
-  const { t } = useTranslation("card");
+  const { t, tArray, tObject } = useTranslation("card");
 
   // Prevent body scroll when modal is open
   useEffect(() => {
@@ -40,6 +40,7 @@ export default function CardDetailModal({ selectedCard, onClose }: CardDetailMod
         <div className="sticky top-0 bg-white z-10 px-6 pt-6 pb-4 flex justify-end rounded-t-2xl">
           <button
             onClick={onClose}
+            aria-label="닫기"
             className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors cursor-pointer"
           >
             <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -87,7 +88,7 @@ export default function CardDetailModal({ selectedCard, onClose }: CardDetailMod
               {t(`cards.${selectedCard}.details.mainBenefits.title`)}
             </h3>
             <div className="grid gap-4">
-              {(t(`cards.${selectedCard}.details.mainBenefits.items`) as unknown as { title: string; desc: string }[]).map((item, idx) => (
+              {tObject<{ title: string; desc: string }[]>(`cards.${selectedCard}.details.mainBenefits.items`).map((item, idx) => (
                 <div key={idx} className="bg-gray-50 rounded-xl p-4">
                   <h4 className="font-semibold text-dark mb-1">{item.title}</h4>
                   <p className="text-sm text-gray-600">{item.desc}</p>
@@ -140,7 +141,7 @@ export default function CardDetailModal({ selectedCard, onClose }: CardDetailMod
               {t(`cards.${selectedCard}.details.delivery.title`)}
             </h3>
             <div className="flex gap-3">
-              {(t(`cards.${selectedCard}.details.delivery.methods`) as unknown as string[]).map((method, idx) => (
+              {tArray(`cards.${selectedCard}.details.delivery.methods`).map((method, idx) => (
                 <div key={idx} className="px-4 py-2 bg-gray-100 rounded-lg text-sm font-medium text-gray-700">
                   {method}
                 </div>
@@ -154,7 +155,7 @@ export default function CardDetailModal({ selectedCard, onClose }: CardDetailMod
               {t(`cards.${selectedCard}.details.cautions.title`)}
             </h3>
             <ul className="space-y-2">
-              {(t(`cards.${selectedCard}.details.cautions.items`) as unknown as string[]).map((item, idx) => (
+              {tArray(`cards.${selectedCard}.details.cautions.items`).map((item, idx) => (
                 <li key={idx} className="flex items-start gap-2 text-sm text-gray-600">
                   <span className="text-dark mt-1">•</span>
                   <span>{item}</span>
@@ -169,7 +170,7 @@ export default function CardDetailModal({ selectedCard, onClose }: CardDetailMod
               {t(`cards.${selectedCard}.details.foreignPayment.title`)}
             </h3>
             <ul className="space-y-2">
-              {(t(`cards.${selectedCard}.details.foreignPayment.items`) as unknown as string[]).map((item, idx) => (
+              {tArray(`cards.${selectedCard}.details.foreignPayment.items`).map((item, idx) => (
                 <li key={idx} className="flex items-start gap-2 text-sm text-gray-600">
                   <span className="text-dark mt-1">•</span>
                   <span>{item}</span>
@@ -218,7 +219,7 @@ export default function CardDetailModal({ selectedCard, onClose }: CardDetailMod
                 {t("cards.easyG0.details.cardStatus.title")}
               </h3>
               <div className="space-y-3">
-                {(t("cards.easyG0.details.cardStatus.items") as unknown as { status: string; desc: string }[]).map((item, idx) => (
+                {tObject<{ status: string; desc: string }[]>("cards.easyG0.details.cardStatus.items").map((item, idx) => (
                   <div key={idx} className="border border-gray-200 rounded-lg p-3">
                     <h4 className="font-semibold text-dark mb-1">{item.status}</h4>
                     <p className="text-sm text-gray-600">{item.desc}</p>

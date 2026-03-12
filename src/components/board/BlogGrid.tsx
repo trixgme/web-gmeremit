@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { BoardEntry } from "@/types/board";
 import { useTranslation } from "@/hooks/useTranslation";
 
@@ -30,10 +31,11 @@ export default function BlogGrid({ entries }: BlogGridProps) {
           {/* Image */}
           <div className="relative w-full aspect-[4/3] bg-gray-100 overflow-hidden rounded-2xl mb-6">
             {entry.image_url ? (
-              <img
+              <Image
                 src={entry.image_url}
                 alt={entry.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-300"
               />
             ) : (
               <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">

@@ -40,7 +40,9 @@
       "notice": "Notice",
       "press": "Press"
     },
-    "total": "Total"
+    "total": "Total",
+    "error_title": "Failed to load posts",
+    "error_description": "Please try again later."
   },
   "business": {
     "cta": {

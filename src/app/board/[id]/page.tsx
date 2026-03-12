@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { HiChevronLeft, HiArrowDownTray } from "react-icons/hi2";
 import PublicLayout from "@/components/layout/PublicLayout";
 import DotLoader from "@/components/ui/DotLoader";
@@ -22,6 +23,7 @@ export default function BoardDetailPage() {
 
   const [entry, setEntry] = useState<BoardEntry | null>(null);
   const [loading, setLoading] = useState(true);
+  const [fetchError, setFetchError] = useState(false);
 
   useEffect(() => {
     if (!idParam || Number.isNaN(id)) {
@@ -40,8 +42,10 @@ export default function BoardDetailPage() {
 
       if (error) {
         setEntry(null);
+        setFetchError(true);
       } else {
         setEntry(data ?? null);
+        setFetchError(false);
       }
       setLoading(false);
     }
@@ -54,6 +58,17 @@ export default function BoardDetailPage() {
       {loading ? (
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 flex justify-center">
           <DotLoader />
+        </div>
+      ) : fetchError ? (
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+          <p className="text-lg font-semibold text-gray-900 mb-2">{t("error_title")}</p>
+          <p className="text-sm text-gray-500 mb-6">{t("error_description")}</p>
+          <Link
+            href="/board"
+            className="text-primary hover:underline font-medium"
+          >
+            {t("detail.back_to_list")}
+          </Link>
         </div>
       ) : !entry ? (
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
@@ -100,9 +115,11 @@ export default function BoardDetailPage() {
             {/* Image for Press or Blog */}
             {entry.image_url && (entry.type === 'press' || entry.type === 'blog') && (
               <div className="mb-8">
-                <img
+                <Image
                   src={entry.image_url}
                   alt={entry.title}
+                  width={800}
+                  height={450}
                   className="w-full h-auto rounded-2xl object-cover"
                 />
               </div>

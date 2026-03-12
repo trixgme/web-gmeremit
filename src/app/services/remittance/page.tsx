@@ -57,10 +57,11 @@ export default function RemittancePage() {
             {/* Full-width image */}
             <div className="relative rounded-xl overflow-hidden mb-10 lg:mb-14 h-[280px] sm:h-[360px] lg:h-[420px]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src="/images/gme_hand.jpg"
                 alt="GME Remit 앱 사용 화면"
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
                 style={{ objectPosition: "center 30%" }}
               />
               {/* Stats overlay */}
@@ -198,6 +199,7 @@ export default function RemittancePage() {
           <img
             src="/images/worldmap.jpg"
             alt=""
+            aria-hidden="true"
             className="absolute inset-0 w-full h-full object-cover opacity-50"
           />
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
+import { useToast, useConfirm } from '@/components/ui/Toast'
 import { BoardEntry } from '@/types/board'
 import {
   HiPlus,
@@ -22,6 +23,8 @@ export default function AdminDashboardPage() {
   const [filter, setFilter] = useState<'all' | 'notice' | 'press' | 'blog'>('all')
   const [totalCounts, setTotalCounts] = useState({ total: 0, notice: 0, press: 0, blog: 0 })
   const supabase = createClient()
+  const toast = useToast()
+  const confirm = useConfirm()
 
   useEffect(() => {
     fetchEntries()
@@ -65,7 +68,8 @@ export default function AdminDashboardPage() {
   }, [filter])
 
   const handleDelete = async (id: number) => {
-    if (!confirm('정말 삭제하시겠습니까?')) return
+    const confirmed = await confirm('정말 삭제하시겠습니까?')
+    if (!confirmed) return
 
     const { error } = await supabase
       .from('board_entries')
@@ -73,9 +77,9 @@ export default function AdminDashboardPage() {
       .eq('id', id)
 
     if (error) {
-      alert('삭제 중 오류가 발생했습니다.')
+      toast.error('삭제 중 오류가 발생했습니다.')
     } else {
-      alert('삭제되었습니다.')
+      toast.success('삭제되었습니다.')
       fetchEntries()
     }
   }

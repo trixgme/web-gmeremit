@@ -25,6 +25,7 @@ export default function BoardPage() {
 
   const [entries, setEntries] = useState<BoardEntry[]>([]);
   const [loading, setLoading] = useState(true);
+  const [fetchError, setFetchError] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchType, setSearchType] = useState("title");
   const [displayCount, setDisplayCount] = useState(ITEMS_PER_PAGE);
@@ -48,8 +49,10 @@ export default function BoardPage() {
 
       if (error) {
         setEntries([]);
+        setFetchError(true);
       } else {
         setEntries(data || []);
+        setFetchError(false);
       }
       setLoading(false);
     }
@@ -148,6 +151,11 @@ export default function BoardPage() {
             {loading ? (
               <div className="rounded-2xl border border-[var(--border-soft)] bg-white py-20 flex justify-center">
                 <DotLoader />
+              </div>
+            ) : fetchError ? (
+              <div className="rounded-2xl border border-red-100 bg-red-50/50 py-16 text-center">
+                <p className="text-gray-700 font-semibold mb-2">{t("error_title")}</p>
+                <p className="text-sm text-gray-500">{t("error_description")}</p>
               </div>
             ) : activeTab === "blog" ? (
               <BlogGrid entries={displayedEntries} />

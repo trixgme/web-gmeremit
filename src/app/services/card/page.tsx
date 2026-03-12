@@ -21,7 +21,7 @@ const benefitIcons: Record<string, React.ReactNode> = {
 };
 
 export default function CardPage() {
-  const { t } = useTranslation("card");
+  const { t, tArray } = useTranslation("card");
   const [selectedCard, setSelectedCard] = useState<string | null>(null);
   useLenis();
   const sectionRefs = useScrollFadeIn();
@@ -123,7 +123,7 @@ export default function CardPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5 [&>*:nth-last-child(2)]:lg:col-start-1 [&>*:nth-last-child(2)]:lg:col-end-2 [&>*:nth-last-child(1)]:lg:col-start-2 [&>*:nth-last-child(1)]:lg:col-end-3">
               {cards.map((card, idx) => {
-                const featureList: string[] = t(`cards.${card.key}.features`) as unknown as string[];
+                const featureList = tArray(`cards.${card.key}.features`);
                 const highlightFeatures = Array.isArray(featureList) ? featureList.slice(0, 3) : [];
 
                 return (

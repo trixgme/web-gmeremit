@@ -40,7 +40,9 @@
       "notice": "공지사항",
       "press": "언론보도"
     },
-    "total": "총"
+    "total": "총",
+    "error_title": "게시글을 불러올 수 없습니다",
+    "error_description": "잠시 후 다시 시도해주세요."
   },
   "business": {
     "cta": {

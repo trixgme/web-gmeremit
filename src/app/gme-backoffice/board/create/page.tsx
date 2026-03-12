@@ -6,10 +6,12 @@ import { createClient } from '@/lib/supabase/client'
 import { HiArrowLeft } from 'react-icons/hi2'
 import Link from 'next/link'
 import BoardForm, { BoardFormData } from '@/components/board/BoardForm'
+import { useToast } from '@/components/ui/Toast'
 
 export default function CreateBoardEntryPage() {
   const router = useRouter()
   const supabase = createClient()
+  const toast = useToast()
   const [loading, setLoading] = useState(false)
   const [formData, setFormData] = useState<BoardFormData>({
     type: 'notice',
@@ -110,10 +112,10 @@ export default function CreateBoardEntryPage() {
 
       if (error) throw error
 
-      alert('게시글이 등록되었습니다.')
-      router.push('/gme-backoffice/dashboard')
+      toast.success('게시글이 등록되었습니다.')
+      setTimeout(() => router.push('/gme-backoffice/dashboard'), 800)
     } catch (error) {
-      alert('게시글 등록 중 오류가 발생했습니다.')
+      toast.error('게시글 등록 중 오류가 발생했습니다.')
     } finally {
       setLoading(false)
     }

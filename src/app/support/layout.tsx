@@ -54,9 +54,12 @@ export default function SupportLayout({
                 {t("hero.title")}
               </h1>
               {/* 핀 장식 - 타이틀 오른쪽 상단 */}
-              <img
+              <Image
                 src="/images/support/pin.png"
                 alt=""
+                aria-hidden="true"
+                width={96}
+                height={96}
                 className="hidden lg:block absolute lg:-top-7 lg:-right-20 lg:w-24 lg:h-24 object-contain"
                 style={{
                   animation: "float 1.5s ease-in-out infinite",

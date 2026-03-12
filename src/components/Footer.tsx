@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useTranslation } from "@/hooks/useTranslation";
 
 export default function Footer() {
@@ -16,7 +17,7 @@ export default function Footer() {
             {/* Logo */}
             <div className="mb-6">
               <div className="flex items-center gap-2">
-                <img src="/images/favicon.png" alt="GME Logo" className="w-8 h-8" />
+                <Image src="/images/favicon.png" alt="GME Logo" width={32} height={32} className="w-8 h-8" />
                 <span className="typo-feature-title">{t("company_name")}</span>
               </div>
             </div>

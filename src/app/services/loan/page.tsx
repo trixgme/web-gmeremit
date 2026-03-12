@@ -11,7 +11,7 @@ import { loanBenefitKeys, loanBenefitImages, productKeys, commonTags, loanSteps,
 import SectionHeader from "@/components/ui/SectionHeader";
 
 export default function LoanPage() {
-  const { t } = useTranslation("loan");
+  const { t, tObject } = useTranslation("loan");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   useLenis();
   const sectionRefs = useScrollFadeIn();
@@ -33,7 +33,7 @@ export default function LoanPage() {
     </svg>
   ));
 
-  const faqItems = t("faq.items") as unknown as { q: string; a: string }[];
+  const faqItems = tObject<{ q: string; a: string }[]>("faq.items");
 
   return (
     <PublicLayout className="bg-gradient-to-b from-white via-white to-amber-50/30">

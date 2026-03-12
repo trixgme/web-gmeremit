@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo, useRef } from "react";
+import Image from "next/image";
 import dynamic from "next/dynamic";
 import { HiLocationMarker, HiPhone, HiClock, HiChevronDown } from "react-icons/hi";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -129,9 +130,11 @@ export default function BranchesPage() {
         {/* 지점 이미지 */}
         {selectedBranch.image && (
           <div className="rounded-2xl overflow-hidden">
-            <img
+            <Image
               src={selectedBranch.image}
               alt={selectedBranch.name}
+              width={600}
+              height={176}
               className="w-full h-40 lg:h-44 object-cover"
             />
           </div>
