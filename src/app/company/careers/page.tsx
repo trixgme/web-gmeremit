@@ -41,7 +41,7 @@ export default function CareersPage() {
                 href="https://gme.career.greetinghr.com/ko/recruit"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="shrink-0 inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-semibold px-6 py-3 rounded-xl transition-all duration-200"
+                className="shrink-0 inline-flex items-center gap-2 bg-primary-dark hover:bg-primary text-white font-semibold px-6 py-3 rounded-xl transition-all duration-200"
               >
                 {t("header.button")}
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -95,7 +95,7 @@ export default function CareersPage() {
                   </div>
                   <div className="lg:w-2/3 p-6 lg:p-10 flex flex-col justify-center">
                     <div className="flex items-center gap-3 mb-3">
-                      <span className="text-2xl font-bold text-primary/20">0{index + 1}</span>
+                      <span className="text-2xl font-bold text-primary/20" aria-hidden="true">0{index + 1}</span>
                       <h3 className="typo-feature-title">{t(`benefits.${key}.title`)}</h3>
                     </div>
                     <p className="text-gray-500 leading-relaxed">{t(`benefits.${key}.description`)}</p>
@@ -127,7 +127,7 @@ export default function CareersPage() {
                     </div>
                     <div>
                       <p className="font-semibold text-dark text-sm">{item.name}</p>
-                      <p className="text-xs text-gray-400">{item.position}</p>
+                      <p className="text-xs text-gray-500">{item.position}</p>
                     </div>
                   </div>
                   <div className="relative">
@@ -136,9 +136,10 @@ export default function CareersPage() {
                   </div>
                   <button
                     onClick={() => setSelectedTestimonial(item)}
+                    aria-label={`${item.name} 후기 더 보기`}
                     className="mt-4 w-full flex justify-center cursor-pointer"
                   >
-                    <span className="w-8 h-8 rounded-full bg-gray-100 hover:bg-primary/10 flex items-center justify-center text-gray-400 hover:text-primary transition-colors">
+                    <span className="w-8 h-8 rounded-full bg-gray-100 hover:bg-primary/10 flex items-center justify-center text-gray-500 hover:text-primary transition-colors">
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                       </svg>
@@ -180,16 +181,16 @@ export default function CareersPage() {
                   />
                 </div>
                 <p className="typo-feature-title">{selectedTestimonial.name}</p>
-                <p className="text-[13px] text-gray-400 mt-1">{selectedTestimonial.position}</p>
+                <p className="text-[13px] text-gray-500 mt-1">{selectedTestimonial.position}</p>
               </div>
 
               <div className="px-5 pb-8 sm:px-8 sm:pb-10">
                 <div className="relative bg-white rounded-2xl p-6 shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
-                  <span className="absolute -top-3 left-6 text-primary/20 text-5xl font-serif leading-none">&ldquo;</span>
+                  <span className="absolute -top-3 left-6 text-primary/20 text-5xl font-serif leading-none" aria-hidden="true">&ldquo;</span>
                   <p className="text-gray-600 text-[15px] leading-[1.85] pt-2">
                     {selectedTestimonial.quote}
                   </p>
-                  <span className="absolute -bottom-4 right-6 text-primary/20 text-5xl font-serif leading-none rotate-180">&ldquo;</span>
+                  <span className="absolute -bottom-4 right-6 text-primary/20 text-5xl font-serif leading-none rotate-180" aria-hidden="true">&ldquo;</span>
                 </div>
               </div>
             </div>
@@ -206,7 +207,7 @@ export default function CareersPage() {
                 href="https://gme.career.greetinghr.com/ko/recruit"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-semibold px-8 py-3.5 rounded-xl transition-all duration-200"
+                className="inline-flex items-center justify-center gap-2 bg-primary-dark hover:bg-primary text-white font-semibold px-8 py-3.5 rounded-xl transition-all duration-200"
               >
                 {t("cta.openings")}
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
