@@ -37,7 +37,7 @@ const sizeStyles: Record<ButtonSize, string> = {
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    "bg-primary hover:bg-primary-dark text-white shadow-[0_8px_24px_rgba(237,28,36,0.3)] hover:shadow-[0_12px_32px_rgba(237,28,36,0.4)]",
+    "bg-primary-dark hover:bg-primary text-white shadow-[0_8px_24px_rgba(237,28,36,0.3)] hover:shadow-[0_12px_32px_rgba(237,28,36,0.4)]",
   secondary:
     "bg-white hover:bg-gray-50 border border-gray-200 text-dark",
   outline:

@@ -211,7 +211,7 @@ export default function MobileNav({
           <div className="px-4 pt-4">
             <Link
               href="/#app-download"
-              className="block w-full bg-primary hover:bg-primary-dark text-white font-semibold px-6 py-3 rounded-full text-center transition-colors duration-200"
+              className="block w-full bg-primary-dark hover:bg-primary text-white font-semibold px-6 py-3 rounded-full text-center transition-colors duration-200"
               onClick={onClose}
             >
               Download App

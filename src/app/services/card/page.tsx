@@ -142,7 +142,7 @@ export default function CardPage() {
                         </p>
                       </div>
                       {card.key === "uniq" && (
-                        <span className="px-3 py-1 bg-primary text-white text-xs font-bold rounded-full">
+                        <span className="px-3 py-1 bg-primary-dark text-white text-xs font-bold rounded-full">
                           Coming Soon
                         </span>
                       )}

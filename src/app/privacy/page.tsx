@@ -45,7 +45,7 @@ export default function PrivacyPolicyPage() {
                     onClick={() => setActiveTab(tab.key)}
                     className={`px-6 py-3 rounded-lg text-sm font-medium transition-all cursor-pointer ${
                       activeTab === tab.key
-                        ? "bg-primary text-white shadow-lg shadow-primary/30"
+                        ? "bg-primary-dark text-white shadow-lg shadow-primary/30"
                         : "bg-white text-gray-600 hover:bg-gray-100 border border-gray-200"
                     }`}
                   >

@@ -75,7 +75,7 @@ export default function BoardTable({ entries }: BoardTableProps) {
                   {entry.title}
                 </h3>
                 {isNew && (
-                  <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-primary text-white flex-shrink-0">
+                  <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-primary-dark text-white flex-shrink-0">
                     NEW
                   </span>
                 )}

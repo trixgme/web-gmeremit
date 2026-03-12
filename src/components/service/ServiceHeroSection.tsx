@@ -14,14 +14,14 @@ interface ServiceHeroProps {
 const colorStyles = {
   primary: {
     text: "text-primary",
-    bg: "bg-primary",
-    hover: "hover:bg-primary-dark",
+    bg: "bg-primary-dark",
+    hover: "hover:bg-primary",
     gradient: "from-gray-800/[0.12] via-[#f5f5f5] to-primary/[0.14]",
   },
   "primary-gray100": {
     text: "text-primary",
-    bg: "bg-primary",
-    hover: "hover:bg-primary-dark",
+    bg: "bg-primary-dark",
+    hover: "hover:bg-primary",
     gradient: "from-gray-800/[0.12] via-gray-100 to-primary/[0.14]",
   },
   loan: {

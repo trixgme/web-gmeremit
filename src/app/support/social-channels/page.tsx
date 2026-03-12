@@ -66,7 +66,7 @@ export default function SocialChannelsPage() {
                         }
                         className={`flex items-center justify-center w-8 h-8 rounded-full transition-all duration-200 cursor-pointer ${
                           isExpanded
-                            ? "bg-primary text-white shadow-md shadow-primary/25"
+                            ? "bg-primary-dark text-white shadow-md shadow-primary/25"
                             : "bg-white text-primary ring-1 ring-gray-200 hover:bg-primary hover:text-white hover:ring-primary hover:shadow-md hover:shadow-primary/25"
                         }`}
                         title={t("contact")}

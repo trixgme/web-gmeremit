@@ -103,7 +103,7 @@ export default function Header() {
               {/* CTA Button */}
               <a
                 href="/#app-download"
-                className="hidden lg:flex items-center gap-2 px-5 py-2.5 text-[14px] font-semibold text-white bg-primary hover:bg-primary-dark rounded-full transition-colors"
+                className="hidden lg:flex items-center gap-2 px-5 py-2.5 text-[14px] font-semibold text-white bg-primary-dark hover:bg-primary rounded-full transition-colors"
               >
                 {t("app_download", { ns: "button" })}
               </a>

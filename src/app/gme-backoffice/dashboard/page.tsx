@@ -148,7 +148,7 @@ export default function AdminDashboardPage() {
 
         <Link
           href="/gme-backoffice/board/create"
-          className="flex items-center gap-2 px-5 py-2.5 bg-primary text-white text-[14px] font-semibold rounded-xl hover:bg-primary-dark transition-all shadow-[0_2px_8px_rgba(237,28,36,0.25)]"
+          className="flex items-center gap-2 px-5 py-2.5 bg-primary-dark text-white text-[14px] font-semibold rounded-xl hover:bg-primary transition-all shadow-[0_2px_8px_rgba(237,28,36,0.25)]"
         >
           <HiPlus className="w-4 h-4" />
           새 게시글

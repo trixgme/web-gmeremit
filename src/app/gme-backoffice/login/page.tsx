@@ -122,7 +122,7 @@ export default function AdminLoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3.5 bg-primary text-white font-semibold rounded-xl hover:bg-primary-dark transition-all disabled:opacity-50 disabled:cursor-not-allowed text-[15px] shadow-[0_4px_12px_rgba(237,28,36,0.25)] hover:shadow-[0_6px_20px_rgba(237,28,36,0.35)] cursor-pointer"
+              className="w-full py-3.5 bg-primary-dark text-white font-semibold rounded-xl hover:bg-primary transition-all disabled:opacity-50 disabled:cursor-not-allowed text-[15px] shadow-[0_4px_12px_rgba(237,28,36,0.25)] hover:shadow-[0_6px_20px_rgba(237,28,36,0.35)] cursor-pointer"
             >
               {loading ? '로그인 중...' : '로그인'}
             </button>
