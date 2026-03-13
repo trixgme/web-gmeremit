@@ -24,6 +24,24 @@ export interface BoardEntry {
   updated_at?: string;
 }
 
+export interface BoardFormData {
+  type: BoardEntryType;
+  title: string;
+  content: string;
+  date: string;
+  isImportant: boolean;
+  source: string;
+  excerpt: string;
+  description: string;
+}
+
+export interface BoardCounts {
+  total: number;
+  notice: number;
+  press: number;
+  blog: number;
+}
+
 export type TabType = "notice" | "press" | "blog";
 
 export interface BoardFilters {

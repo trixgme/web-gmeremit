@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import { cookies } from "next/headers";
 import localFont from "next/font/local";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { AuthProvider } from "@/contexts/AuthContext";
 import KakaoFloatingButton from "@/components/KakaoFloatingButton";
 import ScrollToTop from "@/components/ScrollToTop";
+import { LANGUAGE_COOKIE_NAME, getLanguageByCode } from "@/lib/language";
 import "./globals.css";
 
 const pretendard = localFont({
@@ -82,16 +84,20 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const languageCode = cookieStore.get(LANGUAGE_COOKIE_NAME)?.value;
+  const initialLanguage = getLanguageByCode(languageCode);
+
   return (
-    <html lang="en" className={pretendard.variable}>
+    <html lang={initialLanguage.code} className={pretendard.variable}>
       <body className={pretendard.className}>
         <AuthProvider>
-          <LanguageProvider>
+          <LanguageProvider initialLanguageCode={initialLanguage.code}>
             {children}
           </LanguageProvider>
         </AuthProvider>

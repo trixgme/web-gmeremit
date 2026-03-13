@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
-import { useLanguage, languages } from "@/contexts/LanguageContext";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { languages } from "@/lib/language";
 import type { MenuItem } from "./DesktopNav";
 
 // ============ Icons ============
@@ -31,34 +32,23 @@ export function MobileLanguageBottomSheet({
   onClose: () => void;
 }) {
   const { currentLanguage, setLanguage } = useLanguage();
-  const [visible, setVisible] = useState(false);
-  const [animating, setAnimating] = useState(false);
-
-  useEffect(() => {
-    if (isOpen) {
-      setVisible(true);
-      requestAnimationFrame(() => setAnimating(true));
-    } else {
-      setAnimating(false);
-      const timer = setTimeout(() => setVisible(false), 300);
-      return () => clearTimeout(timer);
-    }
-  }, [isOpen]);
-
-  if (!visible) return null;
 
   return (
     <>
       {/* Backdrop */}
       <div
-        className={`fixed inset-0 bg-black/40 z-[60] transition-opacity duration-300 ${animating ? "opacity-100" : "opacity-0"}`}
+        className={`fixed inset-0 bg-black/40 z-[60] transition-opacity duration-300 ${
+          isOpen ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
         onClick={onClose}
         aria-hidden="true"
       />
 
       {/* Bottom Sheet */}
       <div
-        className={`fixed bottom-0 left-0 right-0 bg-white z-[70] rounded-t-2xl transition-transform duration-300 ease-out ${animating ? "translate-y-0" : "translate-y-full"}`}
+        className={`fixed bottom-0 left-0 right-0 bg-white z-[70] rounded-t-2xl transition-transform duration-300 ease-out ${
+          isOpen ? "translate-y-0" : "pointer-events-none translate-y-full"
+        }`}
       >
         {/* Handle */}
         <div className="flex justify-center pt-3">
@@ -167,31 +157,19 @@ export default function MobileNav({
   onClose: () => void;
   menuItems: MenuItem[];
 }) {
-  const [visible, setVisible] = useState(false);
-  const [animating, setAnimating] = useState(false);
-
-  useEffect(() => {
-    if (isOpen) {
-      setVisible(true);
-      requestAnimationFrame(() => setAnimating(true));
-    } else {
-      setAnimating(false);
-      const timer = setTimeout(() => setVisible(false), 250);
-      return () => clearTimeout(timer);
-    }
-  }, [isOpen]);
-
-  if (!visible) return null;
-
   return (
     <>
       <div
-        className={`lg:hidden fixed inset-0 top-16 bg-black/20 z-40 transition-opacity duration-250 ${animating ? "opacity-100" : "opacity-0"}`}
+        className={`lg:hidden fixed inset-0 top-16 bg-black/20 z-40 transition-opacity duration-250 ${
+          isOpen ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
         onClick={onClose}
         aria-hidden="true"
       />
       <div
-        className={`lg:hidden fixed top-16 left-0 right-0 bottom-0 bg-white z-50 overflow-y-auto transition-transform duration-250 ease-out ${animating ? "translate-y-0" : "-translate-y-4 opacity-0"}`}
+        className={`lg:hidden fixed top-16 left-0 right-0 bottom-0 bg-white z-50 overflow-y-auto transition-all duration-250 ease-out ${
+          isOpen ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-4 opacity-0"
+        }`}
       >
         <nav className="pb-6">
           {menuItems.map((item) => (
@@ -210,7 +188,7 @@ export default function MobileNav({
           </Link>
           <div className="px-4 pt-4">
             <Link
-              href="/#app-download"
+              href={{ pathname: "/", hash: "app-download" }}
               className="block w-full bg-primary-dark hover:bg-primary text-white font-semibold px-6 py-3 rounded-full text-center transition-colors duration-200"
               onClick={onClose}
             >

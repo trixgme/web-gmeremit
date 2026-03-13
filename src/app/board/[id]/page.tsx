@@ -18,19 +18,20 @@ export default function BoardDetailPage() {
   const router = useRouter();
   const idParam = Array.isArray(params.id) ? params.id[0] : params.id;
   const id = Number(idParam);
+  const hasInvalidId = !idParam || Number.isNaN(id);
   const supabase = createClient();
   const { t } = useTranslation("board");
 
   const [entry, setEntry] = useState<BoardEntry | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(!hasInvalidId);
   const [fetchError, setFetchError] = useState(false);
 
   useEffect(() => {
-    if (!idParam || Number.isNaN(id)) {
-      setEntry(null);
-      setLoading(false);
+    if (hasInvalidId) {
       return;
     }
+
+    let isCancelled = false;
 
     async function fetchEntry() {
       setLoading(true);
@@ -39,6 +40,10 @@ export default function BoardDetailPage() {
         .select("*")
         .eq("id", id)
         .maybeSingle();
+
+      if (isCancelled) {
+        return;
+      }
 
       if (error) {
         setEntry(null);
@@ -51,7 +56,10 @@ export default function BoardDetailPage() {
     }
 
     fetchEntry();
-  }, [id, idParam, supabase]);
+    return () => {
+      isCancelled = true;
+    };
+  }, [hasInvalidId, id, supabase]);
 
   return (
     <PublicLayout className="bg-[var(--surface-0)]">
@@ -70,7 +78,7 @@ export default function BoardDetailPage() {
             {t("detail.back_to_list")}
           </Link>
         </div>
-      ) : !entry ? (
+      ) : hasInvalidId || !entry ? (
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">
             {t("detail.not_found")}

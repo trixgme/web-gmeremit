@@ -19,7 +19,6 @@ export default function CardsShowcase() {
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(min-width: 768px)");
-    const shouldAutoPlay = () => mediaQuery.matches;
 
     let timer: number | null = null;
     const start = () => {

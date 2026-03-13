@@ -2,15 +2,19 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { createClient } from '@/lib/supabase/client'
 import { HiArrowLeft } from 'react-icons/hi2'
 import Link from 'next/link'
-import BoardForm, { BoardFormData } from '@/components/board/BoardForm'
+import BoardForm from '@/components/board/BoardForm'
 import { useToast } from '@/components/ui/Toast'
+import { BoardFormData } from '@/types/board'
+import {
+  buildBoardSubmissionFormData,
+  createImagePreview,
+} from '@/lib/board-admin'
+import { createBoardEntryAction } from '@/app/gme-backoffice/board/actions'
 
 export default function CreateBoardEntryPage() {
   const router = useRouter()
-  const supabase = createClient()
   const toast = useToast()
   const [loading, setLoading] = useState(false)
   const [formData, setFormData] = useState<BoardFormData>({
@@ -31,11 +35,7 @@ export default function CreateBoardEntryPage() {
     const file = e.target.files?.[0]
     if (file) {
       setImageFile(file)
-      const reader = new FileReader()
-      reader.onloadend = () => {
-        setImagePreview(reader.result as string)
-      }
-      reader.readAsDataURL(file)
+      void createImagePreview(file).then(setImagePreview)
     }
   }
 
@@ -51,70 +51,19 @@ export default function CreateBoardEntryPage() {
     setLoading(true)
 
     try {
-      let imageUrl = ''
-      let attachmentUrl = ''
-      let attachmentName = ''
+      const result = await createBoardEntryAction(buildBoardSubmissionFormData({
+        formData,
+        imageFile,
+        attachmentFile,
+      }))
 
-      // Upload image if exists (for blog or press)
-      if (imageFile && (formData.type === 'blog' || formData.type === 'press')) {
-        const fileExt = imageFile.name.split('.').pop()
-        const fileName = `${Date.now()}.${fileExt}`
-        const bucketName = formData.type === 'blog' ? 'blog-images' : 'press-images'
-        const { error } = await supabase.storage
-          .from(bucketName)
-          .upload(fileName, imageFile)
-
-        if (error) throw error
-
-        const { data: { publicUrl } } = supabase.storage
-          .from(bucketName)
-          .getPublicUrl(fileName)
-
-        imageUrl = publicUrl
+      if (!result.success) {
+        throw new Error(result.error)
       }
-
-      // Upload attachment if exists
-      if (attachmentFile) {
-        const fileExt = attachmentFile.name.split('.').pop()
-        const fileName = `${Date.now()}.${fileExt}`
-        const { error } = await supabase.storage
-          .from('board-attachments')
-          .upload(fileName, attachmentFile)
-
-        if (error) throw error
-
-        const { data: { publicUrl } } = supabase.storage
-          .from('board-attachments')
-          .getPublicUrl(fileName)
-
-        attachmentUrl = publicUrl
-        attachmentName = attachmentFile.name
-      }
-
-      // Format date to YYYY.MM.DD
-      const formattedDate = formData.date.replace(/-/g, '.')
-
-      // Insert board entry
-      const { error } = await supabase.from('board_entries').insert({
-        type: formData.type,
-        title: formData.title,
-        content: formData.content || null,
-        date: formattedDate,
-        is_important: formData.isImportant,
-        has_attachment: !!attachmentFile,
-        attachment_url: attachmentUrl || null,
-        attachment_name: attachmentName || null,
-        source: formData.source || null,
-        excerpt: formData.excerpt || null,
-        image_url: imageUrl || null,
-        description: formData.description || null,
-      })
-
-      if (error) throw error
 
       toast.success('게시글이 등록되었습니다.')
       setTimeout(() => router.push('/gme-backoffice/dashboard'), 800)
-    } catch (error) {
+    } catch {
       toast.error('게시글 등록 중 오류가 발생했습니다.')
     } finally {
       setLoading(false)

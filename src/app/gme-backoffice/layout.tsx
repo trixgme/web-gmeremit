@@ -2,7 +2,6 @@
 
 import { useAuth } from '@/contexts/AuthContext'
 import { useRouter, usePathname } from 'next/navigation'
-import { useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import {
@@ -18,33 +17,12 @@ export default function AdminLayout({
 }: {
   children: React.ReactNode
 }) {
-  const { user, loading, signOut } = useAuth()
+  const { user, signOut } = useAuth()
   const router = useRouter()
   const pathname = usePathname()
 
-  useEffect(() => {
-    if (!loading && !user && pathname !== '/gme-backoffice/login') {
-      router.push('/gme-backoffice/login')
-    }
-  }, [user, loading, pathname, router])
-
   if (pathname === '/gme-backoffice/login') {
     return <ToastProvider>{children}</ToastProvider>
-  }
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-[#f8f9fa] flex items-center justify-center">
-        <div className="text-center">
-          <div className="inline-block animate-spin rounded-full h-10 w-10 border-[3px] border-gray-200 border-t-primary" />
-          <p className="mt-4 text-[14px] text-gray-400">로딩 중...</p>
-        </div>
-      </div>
-    )
-  }
-
-  if (!user) {
-    return null
   }
 
   const handleSignOut = async () => {
@@ -94,24 +72,22 @@ export default function AdminLayout({
 
           <div className="border-b border-gray-100 my-3" />
 
-          <a
+          <Link
             href="/"
-            target="_blank"
-            rel="noopener noreferrer"
             className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[14px] font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900 transition-all"
           >
             <HiOutlineArrowTopRightOnSquare className="w-[18px] h-[18px]" />
             사이트 보기
-          </a>
+          </Link>
         </nav>
 
         {/* User Info */}
         <div className="px-4 py-4 border-t border-gray-100">
           <div className="flex items-center gap-3 mb-3">
             <div className="w-8 h-8 rounded-full bg-red-50 text-primary text-xs font-bold flex items-center justify-center flex-shrink-0">
-              {user.email?.[0]?.toUpperCase()}
+              {user?.email?.[0]?.toUpperCase() ?? "?"}
             </div>
-            <span className="text-[13px] text-gray-600 truncate">{user.email}</span>
+            <span className="text-[13px] text-gray-600 truncate">{user?.email ?? '관리자'}</span>
           </div>
           <button
             onClick={handleSignOut}

@@ -13,7 +13,7 @@ import SectionHeader from "@/components/ui/SectionHeader";
 export default function RemittancePage() {
   const { t } = useTranslation("remittance");
   useLenis();
-  const sectionRefs = useScrollFadeIn();
+  const { registerSectionRef } = useScrollFadeIn();
 
   const whyKeys = ["fastest", "cheapest", "secure"] as const;
 
@@ -44,7 +44,7 @@ export default function RemittancePage() {
         <ServiceHeroSection translationKey="remittance" color="primary" ctaHref="#why" />
 
         {/* ── Why Choose GME Remittance ── */}
-        <section id="why" ref={(el) => { sectionRefs.current[0] = el; }} className="py-20 lg:py-28 fade-section">
+        <section id="why" ref={registerSectionRef(0)} className="py-20 lg:py-28 fade-section">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Header */}
             <div className="flex items-end justify-between mb-8">
@@ -56,7 +56,6 @@ export default function RemittancePage() {
 
             {/* Full-width image */}
             <div className="relative rounded-xl overflow-hidden mb-10 lg:mb-14 h-[280px] sm:h-[360px] lg:h-[420px]">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
               <Image
                 src="/images/gme_hand.jpg"
                 alt="GME Remit 앱 사용 화면"
@@ -101,7 +100,7 @@ export default function RemittancePage() {
         </section>
 
         {/* ── Transfer Methods ── */}
-        <section ref={(el) => { sectionRefs.current[1] = el; }} className="py-20 lg:py-28 bg-gray-50 fade-section">
+        <section ref={registerSectionRef(1)} className="py-20 lg:py-28 bg-gray-50 fade-section">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <SectionHeader
               title={t("features.title")}
@@ -132,7 +131,7 @@ export default function RemittancePage() {
         </section>
 
         {/* ── Process ── */}
-        <section ref={(el) => { sectionRefs.current[2] = el; }} className="py-20 lg:py-28 fade-section">
+        <section ref={registerSectionRef(2)} className="py-20 lg:py-28 fade-section">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <SectionHeader
               title={t("process.title")}
@@ -172,7 +171,7 @@ export default function RemittancePage() {
         </section>
 
         {/* ── Trust / Compliance ── */}
-        <section ref={(el) => { sectionRefs.current[3] = el; }} className="py-16 lg:py-20 fade-section">
+        <section ref={registerSectionRef(3)} className="py-16 lg:py-20 fade-section">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="typo-section-title mb-3">
               {t("trust.title")}
@@ -194,7 +193,7 @@ export default function RemittancePage() {
         </section>
 
         {/* ── Regions Coverage ── */}
-        <section ref={(el) => { sectionRefs.current[4] = el; }} className="relative py-20 lg:py-28 overflow-hidden fade-section">
+        <section ref={registerSectionRef(4)} className="relative py-20 lg:py-28 overflow-hidden fade-section">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/images/worldmap.jpg"

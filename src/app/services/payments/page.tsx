@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import PublicLayout from "@/components/layout/PublicLayout";
 import ServiceHeroSection from "@/components/service/ServiceHeroSection";
@@ -32,6 +32,12 @@ export default function PaymentsPage() {
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
   const processRef = useRef<HTMLDivElement | null>(null);
   const partnersRef = useRef<HTMLDivElement | null>(null);
+  const setSolutionsSectionRef = useCallback((element: HTMLElement | null) => {
+    sectionRefs.current[0] = element;
+  }, []);
+  const setFeaturesSectionRef = useCallback((element: HTMLElement | null) => {
+    sectionRefs.current[1] = element;
+  }, []);
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -97,7 +103,7 @@ export default function PaymentsPage() {
     <PublicLayout className="bg-white">
         <ServiceHeroSection translationKey="business" color="payments" ctaHref="https://developers.gmeremit.com/" ctaTextKey="hero.cta_docs" isExternal />
         {/* ── Core Solutions (SPS / VAS) ── */}
-        <section ref={(el) => { sectionRefs.current[0] = el; }} className="py-24 lg:py-32 fade-section">
+        <section ref={setSolutionsSectionRef} className="py-24 lg:py-32 fade-section">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <SectionHeader
               label={t("solutions.label")}
@@ -155,7 +161,7 @@ export default function PaymentsPage() {
         </section>
 
         {/* ── Service Features ── */}
-        <section ref={(el) => { sectionRefs.current[1] = el; }} className="py-24 lg:py-32 bg-[#fafbfc] fade-section">
+        <section ref={setFeaturesSectionRef} className="py-24 lg:py-32 bg-[#fafbfc] fade-section">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <SectionHeader
               label={t("features.label")}

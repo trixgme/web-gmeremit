@@ -3,7 +3,7 @@ import { NextResponse, type NextRequest } from 'next/server';
 import { createServerClient } from '@supabase/ssr';
 
 export async function middleware(req: NextRequest) {
-  if (!req.nextUrl.pathname.startsWith('/admin')) return NextResponse.next();
+  if (!req.nextUrl.pathname.startsWith('/gme-backoffice')) return NextResponse.next();
 
   const res = NextResponse.next();
 
@@ -26,13 +26,13 @@ export async function middleware(req: NextRequest) {
 
   const { data: { user } } = await supabase.auth.getUser();
 
-  if (!user && req.nextUrl.pathname !== '/admin/login') {
-    const url = new URL('/admin/login', req.url);
+  if (!user && req.nextUrl.pathname !== '/gme-backoffice/login') {
+    const url = new URL('/gme-backoffice/login', req.url);
     return NextResponse.redirect(url);
   }
   return res;
 }
 
 export const config = {
-  matcher: ['/admin/:path*'],
+  matcher: ['/gme-backoffice/:path*'],
 };

@@ -2,7 +2,8 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import { useLanguage, languages } from "@/contexts/LanguageContext";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { languages } from "@/lib/language";
 import { useClickOutside } from "@/hooks/useClickOutside";
 
 // ============ Types ============

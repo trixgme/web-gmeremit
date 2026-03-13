@@ -1,21 +1,10 @@
 'use client'
 
 import Image from 'next/image'
-import { BoardEntryType } from '@/types/board'
+import { BoardEntryType, BoardFormData } from '@/types/board'
 import { HiArrowUpTray } from 'react-icons/hi2'
 import TiptapEditor from '@/components/editor/TiptapEditor'
 import Button from '@/components/ui/Button'
-
-export interface BoardFormData {
-  type: BoardEntryType
-  title: string
-  content: string
-  date: string
-  isImportant: boolean
-  source: string
-  excerpt: string
-  description: string
-}
 
 interface BoardFormProps {
   formData: BoardFormData

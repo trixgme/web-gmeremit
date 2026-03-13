@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 
 interface ScrollFadeInOptions {
   sectionThreshold?: number;
@@ -11,6 +11,19 @@ interface ScrollFadeInOptions {
 export function useScrollFadeIn(options: ScrollFadeInOptions = {}) {
   const { sectionThreshold = 0.15, stepThreshold = 0.1, rootMargin } = options;
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
+  const refCallbacks = useRef<Record<number, (element: HTMLElement | null) => void>>(
+    {}
+  );
+
+  const registerSectionRef = useCallback((index: number) => {
+    if (!refCallbacks.current[index]) {
+      refCallbacks.current[index] = (element: HTMLElement | null) => {
+        sectionRefs.current[index] = element;
+      };
+    }
+
+    return refCallbacks.current[index];
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -38,7 +51,7 @@ export function useScrollFadeIn(options: ScrollFadeInOptions = {}) {
       observer.disconnect();
       stepObserver.disconnect();
     };
-  }, []);
+  }, [rootMargin, sectionThreshold, stepThreshold]);
 
-  return sectionRefs;
+  return { registerSectionRef };
 }

@@ -69,44 +69,67 @@ export default function KakaoMap({
 
   // SDK 로드
   useEffect(() => {
+    let isCancelled = false;
+
+    const initializeMap = () => {
+      window.kakao.maps.load(() => {
+        if (isCancelled || !mapRef.current) return;
+
+        const center = new window.kakao.maps.LatLng(37.5, 127);
+        const mapInstance = new window.kakao.maps.Map(mapRef.current, {
+          center,
+          level: 13,
+        });
+
+        setMap(mapInstance);
+      });
+    };
+
     if (window.kakao?.maps) {
-      initMap();
-      return;
+      initializeMap();
+      return () => {
+        isCancelled = true;
+      };
     }
 
-    const script = document.createElement("script");
-    script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_MAP_API_KEY}&autoload=false`;
-    script.onload = () => initMap();
-    document.head.appendChild(script);
+    let script = document.querySelector<HTMLScriptElement>(
+      'script[data-kakao-maps-sdk="true"]'
+    );
+
+    if (!script) {
+      script = document.createElement("script");
+      script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_MAP_API_KEY}&autoload=false`;
+      script.dataset.kakaoMapsSdk = "true";
+      document.head.appendChild(script);
+    }
+
+    script.addEventListener("load", initializeMap);
+
+    return () => {
+      isCancelled = true;
+      script?.removeEventListener("load", initializeMap);
+    };
   }, []);
 
-  const initMap = () => {
-    window.kakao.maps.load(() => {
-      if (!mapRef.current) return;
+  useEffect(() => {
+    if (!map || branches.length === 0) return;
 
-      const center = new window.kakao.maps.LatLng(37.5, 127);
-      const mapInstance = new window.kakao.maps.Map(mapRef.current, {
-        center,
-        level: 13,
-      });
-
-      // 모든 마커가 보이도록 bounds 설정
-      const bounds = new window.kakao.maps.LatLngBounds();
-      branches.forEach((branch) => {
-        bounds.extend(new window.kakao.maps.LatLng(branch.lat, branch.lng));
-      });
-      mapInstance.setBounds(bounds, 50);
-
-      setMap(mapInstance);
+    const bounds = new window.kakao.maps.LatLngBounds();
+    branches.forEach((branch) => {
+      bounds.extend(new window.kakao.maps.LatLng(branch.lat, branch.lng));
     });
-  };
+    map.setBounds(bounds, 50);
+  }, [map, branches]);
 
   // 마커 생성
   useEffect(() => {
     if (!map) return;
 
     // 기존 마커 제거
-    markersRef.current.forEach((m) => m.marker.setMap(null));
+    markersRef.current.forEach((item) => {
+      item.marker.setMap(null);
+      item.overlay?.setMap(null);
+    });
     markersRef.current = [];
 
     branches.forEach((branch) => {
@@ -132,6 +155,14 @@ export default function KakaoMap({
 
       markersRef.current.push({ marker, overlay });
     });
+
+    return () => {
+      markersRef.current.forEach((item) => {
+        item.marker.setMap(null);
+        item.overlay?.setMap(null);
+      });
+      markersRef.current = [];
+    };
   }, [map, branches, selectedBranchId, onBranchSelect]);
 
   // 선택 지점으로 이동 및 확대 (사용자가 클릭했을 때만)

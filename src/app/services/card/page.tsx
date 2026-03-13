@@ -24,7 +24,7 @@ export default function CardPage() {
   const { t, tArray } = useTranslation("card");
   const [selectedCard, setSelectedCard] = useState<string | null>(null);
   useLenis();
-  const sectionRefs = useScrollFadeIn();
+  const { registerSectionRef } = useScrollFadeIn();
 
   const benefits = cardBenefitKeys.map((key) => ({
     key,
@@ -37,7 +37,7 @@ export default function CardPage() {
         <ServiceHeroSection translationKey="card" color="primary" ctaHref="#cards" />
 
         {/* ── Discover + Why Choose ── */}
-        <section ref={(el) => { sectionRefs.current[0] = el; }} className="py-20 lg:py-28 fade-section">
+        <section ref={registerSectionRef(0)} className="py-20 lg:py-28 fade-section">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Discover */}
             <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
@@ -95,7 +95,7 @@ export default function CardPage() {
         </section>
 
         {/* ── Card Products Grid ── */}
-        <section id="cards" ref={(el) => { sectionRefs.current[1] = el; }} className="py-16 lg:py-24 fade-section">
+        <section id="cards" ref={registerSectionRef(1)} className="py-16 lg:py-24 fade-section">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Section Title */}
             <div className="relative text-center mb-10 lg:mb-12 overflow-visible">

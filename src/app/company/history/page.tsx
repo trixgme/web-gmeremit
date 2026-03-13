@@ -11,8 +11,6 @@ import { historyData } from "@/data/history";
 
 export default function HistoryPage() {
   const { t } = useTranslation("company.history");
-  const [activeYear, setActiveYear] = useState("2024");
-  const [activeEvent, setActiveEvent] = useState<string | null>(null);
   const [currentEventIndex, setCurrentEventIndex] = useState(0);
   const [modalImageSrc, setModalImageSrc] = useState<string | null>(null);
   const pathname = usePathname();
@@ -46,6 +44,8 @@ export default function HistoryPage() {
       yearData.events.map((_, eventIndex) => `${yearData.year}-${eventIndex}`)
     ), []
   );
+  const activeEvent = allEvents[currentEventIndex] ?? null;
+  const activeYear = activeEvent?.split("-")[0] ?? "2024";
 
   // currentEventIndex가 변경될 때 ref 업데이트
   useEffect(() => {
@@ -98,16 +98,6 @@ export default function HistoryPage() {
       }
     };
   }, [allEvents]);
-
-  // 현재 인덱스에 따라 activeEvent 업데이트
-  useEffect(() => {
-    const eventKey = allEvents[currentEventIndex];
-    if (eventKey) {
-      setActiveEvent(eventKey);
-      const [year] = eventKey.split('-');
-      setActiveYear(year);
-    }
-  }, [currentEventIndex, allEvents]);
 
   // 페이지 로드 시 자동 스크롤 비활성화 (헤더-탭 간격 유지)
 

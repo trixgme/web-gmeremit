@@ -12,7 +12,7 @@ export function useLenis(deps: unknown[] = []) {
       duration: 0.6,
       easing: (t) => 1 - Math.pow(1 - t, 3),
       smoothWheel: true,
-      wheelMultiplier: 1.8,
+      wheelMultiplier: 1.1,
       infinite: false,
     });
     lenisRef.current = lenis;

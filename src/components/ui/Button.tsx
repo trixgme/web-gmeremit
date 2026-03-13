@@ -66,7 +66,8 @@ export default function Button({
     );
   }
 
-  const { as, ...buttonProps } = rest;
+  const { as: omittedAs, ...buttonProps } = rest;
+  void omittedAs;
   return (
     <button className={classes} {...buttonProps}>
       {children}

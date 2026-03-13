@@ -14,7 +14,7 @@ export default function LoanPage() {
   const { t, tObject } = useTranslation("loan");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   useLenis();
-  const sectionRefs = useScrollFadeIn();
+  const { registerSectionRef } = useScrollFadeIn();
 
   const benefits = loanBenefitKeys.map((key) => {
     const img = loanBenefitImages[key];
@@ -41,7 +41,7 @@ export default function LoanPage() {
         <ServiceHeroSection translationKey="loan" color="loan" gradientVia="gray-100" ctaHref="#products" />
 
         {/* ── Why Choose GME Loan ── */}
-        <section ref={(el) => { sectionRefs.current[0] = el; }} className="py-20 lg:py-28 fade-section">
+        <section ref={registerSectionRef(0)} className="py-20 lg:py-28 fade-section">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
               {/* Stats Card */}
@@ -123,7 +123,7 @@ export default function LoanPage() {
         </section>
 
         {/* ── Loan Products ── */}
-        <section id="products" ref={(el) => { sectionRefs.current[1] = el; }} className="py-20 lg:py-32 fade-section">
+        <section id="products" ref={registerSectionRef(1)} className="py-20 lg:py-32 fade-section">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <SectionHeader
               title={t("products.title")}
@@ -166,7 +166,7 @@ export default function LoanPage() {
         </section>
 
         {/* ── Application Process ── */}
-        <section ref={(el) => { sectionRefs.current[2] = el; }} className="py-16 lg:py-24 fade-section">
+        <section ref={registerSectionRef(2)} className="py-16 lg:py-24 fade-section">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="typo-section-title mb-3">
@@ -212,7 +212,7 @@ export default function LoanPage() {
         </section>
 
         {/* ── FAQ ── */}
-        <section ref={(el) => { sectionRefs.current[3] = el; }} className="py-16 lg:py-24 fade-section">
+        <section ref={registerSectionRef(3)} className="py-16 lg:py-24 fade-section">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-10">
               <h2 className="typo-section-title mb-3">
@@ -256,7 +256,7 @@ export default function LoanPage() {
         </section>
 
         {/* ── CTA Section ── */}
-        <section ref={(el) => { sectionRefs.current[4] = el; }} className="py-16 lg:py-24 fade-section">
+        <section ref={registerSectionRef(4)} className="py-16 lg:py-24 fade-section">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="relative rounded-3xl overflow-hidden">
               <div className="absolute inset-0 bg-[#121212]" />

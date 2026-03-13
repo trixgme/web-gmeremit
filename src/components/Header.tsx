@@ -101,12 +101,12 @@ export default function Header() {
             {/* Right Side */}
             <div className="flex items-center gap-4 lg:gap-6 shrink-0">
               {/* CTA Button */}
-              <a
-                href="/#app-download"
+              <Link
+                href={{ pathname: "/", hash: "app-download" }}
                 className="hidden lg:flex items-center gap-2 px-5 py-2.5 text-[14px] font-semibold text-white bg-primary-dark hover:bg-primary rounded-full transition-colors"
               >
                 {t("app_download", { ns: "button" })}
-              </a>
+              </Link>
 
               {/* Language */}
               <div className="hidden lg:block">

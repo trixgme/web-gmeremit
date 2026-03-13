@@ -37,14 +37,10 @@ const serviceSectionIds = [
 export default function SectionNav() {
   const { t } = useTranslation("home.section_nav");
   const [activeSection, setActiveSection] = useState("hero");
-  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const desktopQuery = window.matchMedia("(min-width: 1024px)");
     if (!desktopQuery.matches) return;
-
-    // 처음부터 표시
-    setIsVisible(true);
 
     const handleScroll = () => {
       const windowHeight = window.innerHeight;
@@ -88,9 +84,7 @@ export default function SectionNav() {
 
   return (
     <nav
-      className={`fixed left-6 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col gap-3 transition-opacity duration-300 ${
-        isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
-      }`}
+      className="fixed left-6 top-1/2 z-40 hidden -translate-y-1/2 flex-col gap-3 lg:flex"
     >
       {navSectionDefs.map((section) => (
         <button
