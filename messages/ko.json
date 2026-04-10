@@ -1329,7 +1329,7 @@
       }
     },
     "plans": {
-      "title": "맞춤별 요금제",
+      "title": "추천 · 맞춤별 요금제",
       "subtitle": "내 생활에 맞는 요금제를 찾아보세요!",
       "data": "데이터",
       "voice": "통화",
@@ -1340,9 +1340,9 @@
       "cta": "전체 요금제 보기"
     },
     "process": {
-      "title": "간편한",
-      "title2": "셀프개통",
-      "subtitle": "USIM 구매부터 개통까지 4단계",
+      "title": "복잡한 절차 없이",
+      "title2": "간편하게 바로 개통",
+      "subtitle": "USIM · eSIM 모두 간편하게 셀프개통",
       "steps": {
         "step1": {
           "title": "USIM 구매",

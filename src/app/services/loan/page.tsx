@@ -151,7 +151,7 @@ export default function LoanPage() {
               {productKeys.map((key) => (
                 <div
                   key={key}
-                  className="bg-[#f5f6f7] rounded-2xl p-5 hover:bg-loan/[0.08] hover:border-loan/20 border border-transparent transition-all duration-200 fade-step"
+                  className="bg-loan/[0.08] rounded-2xl p-5 hover:bg-loan/[0.15] hover:border-loan/20 border border-transparent transition-all duration-200 fade-step text-center"
                 >
                   <h3 className="text-[17px] font-bold text-dark mb-1">
                     {t(`products.${key}.name`)}

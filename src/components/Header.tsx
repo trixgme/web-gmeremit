@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import DesktopNav, { LanguageSelector } from "./header/DesktopNav";
@@ -12,6 +13,7 @@ import { menuItemDefs } from "@/data/headerMenu";
 // ============ Main Header ============
 export default function Header() {
   const { t } = useTranslation("header");
+  const pathname = usePathname();
 
   const menuItems: MenuItem[] = menuItemDefs.map((item) => ({
     label: t(item.labelKey),
@@ -84,7 +86,16 @@ export default function Header() {
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-10">
           <div className="flex items-center justify-between h-16 lg:h-[80px]">
             {/* Logo */}
-            <Link href="/" className="flex items-center group shrink-0">
+            <Link
+              href="/"
+              onClick={(e) => {
+                if (pathname === "/") {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+              }}
+              className="flex items-center group shrink-0"
+            >
               <Image
                 src="/images/common/GME-LOGO-HD.png"
                 alt="GME Remit"
