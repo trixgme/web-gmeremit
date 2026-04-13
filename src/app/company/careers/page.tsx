@@ -17,14 +17,14 @@ export default function CareersPage() {
     <PublicLayout className="bg-white">
         {/* Page Header */}
         <section className="relative border-b border-gray-100 overflow-hidden">
-          <div className="absolute left-15 top-1/3 -translate-y-1/2 opacity-[0.08] pointer-events-none">
+          <div className="absolute left-0 lg:left-10 top-10 sm:top-1/3 -translate-y-1/2 opacity-[0.07] pointer-events-none">
             <Image
               src="/images/company/careers/icons/logo_icon.png"
               alt=""
               aria-hidden="true"
               width={400}
               height={400}
-              className="w-[280px] lg:w-[380px] h-auto"
+              className="w-[150px] lg:w-[380px] h-auto"
             />
           </div>
 

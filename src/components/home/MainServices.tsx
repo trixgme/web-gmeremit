@@ -67,14 +67,14 @@ export default function MainServices() {
               </p>
             </div>
 
-            <div className="absolute top-5/7 right-3 sm:right-4 lg:-right-5 -translate-y-1/3">
+            <div className="absolute top-4/6 sm:top-5/7 -right-4 sm:right-4 lg:-right-5 -translate-y-1/3">
               <div className="relative">
                 <Image
                 src="/images/home/remittance_3d.png"
                 alt="Overseas Remittance"
                 width={400}
                 height={400}
-                className="relative w-28 h-28 sm:w-56 sm:h-56 lg:w-65 lg:h-65 object-contain [filter:drop-shadow(8px_8px_16px_rgba(0,0,0,0.35))]"
+                className="relative w-40 h-40 sm:w-56 sm:h-56 lg:w-65 lg:h-65 object-contain [filter:drop-shadow(8px_8px_16px_rgba(0,0,0,0.35))]"
                 />
               </div>
             </div>
@@ -96,7 +96,7 @@ export default function MainServices() {
             </div>
 
             {/* Globe 3D */}
-            <div className="absolute top-2/3 lg:top-3/4 right-4 sm:right-6 lg:right-3 -translate-y-1/2">
+            <div className="absolute top-3/4 lg:top-3/4 right-3 sm:right-6 lg:right-3 -translate-y-1/2">
               <Image
                 src="/images/home/globe3d.png"
                 alt="B2B Payments"
@@ -122,14 +122,14 @@ export default function MainServices() {
               </p>
             </div>
 
-            <div className="absolute top-2/3 lg:top-3/4 right-3 sm:right-4 lg:right-5 -translate-y-1/2">
+            <div className="absolute top-3/4 lg:top-3/4 right-3 sm:right-4 lg:right-5 -translate-y-1/2">
               <div className="relative">
                 <Image
                   src="/images/home/card_3d.png"
                   alt="GME Card"
                   width={400}
                   height={400}
-                  className="relative w-28 h-28 sm:w-56 sm:h-56 lg:w-60 lg:h-60 object-contain [filter:drop-shadow(8px_8px_16px_rgba(0,0,0,0.35))]"
+                  className="relative w-32 h-32 sm:w-56 sm:h-56 lg:w-60 lg:h-60 object-contain [filter:drop-shadow(8px_8px_16px_rgba(0,0,0,0.35))]"
                 />
               </div>
             </div>
@@ -140,7 +140,7 @@ export default function MainServices() {
           </ServiceCard>
 
           {/* Mobile */}
-          <ServiceCard onClick={() => { window.location.href = "/services/telecom"; }} bgColor="bg-[#5b21b6]" shadowColor="rgba(91,33,182,0.4)" className="md:col-span-3">
+          <ServiceCard onClick={() => scrollToSection("gme-mobile")} bgColor="bg-[#5b21b6]" shadowColor="rgba(91,33,182,0.4)" className="md:col-span-3">
             <div className="relative z-10">
               <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-2 sm:mb-3">{t("mobile.title")}</h3>
               <p className="typo-card-desc text-white/80">
@@ -150,14 +150,14 @@ export default function MainServices() {
               </p>
             </div>
 
-            <div className="absolute -bottom-5 right-3 sm:right-4 lg:right-5 ">
+            <div className="absolute -bottom-3 sm:-bottom-5 right-4 lg:right-5 ">
               <div className="relative">
                 <Image
                   src="/images/home/mobile_3d.png"
                   alt="GME Mobile"
                   width={300}
                   height={300}
-                  className="relative w-28 h-28 sm:w-56 sm:h-56 lg:w-55 lg:h-55 object-contain [filter:drop-shadow(8px_8px_16px_rgba(0,0,0,0.35))] opacity-80"
+                  className="relative w-26 h-26 sm:w-56 sm:h-56 lg:w-55 lg:h-55 object-contain [filter:drop-shadow(8px_8px_16px_rgba(0,0,0,0.35))] opacity-80"
                 />
               </div>
             </div>
@@ -177,14 +177,14 @@ export default function MainServices() {
                 {t("loan.desc2")}
               </p>
             </div>
-            <div className="absolute -bottom-5 right-3 sm:right-4 lg:-right-5">
+            <div className="absolute -bottom-3 sm:-bottom-5 right-0 sm:right-4 lg:-right-5">
               <div className="relative">
                 <Image
                   src="/images/home/loan_3d.png"
                   alt="Online Loan"
                   width={400}
                   height={400}
-                  className="relative w-28 h-28 sm:w-56 sm:h-56 lg:w-65 lg:h-65 object-contain [filter:drop-shadow(8px_8px_16px_rgba(0,0,0,0.35))]"
+                  className="relative w-33 h-33 sm:w-56 sm:h-56 lg:w-65 lg:h-65 object-contain [filter:drop-shadow(8px_8px_16px_rgba(0,0,0,0.35))]"
                 />
               </div>
             </div>

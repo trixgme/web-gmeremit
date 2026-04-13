@@ -3,11 +3,15 @@
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "@/hooks/useTranslation";
 import CTAButton from "@/components/ui/CTAButton";
+import { HiOutlineDevicePhoneMobile } from "react-icons/hi2";
+import { PiSimCard } from "react-icons/pi";
+import { TbMoneybag } from "react-icons/tb";
+
 
 const cards = [
-  { icon: "📦", titleKey: "usim", color: "from-[#5b21b6] to-[#7c3aed]" },
-  { icon: "📱", titleKey: "esim", color: "from-[#7c3aed] to-[#8b5cf6]" },
-  { icon: "💰", titleKey: "plans", color: "from-[#8b5cf6] to-[#a78bfa]" },
+  { icon: <PiSimCard className="w-5 h-5 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-white" />, titleKey: "usim", color: "from-[#5b21b6] to-[#7c3aed]" },
+  { icon: <HiOutlineDevicePhoneMobile className="w-5 h-5 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-white" />, titleKey: "esim", color: "from-[#7c3aed] to-[#8b5cf6]" },
+  { icon: <TbMoneybag className="w-5 h-5 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-white" />, titleKey: "plans", color: "from-[#8b5cf6] to-[#a78bfa]" },
 ] as const;
 
 export default function MobileSection() {
@@ -34,33 +38,41 @@ export default function MobileSection() {
           3% { transform: translateY(-12px); }
           6% { transform: translateY(-3px); }
         }
+        @media (min-width: 1024px) {
+          .mobile-card {
+            height: var(--h-desktop) !important;
+          }
+        }
       `}</style>
-      <section id="gme-mobile" className="relative overflow-hidden flex items-center snap-section lg:min-h-screen py-10 sm:py-12 lg:py-0">
+      <section id="gme-mobile" className="relative overflow-x-clip overflow-y-visible flex items-center snap-section lg:min-h-screen py-10 sm:py-12 lg:py-0">
         <div className="absolute inset-0 bg-gradient-to-br from-[#faf5ff] via-[#f5f0ff] to-[#ede9fe]" />
         <div className="hidden lg:block absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-[#5b21b6]/[0.04] blur-3xl" />
         <div className="hidden lg:block absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-[#5b21b6]/[0.05] blur-3xl" />
 
         <div className="relative w-full max-w-content mx-auto px-4 sm:px-6 lg:px-8 lg:min-h-screen flex items-center">
-          <div className="w-full grid lg:grid-cols-2 gap-8 lg:gap-20 items-center">
+          <div className="w-full grid lg:grid-cols-2 gap-4 sm:gap-8 lg:gap-20 items-center">
             {/* Left - Tall cards side by side */}
-            <div ref={containerRef} className="relative flex items-end justify-center gap-3 sm:gap-4 py-8 min-h-[240px] sm:min-h-[320px] lg:min-h-[340px]">
+            <div ref={containerRef} className="relative flex items-end justify-center gap-3 sm:gap-4 py-4 sm:py-8 min-h-[180px] sm:min-h-[280px] lg:min-h-[340px] order-2 lg:order-1">
               {cards.map((card, idx) => (
                 <div
                   key={card.titleKey}
-                  className="relative rounded-2xl bg-white border border-gray-100 p-4 sm:p-5 flex flex-col items-center text-center hover:-translate-y-2 transition-transform duration-300 w-28 sm:w-36 lg:w-40"
+                  className="mobile-card relative rounded-2xl bg-white border border-gray-100 p-3 sm:p-5 flex flex-col items-center text-center hover:-translate-y-2 transition-transform duration-300 w-[calc(33%-8px)] sm:w-36 lg:w-40"
                   style={{
-                    height: `${260 + idx * 40}px`,
+                    // @ts-expect-error CSS custom properties
+                    '--h-mobile': `${160 + idx * 25}px`,
+                    '--h-desktop': `${260 + idx * 40}px`,
+                    height: 'var(--h-mobile)',
                     boxShadow: `0 ${12 + idx * 4}px ${30 + idx * 8}px rgba(91,33,182,${0.07 + idx * 0.03})`,
                     animation: animate ? `cardBounce 6s ease-in-out ${idx * 0.4}s infinite` : "none",
                   }}
                 >
-                  <div className={`w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br ${card.color} flex items-center justify-center text-3xl sm:text-4xl shrink-0 mt-auto shadow-lg`}>
+                  <div className={`w-10 h-10 sm:w-16 sm:h-16 lg:w-20 lg:h-20 rounded-xl sm:rounded-2xl bg-gradient-to-br ${card.color} flex items-center justify-center shrink-0 mt-auto shadow-lg`}>
                     {card.icon}
                   </div>
-                  <h3 className="text-sm sm:text-base font-bold text-dark mt-4 mb-1">
+                  <h3 className="text-[11px] sm:text-sm lg:text-base font-bold text-dark mt-2 sm:mt-4 mb-0.5 sm:mb-1">
                     {t(`features.${card.titleKey}.title`)}
                   </h3>
-                  <p className="text-xs sm:text-sm text-gray-500 leading-relaxed mb-auto">
+                  <p className="text-[10px] sm:text-xs lg:text-sm text-gray-500 leading-relaxed mb-auto">
                     {t(`features.${card.titleKey}.description`)}
                   </p>
                 </div>
@@ -68,12 +80,12 @@ export default function MobileSection() {
             </div>
 
             {/* Right - Text + CTA */}
-            <div>
+            <div className="order-1 lg:order-2">
               <p className="typo-eyebrow text-[#5b21b6] mb-3">GME MOBILE</p>
-              <h2 className="typo-section-title mb-5">
+              <h2 className="typo-section-title mb-3 lg:mb-5">
                 {t("hero.title1")} <span className="text-[#5b21b6]">{t("hero.title2")}</span>
               </h2>
-              <p className="typo-section-subtitle text-gray-600 mb-5 sm:mb-8">
+              <p className="typo-section-subtitle text-gray-600 mb-3 sm:mb-5 lg:mb-8 break-keep">
                 {t("hero.description")}
               </p>
               <CTAButton

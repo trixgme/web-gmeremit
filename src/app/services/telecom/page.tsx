@@ -152,8 +152,8 @@ export default function TelecomPage() {
           <div className="snap-center shrink-0 w-[85vw] sm:w-[70vw] lg:w-[600px] rounded-3xl bg-gradient-to-br from-[#5b21b6] to-[#7c3aed] p-8 sm:p-10 lg:p-12 text-white relative overflow-hidden">
             <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-white/5 -translate-y-1/2 translate-x-1/2" />
             <div className="absolute bottom-0 left-0 w-32 h-32 rounded-full bg-white/5 translate-y-1/2 -translate-x-1/2" />
-            <div className="relative z-10">
-              <span className="inline-block px-3 py-1 bg-white/20 rounded-full text-xs font-bold tracking-wider mb-5">
+            <div className="relative z-10 flex flex-col h-full">
+              <span className="self-start inline-block px-3 py-1 bg-white/20 rounded-full text-xs font-bold tracking-wider mb-5">
                 {t("esim_intro.badge")}
               </span>
               <h3 className="text-2xl sm:text-3xl font-bold mb-4">{t("esim_intro.title")}</h3>
@@ -169,7 +169,7 @@ export default function TelecomPage() {
                 href="https://www.gmemobile.com/view/selfopen/esim_explain.aspx"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#5b21b6] font-semibold rounded-xl hover:bg-white/90 transition-colors"
+                className="mt-auto self-start inline-flex items-center gap-2 px-6 py-3 bg-white text-[#5b21b6] font-semibold rounded-xl hover:bg-white/90 transition-colors"
               >
                 {t("esim_intro.cta")}
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
@@ -182,8 +182,8 @@ export default function TelecomPage() {
           {/* USIM 카드 */}
           <div className="snap-center shrink-0 w-[85vw] sm:w-[70vw] lg:w-[600px] rounded-3xl bg-white border border-gray-200 p-8 sm:p-10 lg:p-12 relative overflow-hidden shadow-lg">
             <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-[#5b21b6]/[0.03] -translate-y-1/2 translate-x-1/2" />
-            <div className="relative z-10">
-              <span className="inline-block px-3 py-1 bg-[#5b21b6]/10 text-[#5b21b6] rounded-full text-xs font-bold tracking-wider mb-5">
+            <div className="relative z-10 flex flex-col h-full">
+              <span className="self-start inline-block px-3 py-1 bg-[#5b21b6]/10 text-[#5b21b6] rounded-full text-xs font-bold tracking-wider mb-5">
                 {t("usim_intro.badge")}
               </span>
               <h3 className="text-2xl sm:text-3xl font-bold text-dark mb-4">{t("usim_intro.title")}</h3>
@@ -214,7 +214,7 @@ export default function TelecomPage() {
                 href="https://www.gmemobile.com/view/selfopen/selfopen_explain.aspx"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-[#5b21b6] text-white font-semibold rounded-xl hover:bg-[#7c3aed] transition-colors"
+                className="mt-auto self-start inline-flex items-center gap-2 px-6 py-3 bg-[#5b21b6] text-white font-semibold rounded-xl hover:bg-[#7c3aed] transition-colors"
               >
                 {t("usim_intro.cta")}
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>

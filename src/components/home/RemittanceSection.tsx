@@ -65,7 +65,7 @@ export default function RemittanceSection() {
                       </div>
                       <div>
                         <p className="text-xs sm:text-2xl font-bold text-dark mb-0.5 sm:mb-1">{t(`features.${key}.title`)}</p>
-                        <p className="text-[10px] sm:text-base text-gray-500 leading-snug sm:leading-relaxed">{t(`features.${key}.desc`)}</p>
+                        <p className="text-[10px] sm:text-[15px] text-gray-500 leading-snug sm:leading-relaxed">{t(`features.${key}.desc`)}</p>
                       </div>
                     </div>
                   </div>

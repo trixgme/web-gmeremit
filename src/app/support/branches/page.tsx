@@ -53,29 +53,9 @@ export default function BranchesPage() {
   return (
     <div className="flex flex-col gap-4 lg:grid lg:grid-cols-5 lg:gap-6">
 
-      {/* 모바일 전용: 가로 스크롤 지점 선택 */}
-      <div className="lg:hidden overflow-x-auto -mx-4 px-4 pb-4">
-        <div className="flex gap-2" style={{ width: "max-content" }}>
-          {branches.map((branch) => (
-            <button
-              key={branch.id}
-              type="button"
-              onClick={() => handleBranchSelect(branch.id)}
-              className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all cursor-pointer ${
-                selectedBranchId === branch.id
-                  ? "bg-primary-dark text-white shadow-sm"
-                  : "bg-gray-100 text-gray-600 active:bg-gray-200"
-              }`}
-            >
-              {branch.name}
-            </button>
-          ))}
-        </div>
-      </div>
-
       {/* 지도 */}
-      <div className="lg:col-span-3 relative h-[300px] lg:h-auto" style={{ minHeight: "unset" }}>
-        <div className="absolute inset-0 lg:relative lg:inset-auto h-full lg:min-h-[500px]">
+      <div className="lg:col-span-3 h-[180px] sm:h-[220px] lg:h-auto rounded-2xl overflow-hidden">
+        <div className="h-full lg:min-h-[500px]">
           <KakaoMap
             branches={branches.map((b) => ({
               id: b.id,
@@ -92,8 +72,8 @@ export default function BranchesPage() {
       {/* 지점 정보 */}
       <div className="lg:col-span-2 flex flex-col gap-4 lg:gap-6">
 
-        {/* 지점 선택 드롭다운 (데스크탑) */}
-        <div ref={dropdownRef} className="hidden lg:block relative">
+        {/* 지점 선택 드롭다운 */}
+        <div ref={dropdownRef} className="relative">
           <button
             type="button"
             onClick={() => setDropdownOpen((o) => !o)}
@@ -129,13 +109,13 @@ export default function BranchesPage() {
 
         {/* 지점 이미지 */}
         {selectedBranch.image && (
-          <div className="rounded-2xl overflow-hidden">
+          <div className="hidden sm:block rounded-2xl overflow-hidden">
             <Image
               src={selectedBranch.image}
               alt={selectedBranch.name}
               width={600}
               height={176}
-              className="w-full h-56 lg:h-64 object-cover"
+              className="w-full h-40 lg:h-64 object-cover"
             />
           </div>
         )}

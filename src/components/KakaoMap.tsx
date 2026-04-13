@@ -114,11 +114,9 @@ export default function KakaoMap({
   useEffect(() => {
     if (!map || branches.length === 0) return;
 
-    const bounds = new window.kakao.maps.LatLngBounds();
-    branches.forEach((branch) => {
-      bounds.extend(new window.kakao.maps.LatLng(branch.lat, branch.lng));
-    });
-    map.setBounds(bounds, 50);
+    const center = new window.kakao.maps.LatLng(36.3, 127.8);
+    map.setCenter(center);
+    map.setLevel(14);
   }, [map, branches]);
 
   // 마커 생성
@@ -165,20 +163,25 @@ export default function KakaoMap({
     };
   }, [map, branches, selectedBranchId, onBranchSelect]);
 
-  // 선택 지점으로 이동 및 확대 (사용자가 클릭했을 때만)
+  // 선택 지점으로 이동 및 확대
+  const prevBranchId = useRef(selectedBranchId);
   useEffect(() => {
-    if (!map || !hasUserSelected.current) return;
+    if (!map) return;
+    if (prevBranchId.current === selectedBranchId) return;
+    prevBranchId.current = selectedBranchId;
     const branch = branches.find((b) => b.id === selectedBranchId);
     if (branch) {
       const position = new window.kakao.maps.LatLng(branch.lat, branch.lng);
-      map.setCenter(position);
-      map.setLevel(6);
+      map.setLevel(4);
+      setTimeout(() => {
+        map.setCenter(position);
+      }, 50);
     }
   }, [map, selectedBranchId, branches]);
 
   return (
-    <div className="relative w-full h-full min-h-[500px]" data-lenis-prevent>
-      <div ref={mapRef} className="w-full h-full min-h-[500px] rounded-2xl" />
+    <div className="relative w-full h-full" data-lenis-prevent>
+      <div ref={mapRef} className="w-full h-full rounded-2xl" />
       {!map && (
         <div className="absolute inset-0 flex items-center justify-center bg-gray-100 rounded-2xl">
           <DotLoader />
