@@ -38,10 +38,10 @@ const colorStyles = {
     gradient: "from-gray-800/[0.12] via-[#f5f5f5] to-payments/[0.14]",
   },
   purple: {
-    text: "text-[#5b21b6]",
-    bg: "bg-[#5b21b6]",
-    hover: "hover:bg-[#7c3aed]",
-    gradient: "from-gray-800/[0.12] via-[#f5f5f5] to-[#5b21b6]/[0.14]",
+    text: "text-mobile",
+    bg: "bg-mobile",
+    hover: "hover:bg-mobile-light",
+    gradient: "from-gray-800/[0.12] via-[#f5f5f5] to-mobile/[0.14]",
   },
 } as const;
 

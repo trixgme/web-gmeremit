@@ -24,7 +24,7 @@ export default function CareersPage() {
               aria-hidden="true"
               width={400}
               height={400}
-              className="w-[150px] lg:w-[380px] h-auto"
+              className="w-[130px] lg:w-[380px] h-auto"
             />
           </div>
 

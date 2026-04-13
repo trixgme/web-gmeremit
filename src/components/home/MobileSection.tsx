@@ -9,9 +9,9 @@ import { TbMoneybag } from "react-icons/tb";
 
 
 const cards = [
-  { icon: <PiSimCard className="w-5 h-5 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-white" />, titleKey: "usim", color: "from-[#5b21b6] to-[#7c3aed]" },
-  { icon: <HiOutlineDevicePhoneMobile className="w-5 h-5 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-white" />, titleKey: "esim", color: "from-[#7c3aed] to-[#8b5cf6]" },
-  { icon: <TbMoneybag className="w-5 h-5 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-white" />, titleKey: "plans", color: "from-[#8b5cf6] to-[#a78bfa]" },
+  { icon: <PiSimCard className="w-5 h-5 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-white" />, titleKey: "usim", color: "from-mobile to-mobile-light" },
+  { icon: <HiOutlineDevicePhoneMobile className="w-5 h-5 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-white" />, titleKey: "esim", color: "from-mobile-light to-mobile-lighter" },
+  { icon: <TbMoneybag className="w-5 h-5 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-white" />, titleKey: "plans", color: "from-mobile-lighter to-mobile-lightest" },
 ] as const;
 
 export default function MobileSection() {
@@ -46,8 +46,8 @@ export default function MobileSection() {
       `}</style>
       <section id="gme-mobile" className="relative overflow-x-clip overflow-y-visible flex items-center snap-section lg:min-h-screen py-10 sm:py-12 lg:py-0">
         <div className="absolute inset-0 bg-gradient-to-br from-[#faf5ff] via-[#f5f0ff] to-[#ede9fe]" />
-        <div className="hidden lg:block absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-[#5b21b6]/[0.04] blur-3xl" />
-        <div className="hidden lg:block absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-[#5b21b6]/[0.05] blur-3xl" />
+        <div className="hidden lg:block absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-mobile/[0.04] blur-3xl" />
+        <div className="hidden lg:block absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-mobile/[0.05] blur-3xl" />
 
         <div className="relative w-full max-w-content mx-auto px-4 sm:px-6 lg:px-8 lg:min-h-screen flex items-center">
           <div className="w-full grid lg:grid-cols-2 gap-4 sm:gap-8 lg:gap-20 items-center">
@@ -81,9 +81,9 @@ export default function MobileSection() {
 
             {/* Right - Text + CTA */}
             <div className="order-1 lg:order-2">
-              <p className="typo-eyebrow text-[#5b21b6] mb-3">GME MOBILE</p>
+              <p className="typo-eyebrow text-mobile mb-3">GME MOBILE</p>
               <h2 className="typo-section-title mb-3 lg:mb-5">
-                {t("hero.title1")} <span className="text-[#5b21b6]">{t("hero.title2")}</span>
+                {t("hero.title1")} <span className="text-mobile">{t("hero.title2")}</span>
               </h2>
               <p className="typo-section-subtitle text-gray-600 mb-3 sm:mb-5 lg:mb-8 break-keep">
                 {t("hero.description")}
@@ -91,8 +91,8 @@ export default function MobileSection() {
               <CTAButton
                 href="/services/telecom"
                 label={t("hero.cta")}
-                className="text-[#5b21b6] bg-[#5b21b6]/10 hover:bg-[#5b21b6]/20"
-                iconClassName="bg-[#5b21b6]"
+                className="text-mobile bg-mobile/10 hover:bg-mobile/20"
+                iconClassName="bg-mobile"
               />
             </div>
           </div>

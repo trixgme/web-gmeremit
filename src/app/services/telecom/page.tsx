@@ -20,8 +20,8 @@ const featureKeys = ["multilang", "affordable", "network", "activation", "esim",
 const featureIcons: Record<string, React.ReactNode> = {
   multilang: <FcGlobe className="w-10 h-10" />,
   affordable: <FcMoneyTransfer className="w-10 h-10" />,
-  network: <MdSignalCellularAlt className="w-10 h-10 text-[#5b21b6]" />,
-  esim: <MdQrCode2 className="w-10 h-10 text-[#5b21b6]" />,
+  network: <MdSignalCellularAlt className="w-10 h-10 text-mobile" />,
+  esim: <MdQrCode2 className="w-10 h-10 text-mobile" />,
   activation: <FcFlashOn className="w-10 h-10" />,
   intl_call: <FcPhone className="w-10 h-10" />,
 };
@@ -50,13 +50,13 @@ export default function TelecomPage() {
         <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader
             title={t("features.title")}
-            colorClass="text-[#5b21b6]"
+            colorClass="text-mobile"
           />
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5 mt-12">
             {featureKeys.map((key) => (
               <div
                 key={key}
-                className="group rounded-xl p-6 text-center bg-white border border-gray-200 shadow-sm hover:shadow-lg hover:border-[#5b21b6]/30 hover:-translate-y-1 will-change-transform transition-[transform,box-shadow,border-color] duration-200 fade-step"
+                className="group rounded-xl p-6 text-center bg-white border border-gray-200 shadow-sm hover:shadow-lg hover:border-mobile/30 hover:-translate-y-1 will-change-transform transition-[transform,box-shadow,border-color] duration-200 fade-step"
               >
                 <div className="w-12 h-12 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                   {featureIcons[key]}
@@ -79,7 +79,7 @@ export default function TelecomPage() {
           <SectionHeader
             title={t("plans.title")}
             description={t("plans.subtitle")}
-            colorClass="text-[#5b21b6]"
+            colorClass="text-mobile"
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-12">
             {plans.map((plan) => (
@@ -90,7 +90,7 @@ export default function TelecomPage() {
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-base font-bold text-dark">{plan.name}</h3>
                   <div className="flex items-center gap-1.5">
-                    <span className="px-2.5 py-1 bg-[#5b21b6]/10 text-[#5b21b6] text-xs font-semibold rounded-full">
+                    <span className="px-2.5 py-1 bg-mobile/10 text-mobile text-xs font-semibold rounded-full">
                       {plan.discount}{!("isLifetime" in plan) && ` ${t("plans.discount")}`}
                     </span>
                     <span className="px-2 py-0.5 bg-black text-white text-[10px] font-bold rounded-full">LGU+</span>
@@ -114,7 +114,7 @@ export default function TelecomPage() {
 
                 <div className="border-t border-gray-100 pt-4">
                   <p className="text-gray-400 text-xs line-through">{plan.original.toLocaleString()}원/{t("plans.per_month")}</p>
-                  <p className="text-2xl font-bold text-[#5b21b6]">
+                  <p className="text-2xl font-bold text-mobile">
                     {plan.price.toLocaleString()}<span className="text-sm font-medium text-gray-500">원/{t("plans.per_month")}</span>
                   </p>
                 </div>
@@ -127,7 +127,7 @@ export default function TelecomPage() {
               href="https://www.gmemobile.com/view/main/main.aspx"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[#5b21b6] text-white text-sm font-semibold rounded-lg hover:bg-[#7c3aed] transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-mobile text-white text-sm font-semibold rounded-lg hover:bg-mobile-light transition-colors"
             >
               {t("plans.cta")}
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
@@ -144,12 +144,12 @@ export default function TelecomPage() {
           <SectionHeader
             title={t("process.title")}
             title2={t("process.title2")}
-            colorClass="text-[#5b21b6]"
+            colorClass="text-mobile"
           />
         </div>
         <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 px-4 sm:px-6 lg:px-0 lg:justify-center lg:overflow-visible pb-4 lg:pb-0">
           {/* eSIM 카드 */}
-          <div className="snap-center shrink-0 w-[85vw] sm:w-[70vw] lg:w-[600px] rounded-3xl bg-gradient-to-br from-[#5b21b6] to-[#7c3aed] p-8 sm:p-10 lg:p-12 text-white relative overflow-hidden">
+          <div className="snap-center shrink-0 w-[85vw] sm:w-[70vw] lg:w-[600px] rounded-3xl bg-gradient-to-br from-mobile to-mobile-light p-8 sm:p-10 lg:p-12 text-white relative overflow-hidden">
             <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-white/5 -translate-y-1/2 translate-x-1/2" />
             <div className="absolute bottom-0 left-0 w-32 h-32 rounded-full bg-white/5 translate-y-1/2 -translate-x-1/2" />
             <div className="relative z-10 flex flex-col h-full">
@@ -169,7 +169,7 @@ export default function TelecomPage() {
                 href="https://www.gmemobile.com/view/selfopen/esim_explain.aspx"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-auto self-start inline-flex items-center gap-2 px-6 py-3 bg-white text-[#5b21b6] font-semibold rounded-xl hover:bg-white/90 transition-colors"
+                className="mt-auto self-start inline-flex items-center gap-2 px-6 py-3 bg-white text-mobile font-semibold rounded-xl hover:bg-white/90 transition-colors"
               >
                 {t("esim_intro.cta")}
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
@@ -181,9 +181,9 @@ export default function TelecomPage() {
 
           {/* USIM 카드 */}
           <div className="snap-center shrink-0 w-[85vw] sm:w-[70vw] lg:w-[600px] rounded-3xl bg-white border border-gray-200 p-8 sm:p-10 lg:p-12 relative overflow-hidden shadow-lg">
-            <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-[#5b21b6]/[0.03] -translate-y-1/2 translate-x-1/2" />
+            <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-mobile/[0.03] -translate-y-1/2 translate-x-1/2" />
             <div className="relative z-10 flex flex-col h-full">
-              <span className="self-start inline-block px-3 py-1 bg-[#5b21b6]/10 text-[#5b21b6] rounded-full text-xs font-bold tracking-wider mb-5">
+              <span className="self-start inline-block px-3 py-1 bg-mobile/10 text-mobile rounded-full text-xs font-bold tracking-wider mb-5">
                 {t("usim_intro.badge")}
               </span>
               <h3 className="text-2xl sm:text-3xl font-bold text-dark mb-4">{t("usim_intro.title")}</h3>
@@ -214,7 +214,7 @@ export default function TelecomPage() {
                 href="https://www.gmemobile.com/view/selfopen/selfopen_explain.aspx"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-auto self-start inline-flex items-center gap-2 px-6 py-3 bg-[#5b21b6] text-white font-semibold rounded-xl hover:bg-[#7c3aed] transition-colors"
+                className="mt-auto self-start inline-flex items-center gap-2 px-6 py-3 bg-mobile text-white font-semibold rounded-xl hover:bg-mobile-light transition-colors"
               >
                 {t("usim_intro.cta")}
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
@@ -235,7 +235,7 @@ export default function TelecomPage() {
             href="https://www.gmemobile.com/view/main/main.aspx"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#5b21b6] text-white font-semibold rounded-lg hover:bg-[#7c3aed] transition-colors fade-step"
+            className="inline-flex items-center gap-2 px-8 py-3.5 bg-mobile text-white font-semibold rounded-lg hover:bg-mobile-light transition-colors fade-step"
           >
             {t("cta.button")}
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>

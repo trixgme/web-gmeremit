@@ -80,7 +80,7 @@ export default function BranchesPage() {
             className="w-full flex items-center gap-3 px-4 py-3 bg-white border border-gray-200 rounded-xl hover:border-primary/50 transition-colors cursor-pointer shadow-sm"
           >
             <HiLocationMarker className="w-4 h-4 text-primary flex-shrink-0" />
-            <span className="flex-1 text-sm font-medium text-dark text-left">{selectedBranch?.name}</span>
+            <span className="flex-1 text-xs lg:text-lg font-medium text-dark text-left">{selectedBranch?.name}</span>
             <HiChevronDown className={`w-4 h-4 text-gray-400 transition-transform duration-200 ${dropdownOpen ? "rotate-180" : ""}`} />
           </button>
 
@@ -99,7 +99,7 @@ export default function BranchesPage() {
                     }`}
                   >
                     <HiLocationMarker className={`w-3.5 h-3.5 flex-shrink-0 ${selectedBranchId === branch.id ? "text-primary" : "text-gray-300"}`} />
-                    <span className="text-sm font-medium">{branch.name}</span>
+                    <span className="text-xs lg:text-lg font-medium">{branch.name}</span>
                   </button>
                 ))}
               </div>
@@ -131,8 +131,8 @@ export default function BranchesPage() {
             <div className="flex items-start gap-3">
               <HiLocationMarker className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
               <div>
-                <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">{t("address")}</p>
-                <p className="text-sm text-gray-700 leading-relaxed">
+                <p className="text-xs sm:text-lg font-semibold text-gray-400 uppercase tracking-wide mb-1">{t("address")}</p>
+                <p className="text-xs sm:text-lg text-gray-700 leading-relaxed">
                   {selectedBranch.address}
                 </p>
               </div>
@@ -142,10 +142,10 @@ export default function BranchesPage() {
             <div className="flex items-start gap-3">
               <HiPhone className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
               <div>
-                <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">{t("phone")}</p>
+                <p className="text-xs sm:text-lg font-semibold text-gray-400 uppercase tracking-wide mb-1">{t("phone")}</p>
                 <a
                   href={`tel:${selectedBranch.phone}`}
-                  className="text-sm font-semibold text-dark hover:text-primary transition-colors"
+                  className="text-xs sm:text-lg text-dark hover:text-primary transition-colors"
                 >
                   {selectedBranch.phone}
                 </a>
@@ -156,8 +156,8 @@ export default function BranchesPage() {
             <div className="flex items-start gap-3">
               <HiClock className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
               <div>
-                <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">{t("hours")}</p>
-                <p className="text-sm text-gray-700">{selectedBranch.hours}</p>
+                <p className="text-xs sm:text-lg font-semibold text-gray-400 uppercase tracking-wide mb-1">{t("hours")}</p>
+                <p className="text-xs sm:text-lg text-gray-700">{selectedBranch.hours}</p>
               </div>
             </div>
           </div>

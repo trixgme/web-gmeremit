@@ -140,7 +140,7 @@ export default function MainServices() {
           </ServiceCard>
 
           {/* Mobile */}
-          <ServiceCard onClick={() => scrollToSection("gme-mobile")} bgColor="bg-[#5b21b6]" shadowColor="rgba(91,33,182,0.4)" className="md:col-span-3">
+          <ServiceCard onClick={() => scrollToSection("gme-mobile")} bgColor="bg-mobile" shadowColor="rgba(91,33,182,0.4)" className="md:col-span-3">
             <div className="relative z-10">
               <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-2 sm:mb-3">{t("mobile.title")}</h3>
               <p className="typo-card-desc text-white/80">

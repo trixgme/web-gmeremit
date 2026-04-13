@@ -16,6 +16,10 @@
   --color-loan-light: #fcd34d;
   --color-loan-dark: #f59e0b;
   --color-cards: #4b5563;
+  --color-mobile: #5b21b6;
+  --color-mobile-light: #7c3aed;
+  --color-mobile-lighter: #8b5cf6;
+  --color-mobile-lightest: #a78bfa;
   --color-success: #22c55e;
   --surface-0: #ffffff;
   --surface-1: #f6f7fa;
@@ -40,6 +44,10 @@
   --color-loan-light: var(--color-loan-light);
   --color-loan-dark: var(--color-loan-dark);
   --color-cards: var(--color-cards);
+  --color-mobile: var(--color-mobile);
+  --color-mobile-light: var(--color-mobile-light);
+  --color-mobile-lighter: var(--color-mobile-lighter);
+  --color-mobile-lightest: var(--color-mobile-lightest);
   --color-success: var(--color-success);
   --color-surface-0: var(--surface-0);
   --color-surface-1: var(--surface-1);

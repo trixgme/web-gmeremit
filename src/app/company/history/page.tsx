@@ -132,7 +132,7 @@ export default function HistoryPage() {
       <PublicLayout className="bg-white">
         <div className="pt-10 sm:pt-16 lg:pt-20">
           {/* History Section */}
-          <section className="pb-[25vh]" ref={containerRef}>
+          <section className="pb-[10vh] lg:pb-[25vh]" ref={containerRef}>
             <div className="max-w-content mx-auto px-4 sm:px-6 lg:px-8">
               {/* Navigation Tabs */}
               <CompanyTabs activeTab="history" />
@@ -317,25 +317,25 @@ export default function HistoryPage() {
         </div>
         {modalImageSrc && (
         <div
-          className="fixed inset-0 z-[999] flex items-center justify-center bg-black/60 p-4"
+          className="fixed inset-0 z-[999] flex items-center justify-center bg-black/70 backdrop-blur-sm p-4"
           onClick={() => setModalImageSrc(null)}
         >
-          <div className="relative max-h-[85vh] max-w-[90vw]" onClick={(e) => e.stopPropagation()}>
+          <div className="relative w-fit" onClick={(e) => e.stopPropagation()}>
+            <img
+              src={modalImageSrc}
+              alt="History preview"
+              className="max-h-[85vh] max-w-[90vw] rounded-lg"
+            />
             <button
               type="button"
               aria-label="Close image"
-              className="cursor-pointer absolute -right-3 -top-3 h-10 w-10 rounded-full bg-white/95 text-dark shadow-lg transition hover:scale-[1.05]"
+              className="cursor-pointer absolute top-3 right-3 w-10 h-10 flex items-center justify-center bg-black/50 hover:bg-black/70 text-white/90 rounded-lg transition-colors"
               onClick={() => setModalImageSrc(null)}
             >
-              ×
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
             </button>
-            <Image
-              src={modalImageSrc}
-              alt="History preview"
-              width={1200}
-              height={800}
-              className="max-h-[85vh] max-w-[90vw] rounded-xl bg-white object-contain shadow-2xl"
-            />
           </div>
         </div>
         )}

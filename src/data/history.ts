@@ -77,7 +77,7 @@ export const historyData: HistoryYear[] = [
     events: [
       { month: "12", textKey: "2018_12" },
       { month: "09", textKey: "2018_09", images: ["/images/company/history/2018-09.png"] },
-      { month: "?", textKey: "2018_loan" },
+      { month: "-", textKey: "2018_loan" },
     ],
   },
   {
