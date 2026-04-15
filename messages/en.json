@@ -1336,7 +1336,8 @@
       "data": "Data",
       "voice": "Voice",
       "sms": "SMS",
-      "per_month": "mo",
+      "per_month": "month",
+      "currency": "KRW",
       "discount": "OFF",
       "unlimited": "Unlimited",
       "cta": "View All Plans"
@@ -1368,7 +1369,10 @@
       "badge": "eSIM",
       "title": "One Phone, Two Numbers",
       "description": "Get started easily with eSIM! Separate work and personal life clearly and find a better lifestyle balance.",
-      "cta": "Activate eSIM"
+      "cta": "Activate eSIM",
+      "tag1": "No SIM swap",
+      "tag2": "No delivery",
+      "tag3": "Self-activate instantly!"
     },
     "usim_intro": {
       "badge": "USIM",

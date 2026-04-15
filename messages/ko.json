@@ -1335,6 +1335,7 @@
       "voice": "통화",
       "sms": "문자",
       "per_month": "월",
+      "currency": "원",
       "discount": "할인",
       "unlimited": "무제한",
       "cta": "전체 요금제 보기"
@@ -1366,7 +1367,10 @@
       "badge": "eSIM",
       "title": "하나의 폰, 두 개의 번호",
       "description": "eSIM으로 간편하게 이용하세요! eSIM을 활용하여 업무와 일상을 명확히 구분하며 더 좋은 라이프스타일 균형을 찾아보세요.",
-      "cta": "eSIM 개통하기"
+      "cta": "eSIM 개통하기",
+      "tag1": "유심 교체 없이",
+      "tag2": "배송 없이",
+      "tag3": "셀프개통으로 바로 사용가능!"
     },
     "usim_intro": {
       "badge": "USIM",

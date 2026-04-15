@@ -113,9 +113,9 @@ export default function TelecomPage() {
                 </div>
 
                 <div className="border-t border-gray-100 pt-4">
-                  <p className="text-gray-400 text-xs line-through">{plan.original.toLocaleString()}원/{t("plans.per_month")}</p>
+                  <p className="text-gray-400 text-xs line-through">{plan.original.toLocaleString()}{t("plans.currency")}/{t("plans.per_month")}</p>
                   <p className="text-2xl font-bold text-mobile">
-                    {plan.price.toLocaleString()}<span className="text-sm font-medium text-gray-500">원/{t("plans.per_month")}</span>
+                    {plan.price.toLocaleString()}<span className="text-sm font-medium text-gray-500">{t("plans.currency")}/{t("plans.per_month")}</span>
                   </p>
                 </div>
               </div>
@@ -161,9 +161,9 @@ export default function TelecomPage() {
                 {t("esim_intro.description")}
               </p>
               <div className="flex flex-wrap gap-2 mb-8">
-                <span className="px-3 py-1.5 bg-white/15 rounded-lg text-xs sm:text-sm font-medium inline-flex items-center gap-1.5"><svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><circle cx="12" cy="12" r="10" /><path strokeLinecap="round" d="M4.93 4.93l14.14 14.14" /></svg>유심 교체 없이</span>
-                <span className="px-3 py-1.5 bg-white/15 rounded-lg text-xs sm:text-sm font-medium inline-flex items-center gap-1.5"><svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><circle cx="12" cy="12" r="10" /><path strokeLinecap="round" d="M4.93 4.93l14.14 14.14" /></svg>배송 없이</span>
-                <span className="px-3 py-1.5 bg-white/15 rounded-lg text-xs sm:text-sm font-medium inline-flex items-center gap-1.5"><svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>셀프개통으로 바로 사용가능!</span>
+                <span className="px-3 py-1.5 bg-white/15 rounded-lg text-xs sm:text-sm font-medium inline-flex items-center gap-1.5"><svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><circle cx="12" cy="12" r="10" /><path strokeLinecap="round" d="M4.93 4.93l14.14 14.14" /></svg>{t("esim_intro.tag1")}</span>
+                <span className="px-3 py-1.5 bg-white/15 rounded-lg text-xs sm:text-sm font-medium inline-flex items-center gap-1.5"><svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><circle cx="12" cy="12" r="10" /><path strokeLinecap="round" d="M4.93 4.93l14.14 14.14" /></svg>{t("esim_intro.tag2")}</span>
+                <span className="px-3 py-1.5 bg-white/15 rounded-lg text-xs sm:text-sm font-medium inline-flex items-center gap-1.5"><svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>{t("esim_intro.tag3")}</span>
               </div>
               <a
                 href="https://www.gmemobile.com/view/selfopen/esim_explain.aspx"
