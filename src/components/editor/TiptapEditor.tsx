@@ -278,6 +278,7 @@ export default function TiptapEditor({ content, onChange, placeholder, bucketNam
           ref={fileInputRef}
           type="file"
           accept="image/*"
+          aria-label="이미지 업로드"
           onChange={handleFileInputChange}
           className="hidden"
         />

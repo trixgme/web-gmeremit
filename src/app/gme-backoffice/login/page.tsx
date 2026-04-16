@@ -95,6 +95,7 @@ export default function AdminLoginPage() {
               </label>
               <input
                 id="email"
+                aria-label="이메일"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -110,6 +111,7 @@ export default function AdminLoginPage() {
               </label>
               <input
                 id="password"
+                aria-label="비밀번호"
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}

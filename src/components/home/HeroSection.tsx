@@ -227,6 +227,7 @@ export default function HeroSection() {
                   <input
                     type="text"
                     inputMode="numeric"
+                    aria-label="송금 금액"
                     value={formatNumber(sendAmount)}
                     onChange={handleSendAmountChange}
                     className="flex-1 min-w-0 bg-transparent text-xl lg:text-[1.5rem] font-semibold text-dark outline-none tabular-nums"
@@ -325,6 +326,7 @@ export default function HeroSection() {
                   <div className="absolute inset-0 rounded-2xl shadow-[inset_0_-1px_1px_rgba(94,234,212,0.08)] pointer-events-none" />
                   <input
                     type="text"
+                    aria-label="수취 금액"
                     value={hasError ? "" : formatNumber(receiveAmount)}
                     onChange={handleReceiveAmountChange}
                     placeholder={hasError ? "---" : "0"}

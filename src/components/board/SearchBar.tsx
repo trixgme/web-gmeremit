@@ -44,6 +44,7 @@ export default function SearchBar({ onSearch }: SearchBarProps) {
       {/* Search Input */}
       <input
         type="text"
+        aria-label="검색"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         onKeyDown={handleKeyDown}

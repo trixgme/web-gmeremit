@@ -43,6 +43,7 @@ function FileUpload({
             type="file"
             accept={accept}
             onChange={onChange}
+            aria-label={label}
             className="hidden"
           />
         </label>
@@ -112,6 +113,7 @@ export default function BoardForm({
           <label htmlFor="title" className={labelClass}>제목 *</label>
           <input
             id="title"
+            aria-label="제목"
             type="text"
             value={formData.title}
             onChange={(e) => update({ title: e.target.value })}
@@ -126,6 +128,7 @@ export default function BoardForm({
           <label htmlFor="date" className={labelClass}>날짜 *</label>
           <input
             id="date"
+            aria-label="날짜"
             type="date"
             value={formData.date}
             onChange={(e) => update({ date: e.target.value })}
@@ -152,6 +155,7 @@ export default function BoardForm({
           <label htmlFor="important" className="flex items-center gap-3 px-4 py-3 bg-gray-50 rounded-xl cursor-pointer hover:bg-gray-100 transition-colors">
             <input
               id="important"
+              aria-label="중요 공지"
               type="checkbox"
               checked={formData.isImportant}
               onChange={(e) => update({ isImportant: e.target.checked })}
@@ -171,6 +175,7 @@ export default function BoardForm({
               <label htmlFor="source" className={labelClass}>언론사</label>
               <input
                 id="source"
+                aria-label="언론사"
                 type="text"
                 value={formData.source}
                 onChange={(e) => update({ source: e.target.value })}
@@ -182,6 +187,7 @@ export default function BoardForm({
               <label htmlFor="excerpt" className={labelClass}>요약</label>
               <textarea
                 id="excerpt"
+                aria-label="요약"
                 value={formData.excerpt}
                 onChange={(e) => update({ excerpt: e.target.value })}
                 rows={3}
@@ -209,6 +215,7 @@ export default function BoardForm({
               <label htmlFor="description" className={labelClass}>설명</label>
               <input
                 id="description"
+                aria-label="설명"
                 type="text"
                 value={formData.description}
                 onChange={(e) => update({ description: e.target.value })}
