@@ -26,6 +26,10 @@
   --surface-2: #f2f3f6;
   --surface-warm: #fff6f4;
   --border-soft: #e7e9ee;
+
+  /* Layout */
+  --header-height-mobile: 64px;  /* 메인 네비 (h-16) */
+  --header-height: 120px;        /* 데스크톱: 유틸바(40px) + 메인 네비(80px) */
 }
 
 @theme inline {
@@ -246,7 +250,7 @@ section[id] {
 
 @media (min-width: 1024px) {
   section[id] {
-    scroll-margin-top: 120px;
+    scroll-margin-top: var(--header-height);
   }
 }
 

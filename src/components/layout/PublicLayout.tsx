@@ -6,16 +6,17 @@ import Footer from "@/components/Footer";
 interface PublicLayoutProps {
   children: React.ReactNode;
   className?: string;
+  footerVariant?: "full" | "minimal";
 }
 
-export default function PublicLayout({ children, className = "" }: PublicLayoutProps) {
+export default function PublicLayout({ children, className = "", footerVariant = "minimal" }: PublicLayoutProps) {
   return (
     <>
       <Header />
-      <main className={`pt-[65px] lg:pt-[120px] min-h-screen ${className}`}>
+      <main className={`pt-[var(--header-height-mobile)] lg:pt-[var(--header-height)] min-h-screen ${className}`}>
         {children}
       </main>
-      <Footer />
+      <Footer variant={footerVariant} />
     </>
   );
 }

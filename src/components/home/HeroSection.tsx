@@ -159,7 +159,7 @@ export default function HeroSection() {
   useClickOutside(dropdownRef, () => setIsOpen(false), isOpen);
 
   return (
-    <section id="app" className="relative lg:min-h-screen bg-gradient-to-b from-gray-100 to-white py-12 lg:py-24 overflow-hidden snap-section flex items-center">
+    <section id="app" className="relative lg:min-h-[calc(100svh-var(--header-height))] bg-gradient-to-b from-gray-100 to-white py-12 lg:py-24 overflow-hidden snap-section flex items-center">
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/3 left-[10%] w-[400px] h-[400px] rounded-full bg-primary/[0.10] blur-[100px]" />

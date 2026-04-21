@@ -14,6 +14,42 @@ export const commonTags = ["max_amount", "duration", "visa_period", "contract", 
 
 export const loanSteps = ["step1", "step2", "step3", "step4", "step5"];
 
+export interface ProviderInfo {
+  companyName: string;
+  brandName: string;
+  ceo: string;
+  address: string;
+  phone: string;
+  email: string;
+  businessNumber: string;
+  loanLicense: string;
+  supervisor: string;
+}
+
+export const gmeFinanceInfo: ProviderInfo = {
+  companyName: "주식회사 지엠이대부",
+  brandName: "GME Loan",
+  ceo: "성종화",
+  address: "서울특별시 영등포구 영등포로 150, 비동 202호, 203호, 204호(당산동1가, 생각공장당산) (우)07292",
+  phone: "02-765-5555",
+  email: "",
+  businessNumber: "646-88-01104",
+  loanLicense: "2019-금감원-1801",
+  supervisor: "금융감독원",
+};
+
+export const gmeFinanceInfoEn: ProviderInfo = {
+  companyName: "GME Lending Co., Ltd.",
+  brandName: "GME Loan",
+  ceo: "Sung Jong-hwa",
+  address: "Room 202, 203, 204, Building B, 150 Yeongdeungpo-ro, Yeongdeungpo-gu, Seoul (Dangsan-dong 1-ga, Idea Factory Dangsan) 07292",
+  phone: "02-765-5555",
+  email: "",
+  businessNumber: "646-88-01104",
+  loanLicense: "2019-FSS-1801",
+  supervisor: "Financial Supervisory Service",
+};
+
 export const loanStepIconPaths: { main: string; accent: string }[] = [
   {
     main: "M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3",

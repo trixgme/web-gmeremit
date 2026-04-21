@@ -1,6 +1,14 @@
-/** Header height matching Header component's h-16 lg:h-[80px] */
-export const getHeaderHeight = () =>
-  window.innerWidth >= 1024 ? 80 : 64;
+/**
+ * Header height from CSS variables (`--header-height`, `--header-height-mobile`).
+ * Defined in globals.css so layout values stay in sync across CSS and JS.
+ */
+export const getHeaderHeight = () => {
+  if (typeof window === "undefined") return 120;
+  const varName = window.innerWidth >= 1024 ? "--header-height" : "--header-height-mobile";
+  const value = getComputedStyle(document.documentElement).getPropertyValue(varName);
+  const parsed = parseInt(value, 10);
+  return Number.isFinite(parsed) ? parsed : (window.innerWidth >= 1024 ? 120 : 64);
+};
 
 /** Get the smoothScrollTo exposed by ScrollSnap (if active) */
 const getSmoothScroll = () =>

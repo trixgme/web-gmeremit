@@ -44,12 +44,12 @@ export default function MobileSection() {
           }
         }
       `}</style>
-      <section id="gme-mobile" className="relative overflow-x-clip overflow-y-visible flex items-center snap-section lg:min-h-screen py-10 sm:py-12 lg:py-0">
+      <section id="gme-mobile" className="relative overflow-x-clip overflow-y-visible flex items-center snap-section lg:min-h-[calc(100svh-var(--header-height))] py-10 sm:py-12 lg:py-0">
         <div className="absolute inset-0 bg-gradient-to-br from-[#faf5ff] via-[#f5f0ff] to-[#ede9fe]" />
         <div className="hidden lg:block absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-mobile/[0.04] blur-3xl" />
         <div className="hidden lg:block absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-mobile/[0.05] blur-3xl" />
 
-        <div className="relative w-full max-w-content mx-auto px-4 sm:px-6 lg:px-8 lg:min-h-screen flex items-center">
+        <div className="relative w-full max-w-content mx-auto px-4 sm:px-6 lg:px-8 lg:min-h-[calc(100svh-var(--header-height))] flex items-center">
           <div className="w-full grid lg:grid-cols-2 gap-4 sm:gap-8 lg:gap-20 items-center">
             {/* Left - Tall cards side by side */}
             <div ref={containerRef} className="relative flex items-end justify-center gap-3 sm:gap-4 py-4 sm:py-8 min-h-[180px] sm:min-h-[280px] lg:min-h-[340px] order-2 lg:order-1">

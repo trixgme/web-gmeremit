@@ -7,14 +7,18 @@ import ServiceHeroSection from "@/components/service/ServiceHeroSection";
 import { useLenis } from "@/hooks/useLenis";
 import { useScrollFadeIn } from "@/hooks/useScrollFadeIn";
 import { useTranslation } from "@/hooks/useTranslation";
-import { loanBenefitKeys, loanBenefitImages, productKeys, commonTags, loanSteps, loanStepIconPaths } from "@/data/loan";
+import { loanBenefitKeys, loanBenefitImages, productKeys, commonTags, loanSteps, loanStepIconPaths, gmeFinanceInfo, gmeFinanceInfoEn } from "@/data/loan";
 import SectionHeader from "@/components/ui/SectionHeader";
 
 export default function LoanPage() {
-  const { t, tObject } = useTranslation("loan");
+  const { t, tObject, currentLanguage } = useTranslation("loan");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   useLenis();
   const { registerSectionRef } = useScrollFadeIn();
+
+  // 한국어는 법적 원본, 그 외 언어는 영문 정보 사용
+  const providerInfo = currentLanguage === "ko" ? gmeFinanceInfo : gmeFinanceInfoEn;
+  const brandName = "GME Finance";
 
   const benefits = loanBenefitKeys.map((key) => {
     const img = loanBenefitImages[key];
@@ -39,6 +43,20 @@ export default function LoanPage() {
     <PublicLayout className="bg-gradient-to-b from-white via-white to-amber-50/30">
 
         <ServiceHeroSection translationKey="loan" color="loan" gradientVia="gray-100" ctaHref="#products" />
+
+        {/* ── 법적 고지 배너 ── */}
+        <section className="bg-amber-50 border-y border-amber-200">
+          <div className="max-w-content mx-auto px-4 sm:px-6 lg:px-8 py-4 lg:py-5">
+            <div className="flex items-start gap-3">
+              <svg className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+              </svg>
+              <p className="text-sm lg:text-base text-amber-900 leading-relaxed">
+                {t("disclosure.banner", { brand: brandName })}
+              </p>
+            </div>
+          </div>
+        </section>
 
         {/* ── Why Choose GME Loan ── */}
         <section ref={registerSectionRef(0)} className="py-20 lg:py-28 fade-section">
@@ -267,8 +285,11 @@ export default function LoanPage() {
                 <h2 className="text-2xl lg:text-3xl font-bold text-white mb-4">
                   {t("cta.title")}
                 </h2>
-                <p className="text-gray-400 mb-8 max-w-lg mx-auto">
+                <p className="text-gray-400 mb-6 max-w-lg mx-auto">
                   {t("cta.description")}
+                </p>
+                <p className="text-[12px] text-loan-light/90 mb-5 max-w-lg mx-auto">
+                  {t("cta.inline_notice", { brand: brandName })}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
                   <a
@@ -295,6 +316,60 @@ export default function LoanPage() {
                   </a>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── 법적 정보 푸터 (제공자 정보 + 면책 고지) ── */}
+        <section className="bg-dark">
+          <div className="max-w-[1540px] mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-10">
+            <p className="text-xs font-semibold text-gray-300 mb-3">
+              {t("disclosure.provider_heading")}
+            </p>
+
+            <div className="space-y-1 text-xs text-gray-400 leading-relaxed">
+              {(providerInfo.companyName || providerInfo.brandName) && (
+                <p>
+                  {providerInfo.companyName && <strong className="text-white font-semibold">{providerInfo.companyName}</strong>}
+                  {providerInfo.companyName && providerInfo.brandName && " "}
+                  {providerInfo.brandName && <span className="text-gray-500">({t("disclosure.label_brand_name")}: {providerInfo.brandName})</span>}
+                </p>
+              )}
+              <p>
+                {providerInfo.ceo && <>{t("disclosure.label_ceo")}: {providerInfo.ceo}</>}
+                {providerInfo.ceo && providerInfo.phone && " | "}
+                {providerInfo.phone && <>{t("disclosure.label_phone")}: {providerInfo.phone}</>}
+                {providerInfo.email && (
+                  <>
+                    {(providerInfo.ceo || providerInfo.phone) && " | "}
+                    {t("disclosure.label_email")}: {providerInfo.email}
+                  </>
+                )}
+              </p>
+              <p>
+                {providerInfo.businessNumber && <>{t("disclosure.label_business_number")}: {providerInfo.businessNumber}</>}
+                {providerInfo.businessNumber && providerInfo.loanLicense && " | "}
+                {providerInfo.loanLicense && <>{t("disclosure.label_loan_license")}: {providerInfo.loanLicense}</>}
+                {providerInfo.supervisor && (
+                  <>
+                    {(providerInfo.businessNumber || providerInfo.loanLicense) && " | "}
+                    {t("disclosure.label_supervisor")}: {providerInfo.supervisor}
+                  </>
+                )}
+              </p>
+              {providerInfo.address && <p>{t("disclosure.label_address")}: {providerInfo.address}</p>}
+            </div>
+
+            <div className="mt-5 pt-4 border-t border-white/10 space-y-1.5">
+              <p className="text-xs text-gray-400 leading-relaxed">
+                {t("disclosure.disclaimer", {
+                  companyName: providerInfo.companyName,
+                  brandName: providerInfo.brandName,
+                })}
+              </p>
+              <p className="text-[11px] text-gray-500 leading-relaxed">
+                {t("disclosure.law_notice")}
+              </p>
             </div>
           </div>
         </section>
