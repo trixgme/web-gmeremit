@@ -6,6 +6,7 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import { useLenis } from "@/hooks/useLenis";
 import { useScrollFadeIn } from "@/hooks/useScrollFadeIn";
 import { useTranslation } from "@/hooks/useTranslation";
+import { useEffect, useState } from "react";
 import {
   FcGlobe,
   FcMoneyTransfer,
@@ -26,20 +27,65 @@ const featureIcons: Record<string, React.ReactNode> = {
   intl_call: <FcPhone className="w-10 h-10" />,
 };
 
-const plans = [
-  { name: "GME+(200분/6GB)", data: "6GB", speed: "1Mbps", voice: "200분", sms: "100건", price: 3300, original: 14300, discount: "6개월" },
-  { name: "GME 데이터3GB+", data: "3GB", speed: "1Mbps", voice: "200분", sms: "100건", price: 7700, original: 14300, discount: "평생" },
-  { name: "GME+(100분/7GB)", data: "7GB", speed: "1Mbps", voice: "100분", sms: "100건", price: 10900, original: 14520, discount: "평생 요금제", isLifetime: true },
-  { name: "GME free(4.5GB+1M)", data: "4.5GB", speed: "1Mbps", voice: "무제한 (부가 음성 300분)", sms: "무제한", price: 11000, original: 23650, discount: "12개월" },
-  { name: "GME 플러스 15GB+3M", data: "15GB", speed: "3Mbps", voice: "100분", sms: "100건", price: 12100, original: 26950, discount: "7개월" },
-  { name: "GME 스마트7GB+", data: "7GB", speed: "1Mbps", voice: "무제한", sms: "무제한", price: 14800, original: 19800, discount: "24개월" },
-];
+const planCategories = [
+  { seq: "10002", label: "추천" },
+  { seq: "10000", label: "후불" },
+  { seq: "10001", label: "5G/특수" },
+  { seq: "10005", label: "선불" },
+] as const;
+
+type ApiPlan = {
+  GDCD: string;
+  GDNM: string;
+  GDDESC: string;
+  MNO_CD: string;
+  DATAAMOUNT: string;
+  ADD_DATA: string;
+  VOICEAMOUNT: string;
+  VOICE_ADD_AMT: string;
+  LETTERAMOUNT: string;
+  TT_AMT: string;
+  DISCOUNT: string;
+  QOSFG: string;
+  QOSAMT: string;
+  KEYWORD: string;
+  CATEGORYSEQ: string;
+};
+
+const parsePrice = (value: string) => {
+  const n = parseInt(value.replace(/,/g, ""), 10);
+  return Number.isNaN(n) ? 0 : n;
+};
 
 
 export default function TelecomPage() {
   const { t } = useTranslation("telecom");
   useLenis();
   const { registerSectionRef } = useScrollFadeIn();
+
+  const [selectedSeq, setSelectedSeq] = useState<string>(planCategories[0].seq);
+  const [plans, setPlans] = useState<ApiPlan[]>([]);
+  const [plansLoading, setPlansLoading] = useState(true);
+
+  useEffect(() => {
+    let cancelled = false;
+    setPlansLoading(true);
+    fetch(`/api/telecom/plans?seq=${selectedSeq}`)
+      .then((res) => res.json())
+      .then((json) => {
+        if (cancelled) return;
+        setPlans(Array.isArray(json.DATA) ? json.DATA : []);
+      })
+      .catch(() => {
+        if (!cancelled) setPlans([]);
+      })
+      .finally(() => {
+        if (!cancelled) setPlansLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [selectedSeq]);
 
   return (
     <PublicLayout className="bg-gradient-to-b from-white via-white to-gray-100">
@@ -81,45 +127,101 @@ export default function TelecomPage() {
             description={t("plans.subtitle")}
             colorClass="text-mobile"
           />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-12">
-            {plans.map((plan) => (
-              <div
-                key={plan.name}
-                className="bg-white rounded-2xl border border-gray-200 p-6 hover:shadow-lg will-change-transform transition-shadow duration-200 fade-step"
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-base font-bold text-dark">{plan.name}</h3>
-                  <div className="flex items-center gap-1.5">
-                    <span className="px-2.5 py-1 bg-mobile/10 text-mobile text-xs font-semibold rounded-full">
-                      {plan.discount}{!("isLifetime" in plan) && ` ${t("plans.discount")}`}
-                    </span>
-                    <span className="px-2 py-0.5 bg-black text-white text-[10px] font-bold rounded-full">LGU+</span>
-                  </div>
-                </div>
 
-                <div className="space-y-2 mb-5">
-                  <div className="flex justify-between text-sm">
-                    <span className="text-gray-400">{t("plans.data")}</span>
-                    <span className="font-medium text-dark">{plan.data} + {plan.speed}</span>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span className="text-gray-400">{t("plans.voice")}</span>
-                    <span className="font-medium text-dark">{plan.voice}</span>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span className="text-gray-400">{t("plans.sms")}</span>
-                    <span className="font-medium text-dark">{plan.sms}</span>
-                  </div>
-                </div>
+          <div className="flex flex-wrap justify-center gap-2 mt-10">
+            {planCategories.map((cat) => {
+              const isActive = cat.seq === selectedSeq;
+              return (
+                <button
+                  key={cat.seq}
+                  type="button"
+                  onClick={() => setSelectedSeq(cat.seq)}
+                  className={`px-5 py-2 text-sm font-semibold rounded-full transition-colors cursor-pointer ${
+                    isActive
+                      ? "bg-mobile text-white"
+                      : "bg-white text-gray-600 border border-gray-200 hover:border-mobile/40 hover:text-mobile"
+                  }`}
+                >
+                  {cat.label}
+                </button>
+              );
+            })}
+          </div>
 
-                <div className="border-t border-gray-100 pt-4">
-                  <p className="text-gray-400 text-xs line-through">{plan.original.toLocaleString()}{t("plans.currency")}/{t("plans.per_month")}</p>
-                  <p className="text-2xl font-bold text-mobile">
-                    {plan.price.toLocaleString()}<span className="text-sm font-medium text-gray-500">{t("plans.currency")}/{t("plans.per_month")}</span>
-                  </p>
-                </div>
-              </div>
-            ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-8">
+            {plansLoading ? (
+              Array.from({ length: 6 }).map((_, idx) => (
+                <div
+                  key={idx}
+                  className="bg-white rounded-2xl border border-gray-200 p-6 h-52 animate-pulse"
+                />
+              ))
+            ) : plans.length === 0 ? (
+              <p className="col-span-full text-center text-gray-400 py-10">
+                {t("plans.empty")}
+              </p>
+            ) : (
+              plans.map((plan) => {
+                const original = parsePrice(plan.TT_AMT);
+                const price = parsePrice(plan.DISCOUNT);
+                const hasQos = plan.QOSFG === "1" && plan.QOSAMT;
+                return (
+                  <div
+                    key={plan.GDCD}
+                    className="bg-white rounded-2xl border border-gray-200 p-6 hover:shadow-lg will-change-transform transition-shadow duration-200"
+                  >
+                    <div className="flex items-center justify-between mb-4 gap-2">
+                      <h3 className="text-base font-bold text-dark truncate">{plan.GDNM}</h3>
+                      <div className="flex items-center gap-1.5 shrink-0">
+                        {plan.GDDESC && (
+                          <span className="px-2.5 py-1 bg-mobile/10 text-mobile text-xs font-semibold rounded-full">
+                            {plan.GDDESC}
+                          </span>
+                        )}
+                        {plan.MNO_CD && (
+                          <span className="px-2 py-0.5 bg-black text-white text-[10px] font-bold rounded-full">
+                            {plan.MNO_CD}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="space-y-2 mb-5">
+                      <div className="flex justify-between text-sm">
+                        <span className="text-gray-400">{t("plans.data")}</span>
+                        <span className="font-medium text-dark">
+                          {plan.DATAAMOUNT}
+                          {hasQos && ` + ${plan.QOSAMT}`}
+                        </span>
+                      </div>
+                      <div className="flex justify-between text-sm">
+                        <span className="text-gray-400">{t("plans.voice")}</span>
+                        <span className="font-medium text-dark">{plan.VOICEAMOUNT}</span>
+                      </div>
+                      <div className="flex justify-between text-sm">
+                        <span className="text-gray-400">{t("plans.sms")}</span>
+                        <span className="font-medium text-dark">{plan.LETTERAMOUNT}</span>
+                      </div>
+                    </div>
+
+                    <div className="border-t border-gray-100 pt-4">
+                      {original > 0 && original !== price && (
+                        <p className="text-gray-400 text-xs line-through">
+                          {original.toLocaleString()}
+                          {t("plans.currency")}/{t("plans.per_month")}
+                        </p>
+                      )}
+                      <p className="text-2xl font-bold text-mobile">
+                        {price.toLocaleString()}
+                        <span className="text-sm font-medium text-gray-500">
+                          {t("plans.currency")}/{t("plans.per_month")}
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                );
+              })
+            )}
           </div>
 
           <div className="text-center mt-10">

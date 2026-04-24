@@ -1307,7 +1307,7 @@
       "badge": "GME MOBILE",
       "title1": "The Perfect Mobile",
       "title2": "Plan for You",
-      "description": "Budget mobile service on the LGU+ network. Save on phone bills with plans starting from just ₩3,300/month.",
+      "description": "Budget mobile service with the same quality as LGU+ and KT networks. Save on phone bills with plans starting from just ₩3,300/month.",
       "cta": "View Plans"
     },
     "features": {
@@ -1321,7 +1321,7 @@
         "description": "Ultra-affordable plans for foreigners"
       },
       "network": {
-        "title": "LGU+ Network",
+        "title": "Same Quality as LGU+, KT",
         "description": "Reliable coverage nationwide"
       },
       "usim": {
@@ -1355,6 +1355,7 @@
       "currency": "KRW",
       "discount": "OFF",
       "unlimited": "Unlimited",
+      "empty": "No plans to display",
       "cta": "View All Plans"
     },
     "process": {
