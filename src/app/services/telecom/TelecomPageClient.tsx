@@ -45,23 +45,22 @@ interface TelecomPageClientProps {
 
 function PlansSpinner() {
   return (
-    <div className="flex justify-center items-center py-20">
+    <div className="flex justify-center items-center min-h-[450px] mt-8">
       <DotLoader />
     </div>
   );
 }
 
-function PlansContent({
+function PlansCards({
   plansPromise,
-  initialSeq,
+  selectedSeq,
 }: {
   plansPromise: Promise<ApiPlan[]>;
-  initialSeq: string;
+  selectedSeq: string;
 }) {
   const { t } = useTranslation("telecom");
   const initialPlans = use(plansPromise);
 
-  const [selectedSeq, setSelectedSeq] = useState<string>(initialSeq);
   const [plans, setPlans] = useState<ApiPlan[]>(initialPlans);
   const [plansLoading, setPlansLoading] = useState(false);
   const hasFetchedRef = useRef(false);
@@ -90,34 +89,16 @@ function PlansContent({
     };
   }, [selectedSeq]);
 
-  return (
-    <>
-      <div className="flex flex-wrap justify-center gap-2 mt-10">
-        {TELECOM_CATEGORIES.map((cat) => {
-          const isActive = cat.seq === selectedSeq;
-          return (
-            <button
-              key={cat.seq}
-              type="button"
-              onClick={() => setSelectedSeq(cat.seq)}
-              className={`px-5 py-2 text-sm font-semibold rounded-full transition-colors cursor-pointer ${
-                isActive
-                  ? "bg-mobile text-white"
-                  : "bg-white text-gray-600 border border-gray-200 hover:border-mobile/40 hover:text-mobile"
-              }`}
-            >
-              {cat.label}
-            </button>
-          );
-        })}
-      </div>
+  if (plansLoading) {
+    return <PlansSpinner />;
+  }
 
-      {plansLoading ? (
-        <PlansSpinner />
-      ) : plans.length === 0 ? (
-        <p className="text-center text-gray-400 py-10">{t("plans.empty")}</p>
-      ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-8">
+  if (plans.length === 0) {
+    return <p className="text-center text-gray-400 py-10 min-h-[450px] mt-8 flex items-center justify-center">{t("plans.empty")}</p>;
+  }
+
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-8 min-h-[450px]">
           {plans.map((plan) => {
             const ttAmt = parsePrice(plan.TT_AMT);
             const discountAmt = parsePrice(plan.DISCOUNT);
@@ -181,9 +162,7 @@ function PlansContent({
               </div>
             );
           })}
-        </div>
-      )}
-    </>
+    </div>
   );
 }
 
@@ -191,6 +170,7 @@ export default function TelecomPageClient({ plansPromise, initialSeq }: TelecomP
   const { t } = useTranslation("telecom");
   useLenis();
   const { registerSectionRef } = useScrollFadeIn();
+  const [selectedSeq, setSelectedSeq] = useState<string>(initialSeq);
 
   return (
     <PublicLayout className="bg-gradient-to-b from-white via-white to-gray-100">
@@ -233,8 +213,28 @@ export default function TelecomPageClient({ plansPromise, initialSeq }: TelecomP
             colorClass="text-mobile"
           />
 
+          <div className="flex flex-wrap justify-center gap-2 mt-10">
+            {TELECOM_CATEGORIES.map((cat) => {
+              const isActive = cat.seq === selectedSeq;
+              return (
+                <button
+                  key={cat.seq}
+                  type="button"
+                  onClick={() => setSelectedSeq(cat.seq)}
+                  className={`px-5 py-2 text-sm font-semibold rounded-full transition-colors cursor-pointer ${
+                    isActive
+                      ? "bg-mobile text-white"
+                      : "bg-white text-gray-600 border border-gray-200 hover:border-mobile/40 hover:text-mobile"
+                  }`}
+                >
+                  {cat.label}
+                </button>
+              );
+            })}
+          </div>
+
           <Suspense fallback={<PlansSpinner />}>
-            <PlansContent plansPromise={plansPromise} initialSeq={initialSeq} />
+            <PlansCards plansPromise={plansPromise} selectedSeq={selectedSeq} />
           </Suspense>
 
           <div className="text-center mt-10">
