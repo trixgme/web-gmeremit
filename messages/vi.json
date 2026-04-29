@@ -861,7 +861,11 @@
         "receive_amount": "Số tiền nhận",
         "receive_country": "Quốc gia nhận",
         "send_amount": "Số tiền gửi",
-        "title": "Máy tính tỷ giá thời gian thực"
+        "title": "Máy tính tỷ giá thời gian thực",
+        "error_unavailable_method": "Phương thức thanh toán này hiện không khả dụng. Vui lòng chọn phương thức khác.",
+        "fee": "Phí chuyển tiền",
+        "rate": "Tỷ giá thời gian thực",
+        "error_max_amount": "Số tiền tối đa có thể gửi: {{amount}} KRW"
       },
       "description1": "Tỷ giá thời gian thực cho hơn 200 quốc gia.",
       "description2": "Công khai phí minh bạch.",
@@ -980,7 +984,8 @@
           "US": "Hoa Kỳ",
           "VN": "Việt Nam",
           "WS": "Samoa",
-          "ZM": "Zambia"
+          "ZM": "Zambia",
+          "KH": "Campuchia"
         },
         "realtime": "Thời gian thực",
         "subtitle": "Hỗ trợ hơn 200 quốc gia",

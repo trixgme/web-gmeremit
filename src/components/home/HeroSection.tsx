@@ -19,11 +19,6 @@ interface ExRateResponse {
 const formatNumber = (num: string) => num.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 const parseNumber = (str: string) => str.replace(/,/g, "");
 
-const DELIVERY_METHODS = [
-  { value: "1", key: "calculator.bank_deposit" },
-  { value: "2", key: "calculator.cash_payment" },
-] as const;
-
 export default function HeroSection() {
   const { t } = useTranslation("home.exchange");
   const [sendAmount, setSendAmount] = useState("1000000");
@@ -31,14 +26,15 @@ export default function HeroSection() {
   const [isOpen, setIsOpen] = useState(false);
   const [receiveAmount, setReceiveAmount] = useState("");
   const [exchangeRate, setExchangeRate] = useState(0);
+  const [exchangeRateDisplay, setExchangeRateDisplay] = useState("");
+  const [serviceCharge, setServiceCharge] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
-  const [deliveryMethod, setDeliveryMethod] = useState<string>(defaultCountry.availableDeliveryMethods[0]);
+  const [errorParams, setErrorParams] = useState<Record<string, string>>({});
+  const [deliveryMethod, setDeliveryMethod] = useState<string>(defaultCountry.payoutMethods[0].key);
 
-  const availableDeliveryMethods = DELIVERY_METHODS.filter((m) =>
-    selectedCountry.availableDeliveryMethods.includes(m.value)
-  );
+  const payoutMethods = selectedCountry.payoutMethods;
   const debounceRef = useRef<ReturnType<typeof setTimeout>>(undefined);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -69,6 +65,7 @@ export default function HeroSection() {
     setIsLoading(true);
     setHasError(false);
     setErrorMsg("");
+    setErrorParams({});
     try {
       const res = await fetch("/api/exchange-rate", {
         method: "POST",
@@ -87,6 +84,8 @@ export default function HeroSection() {
 
       if (data.errorCode === "0" && data.pAmt && data.exRate) {
         setExchangeRate(Number(data.exRate));
+        setExchangeRateDisplay(data.exRateDisplay || data.exRate);
+        setServiceCharge(data.scCharge || "");
         if (direction === "C") {
           setReceiveAmount(Math.floor(Number(data.pAmt.replace(/,/g, ""))).toString());
         } else {
@@ -96,11 +95,19 @@ export default function HeroSection() {
         if (direction === "C") setReceiveAmount("");
         else setSendAmount("");
         setExchangeRate(0);
+        setExchangeRateDisplay("");
+        setServiceCharge("");
         setHasError(true);
         const msg = data.msg || "";
-        if (msg.includes("limit") || msg.includes("exceeds")) {
+        const maxAmtMatch = msg.match(/Maximum sending amount\s+([\d,]+)\s*KRW/i);
+        if (msg.includes("Thirdparty") || msg.includes("Service is currently not available")) {
+          setErrorMsg("error_unavailable_method");
+        } else if (maxAmtMatch) {
+          setErrorMsg("error_max_amount");
+          setErrorParams({ amount: maxAmtMatch[1] });
+        } else if (msg.includes("limit") || msg.includes("exceeds")) {
           setErrorMsg("error_limit");
-        } else if (msg.includes("charge not defined")) {
+        } else if (msg.includes("Exchange rate not defined") || msg.includes("charge not defined")) {
           setErrorMsg("error_unavailable");
         } else {
           setErrorMsg("error_failed");
@@ -110,6 +117,7 @@ export default function HeroSection() {
       if (direction === "C") setReceiveAmount("");
       else setSendAmount("");
       setExchangeRate(0);
+      setServiceCharge("");
       setHasError(true);
       setErrorMsg("error_network");
     } finally {
@@ -157,8 +165,8 @@ export default function HeroSection() {
 
   const handleCountrySelect = (country: CountryConfig) => {
     setSelectedCountry(country);
-    if (!country.availableDeliveryMethods.includes(deliveryMethod as "1" | "2")) {
-      setDeliveryMethod(country.availableDeliveryMethods[0]);
+    if (!country.payoutMethods.some((m) => m.key === deliveryMethod)) {
+      setDeliveryMethod(country.payoutMethods[0].key);
     }
     setIsOpen(false);
   };
@@ -246,27 +254,27 @@ export default function HeroSection() {
                   </div>
                 </div>
                 {hasError && errorMsg && (
-                  <p className="text-xs text-red-500 mt-1.5 ml-1">{t(`calculator.${errorMsg}`)}</p>
+                  <p className="text-xs text-red-500 mt-1.5 ml-1">{t(`calculator.${errorMsg}`, errorParams)}</p>
                 )}
               </div>
               {/* Delivery Method */}
               <div className="space-y-2 mb-5">
                 <label className="text-[13px] font-medium text-neutral-500">{t("calculator.delivery_method")}</label>
-                <div className="flex bg-gray-100 rounded-xl p-1">
-                  {availableDeliveryMethods.map((method) => (
-                    <button
-                      key={method.value}
-                      type="button"
-                      onClick={() => setDeliveryMethod(method.value)}
-                      className={`flex-1 py-2.5 text-sm font-medium rounded-lg transition-all cursor-pointer ${
-                        deliveryMethod === method.value
-                          ? "bg-white text-dark shadow-sm"
-                          : "text-neutral-400 hover:text-neutral-600"
-                      }`}
-                    >
-                      {t(method.key)}
-                    </button>
-                  ))}
+                <div className="relative">
+                  <select
+                    value={deliveryMethod}
+                    onChange={(e) => setDeliveryMethod(e.target.value)}
+                    className="w-full appearance-none bg-white rounded-2xl px-4 py-3 lg:px-5 lg:py-4 pr-10 border border-gray-200/80 text-sm lg:text-base font-semibold text-dark cursor-pointer hover:bg-slate-50 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/15"
+                  >
+                    {payoutMethods.map((method) => (
+                      <option key={method.key} value={method.key}>
+                        {method.label}
+                      </option>
+                    ))}
+                  </select>
+                  <svg className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
                 </div>
               </div>
               {/* Country Select */}
@@ -344,6 +352,24 @@ export default function HeroSection() {
                     <span className="text-sm font-semibold text-white">{selectedCountry.code}</span>
                   </div>
                 </div>
+                {!hasError && exchangeRate > 0 && (
+                  <div className="mt-3 px-1 space-y-2 text-[12.5px] lg:text-sm">
+                    <div className="flex items-center gap-2.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-gray-300 shrink-0" />
+                      <span className="text-neutral-500">{t("calculator.fee")}</span>
+                      <span className="ml-auto font-semibold text-dark tabular-nums">
+                        {serviceCharge || "0"} KRW
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-gray-300 shrink-0" />
+                      <span className="text-neutral-500">{t("calculator.rate")}</span>
+                      <span className="ml-auto font-semibold text-dark tabular-nums">
+                        {exchangeRateDisplay}
+                      </span>
+                    </div>
+                  </div>
+                )}
               </div>
               </div>
             </div>

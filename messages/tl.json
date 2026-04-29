@@ -861,7 +861,11 @@
         "receive_amount": "Halagang Matatanggap",
         "receive_country": "Bansang Tatanggap",
         "send_amount": "Halagang Ipapadala",
-        "title": "Real-time Exchange Calculator"
+        "title": "Real-time Exchange Calculator",
+        "error_unavailable_method": "Hindi available ang napiling paraan ng pagbabayad. Pumili ng ibang opsyon.",
+        "fee": "Bayad sa paglilipat",
+        "rate": "Real-time na palitan",
+        "error_max_amount": "Pinakamataas na halaga: {{amount}} KRW"
       },
       "description1": "Real-time exchange rate para sa 200+ na bansa.",
       "description2": "Transparent na pagsisiwalat ng bayarin.",
@@ -980,7 +984,8 @@
           "US": "United States",
           "VN": "Vietnam",
           "WS": "Samoa",
-          "ZM": "Zambia"
+          "ZM": "Zambia",
+          "KH": "Cambodia"
         },
         "realtime": "Real-time",
         "subtitle": "200+ na bansang suportado",

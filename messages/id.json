@@ -861,7 +861,11 @@
         "receive_amount": "Jumlah Diterima",
         "receive_country": "Negara Penerima",
         "send_amount": "Jumlah Kirim",
-        "title": "Kalkulator Kurs Real-Time"
+        "title": "Kalkulator Kurs Real-Time",
+        "error_unavailable_method": "Metode pembayaran ini sedang tidak tersedia. Silakan pilih opsi lain.",
+        "fee": "Biaya transfer",
+        "rate": "Kurs real-time",
+        "error_max_amount": "Jumlah maksimum yang dapat dikirim: {{amount}} KRW"
       },
       "description1": "Kurs real-time untuk 200+ negara.",
       "description2": "Biaya transparan.",
@@ -980,7 +984,8 @@
           "US": "Amerika Serikat",
           "VN": "Vietnam",
           "WS": "Samoa",
-          "ZM": "Zambia"
+          "ZM": "Zambia",
+          "KH": "Kamboja"
         },
         "realtime": "Real-Time",
         "subtitle": "Mendukung 200+ negara",

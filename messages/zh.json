@@ -861,7 +861,11 @@
         "receive_amount": "收款金额",
         "receive_country": "收款国家",
         "send_amount": "汇款金额",
-        "title": "实时汇率计算器"
+        "title": "实时汇率计算器",
+        "error_unavailable_method": "当前所选支付方式暂不可用，请选择其他方式。",
+        "fee": "转账手续费",
+        "rate": "实时汇率",
+        "error_max_amount": "最大可发送金额：{{amount}} KRW"
       },
       "description1": "200多个国家的实时汇率。",
       "description2": "费用透明公开。",
@@ -980,7 +984,8 @@
           "US": "美国",
           "VN": "越南",
           "WS": "萨摩亚",
-          "ZM": "赞比亚"
+          "ZM": "赞比亚",
+          "KH": "柬埔寨"
         },
         "realtime": "实时",
         "subtitle": "支持200多个国家",

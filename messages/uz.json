@@ -835,7 +835,11 @@
         "receive_amount": "Olinadigan miqdor",
         "receive_country": "Qabul qiluvchi mamlakat",
         "send_amount": "Yuboriladigan miqdor",
-        "title": "Real vaqt valyuta kalkulyatori"
+        "title": "Real vaqt valyuta kalkulyatori",
+        "error_unavailable_method": "Tanlangan toʻlov usuli hozircha mavjud emas. Iltimos, boshqa variantni tanlang.",
+        "fee": "Oʻtkazma toʻlovi",
+        "rate": "Real vaqt kursi",
+        "error_max_amount": "Yuborish mumkin boʻlgan eng katta miqdor: {{amount}} KRW"
       },
       "description1": "200+ mamlakat uchun real vaqt kurslari.",
       "description2": "Komissiyalarni ochiq ko'rsatish.",
@@ -954,7 +958,8 @@
           "US": "AQSh",
           "VN": "Vyetnam",
           "WS": "Samoa",
-          "ZM": "Zambiya"
+          "ZM": "Zambiya",
+          "KH": "Kambodja"
         },
         "realtime": "Real vaqt",
         "subtitle": "200+ mamlakatni qo'llab-quvvatlaydi",
