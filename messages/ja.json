@@ -40,7 +40,9 @@
       "notice": "お知らせ",
       "press": "プレスリリース"
     },
-    "total": "合計"
+    "total": "合計",
+    "error_title": "投稿を読み込めませんでした",
+    "error_description": "後ほど再度お試しください。"
   },
   "business": {
     "cta": {
@@ -154,7 +156,7 @@
           "受取人・入金者の制限なし",
           "APIまたはポータル経由で即時V/A発行"
         ],
-        "subtitle": "付加価値サービス",
+        "subtitle": "バーチャル口座サービス",
         "title": "VAS"
       }
     }
@@ -687,7 +689,13 @@
         "2024_12": "累計海外送金額2.8兆ウォン突破",
         "2025_03": "外国人居住者向け保険商品を開始",
         "2025_06": "交通カード機能付きデビットカードを開始",
-        "2025_12": "累計海外送金額3.5兆ウォン突破"
+        "2025_12": "累計海外送金額3.5兆ウォン突破",
+        "2017_12": "年間海外送金額100億ウォンを達成",
+        "2018_12": "年間海外送金額4,600億ウォンを達成",
+        "2020_09": "GME Payサービス開始",
+        "2020_12": "年間海外送金額1.0兆ウォンを達成",
+        "2022_12": "年間海外送金額1.7兆ウォンを達成",
+        "2025_04": "技術革新型中小企業(Inno-Biz)認証取得"
       },
       "title_line1": "終わりなき挑戦、",
       "title_line2": "新たな始まり"
@@ -729,7 +737,11 @@
       },
       "related_services": "関連サービス",
       "subtitle": "グローバル金融のすべてをワンストップで",
-      "title": "GMEサービス"
+      "title": "GMEサービス",
+      "telecom": {
+        "title": "Telecom",
+        "desc": "月額3,300ウォンから利用できる格安モバイルサービス"
+      }
     },
     "tabs": {
       "ceo_message": "代表メッセージ",
@@ -742,7 +754,7 @@
     "company_name": "Global Money Express",
     "copyright": "© Global Money Express, All rights reserved.",
     "info": {
-      "address": "住所：ソウル特別市永登浦区永登浦路150 センガクコンジャンジャンサン B棟 901～911号",
+      "address": "住所: 901~911Ho, B-dong, Saenggak Gongjang Bldg., 150, Yeongdeungpo-ro, Yeongdeungpo-gu, Seoul, Korea 07292",
       "email_corporate": "法人：corporate@gmeremit.com",
       "email_support": "お問い合わせ：support@gmeremit.com",
       "fax": "FAX：(+82) 2 3674 5559",
@@ -777,7 +789,8 @@
       "services": "サービス",
       "services_menu": "サービス",
       "social_channels": "ソーシャルチャンネル",
-      "support": "サポート"
+      "support": "サポート",
+      "telecom": "モバイル"
     }
   },
   "home": {
@@ -799,7 +812,7 @@
         "desc": "海外決済に特化したプレミアムカード。どこにいても最高のキャッシュバック特典をお楽しみください。",
         "highlights": [
           "海外3%キャッシュバック",
-          "国内0.3%キャッシュバック",
+          "シーズナルキャッシュバック",
           "特別イベント割引",
           "地下鉄・バス・タクシー簡単決済"
         ]
@@ -819,7 +832,7 @@
         "cta": "Red Cardを見る",
         "desc": "GMEのシグネチャーカラーのカード。すべての決済をスタイリッシュに。",
         "highlights": [
-          "国内0.3%キャッシュバック",
+          "シーズナルキャッシュバック",
           "特別イベント割引",
           "地下鉄・バス・タクシー簡単決済",
           "公共交通"
@@ -829,7 +842,7 @@
         "cta": "Uniq Cardを見る",
         "desc": "18ヶ国30種類以上のデザインから自分だけのカードを選べます。",
         "highlights": [
-          "国内0.3%キャッシュバック",
+          "シーズナルキャッシュバック",
           "特別イベント割引",
           "18ヶ国30種類以上のデザイン",
           "地下鉄・バス・タクシー簡単決済"
@@ -839,7 +852,7 @@
         "cta": "White Cardを見る",
         "desc": "シンプルでクリーンな日常カード。国内決済と公共交通に便利です。",
         "highlights": [
-          "国内0.3%キャッシュバック",
+          "シーズナルキャッシュバック",
           "特別イベント割引",
           "地下鉄・バス・タクシー簡単決済",
           "公共交通"
@@ -862,12 +875,30 @@
         "receive_country": "受取国",
         "send_amount": "送金金額",
         "title": "リアルタイム為替計算機",
-        "error_unavailable_method": "現在選択された支払方法はご利用いただけません。他の方法をお選びください。",
-        "fee": "送金手数料",
-        "rate": "リアルタイム為替レート",
-        "error_max_amount": "最大送金可能額：{{amount}} KRW",
-        "search_placeholder": "国名または通貨で検索",
-        "no_results": "該当する結果がありません"
+        "mobile_wallet": "モバイルウォレット",
+        "qr_pay": "QR決済",
+        "search_placeholder": "国を検索",
+        "no_results": "結果がありません",
+        "fee": "手数料",
+        "rate": "為替レート",
+        "error_unavailable_method": "現在この送金方法はご利用いただけません",
+        "error_max_amount": "最大送金可能額: {{amount}} KRW",
+        "payout_methods": {
+          "1": "現金受取",
+          "2": "銀行振込",
+          "12": "宅配",
+          "13": "モバイルウォレット",
+          "14": "カード決済",
+          "16": "WeChat Pay",
+          "17": "Alipay",
+          "18": "Visa/Mastercard/UnionPay",
+          "19": "Visa/Mastercard",
+          "25": "UPI",
+          "33": "bKash",
+          "34": "Rocket",
+          "35": "Nagad",
+          "37": "QR決済"
+        }
       },
       "description1": "200以上の国のリアルタイム為替レート。",
       "description2": "透明な手数料開示。",
@@ -938,14 +969,14 @@
           "AO": "Angola",
           "AR": "アルゼンチン",
           "AS": "American Samoa",
-          "AT": "オーストリア",
+          "AT": "Austria",
           "AU": "オーストラリア",
           "AW": "Aruba",
           "AZ": "Azerbaijan",
           "BA": "Bosnia and Herzegovina",
           "BB": "Barbados",
           "BD": "バングラデシュ",
-          "BE": "ベルギー",
+          "BE": "Belgium",
           "BF": "Burkina Faso",
           "BG": "Bulgaria",
           "BH": "バーレーン",
@@ -987,12 +1018,12 @@
           "EE": "Estonia",
           "EG": "Egypt",
           "ER": "Eritrea",
-          "ES": "スペイン",
+          "ES": "Spain",
           "ET": "Ethiopia",
-          "FI": "フィンランド",
+          "FI": "Finland",
           "FJ": "フィジー",
           "FM": "Micronesia",
-          "FR": "フランス",
+          "FR": "France",
           "GA": "Gabon",
           "GB": "イギリス",
           "GD": "Grenada",
@@ -1004,7 +1035,7 @@
           "GN": "Guinea",
           "GP": "Guadeloupe",
           "GQ": "Equatorial Guinea",
-          "GR": "ギリシャ",
+          "GR": "Greece",
           "GT": "グアテマラ",
           "GU": "Guam",
           "GW": "Guinea-Bissau",
@@ -1015,11 +1046,11 @@
           "HT": "Haiti",
           "HU": "ハンガリー",
           "ID": "インドネシア",
-          "IE": "アイルランド",
+          "IE": "Ireland",
           "IL": "イスラエル",
           "IN": "インド",
           "IS": "Iceland",
-          "IT": "イタリア",
+          "IT": "Italy",
           "JM": "Jamaica",
           "JO": "ヨルダン",
           "JP": "日本",
@@ -1031,7 +1062,7 @@
           "KW": "クウェート",
           "KY": "Cayman Islands",
           "KZ": "Kazakhstan",
-          "LA": "ラオス",
+          "LA": "Laos",
           "LB": "Lebanon",
           "LC": "Saint Lucia",
           "LI": "Liechtenstein",
@@ -1069,7 +1100,7 @@
           "NE": "Niger",
           "NG": "ナイジェリア",
           "NI": "Nicaragua",
-          "NL": "オランダ",
+          "NL": "Netherlands",
           "NO": "ノルウェー",
           "NP": "ネパール",
           "NZ": "ニュージーランド",
@@ -1083,7 +1114,7 @@
           "PL": "ポーランド",
           "PR": "Puerto Rico",
           "PS": "Palestinian Territory, Occupied",
-          "PT": "ポルトガル",
+          "PT": "Portugal",
           "PY": "パラグアイ",
           "QA": "カタール",
           "RE": "Réunion",
@@ -1262,7 +1293,12 @@
         "title": "海外送金"
       },
       "title1": "GMEの",
-      "title2": "さまざまなサービス"
+      "title2": "さまざまなサービス",
+      "mobile": {
+        "title": "モバイル",
+        "desc1": "月額3,300ウォンから利用できる",
+        "desc2": "外国人向け格安モバイルサービス"
+      }
     },
     "customer_feedback": {
       "subtitle": "お客様の実際の体験談をご紹介します。",
@@ -1278,7 +1314,8 @@
     "cta": {
       "button": "アプリをダウンロード",
       "description": "モバイルで簡単に申請して、必要な資金を迅速に確保しましょう。",
-      "title": "今すぐGMEアプリでローンを始めましょう"
+      "title": "今すぐGMEアプリでローンを始めましょう",
+      "inline_notice": "ⓘ 下のボタンを押すと、GME Financeが提供するローンサービスに移動します。"
     },
     "details": {
       "contract": {
@@ -1427,6 +1464,20 @@
         "title": "24/7"
       },
       "title": "GMEローンが選ばれる理由"
+    },
+    "disclosure": {
+      "banner": "本ページで紹介するローン商品はGME Finance(別法人)が提供します。相談・審査・契約・アフターサービスなど、ローンサービスのすべての責任はGME Financeにあり、GME Remitは商品紹介および接続機能のみを提供します。",
+      "disclaimer": "※ GME Remitは本ローン商品の販売業者または仲介業者ではありません。GME Financeと顧客の間で締結されるローン契約から生じる権利・義務はすべてGME Financeに帰属し、関連する紛争およびお問い合わせはGME Financeにご連絡ください。",
+      "label_address": "本社",
+      "label_brand_name": "ブランド名",
+      "label_business_number": "事業者登録番号",
+      "label_ceo": "代表者",
+      "label_email": "メール",
+      "label_loan_license": "貸金業登録番号",
+      "label_phone": "代表電話",
+      "label_supervisor": "監督機関",
+      "law_notice": "電子商取引等における消費者保護に関する法律第10条による事業者身元情報の告知",
+      "provider_heading": "GME Finance"
     }
   },
   "remittance": {
@@ -1638,6 +1689,122 @@
     "tabs": {
       "branches": "支店",
       "social_channels": "ソーシャルチャンネル"
+    }
+  },
+  "telecom": {
+    "hero": {
+      "badge": "GME MOBILE",
+      "title1": "あなたにぴったりの",
+      "title2": "格安モバイル",
+      "description": "LGU+、KTネットワークと同等品質の格安モバイルサービス。月額3,300ウォンからのお手頃プランで通信費を節約。",
+      "cta": "プランを見る"
+    },
+    "features": {
+      "title": "なぜGME Mobile?",
+      "multilang": {
+        "title": "17言語対応",
+        "description": "母国語で便利に利用"
+      },
+      "affordable": {
+        "title": "月額3,300ウォン~",
+        "description": "外国人向け超格安プラン"
+      },
+      "network": {
+        "title": "LGU+、KT同等品質",
+        "description": "全国どこでも安定した通信品質"
+      },
+      "usim": {
+        "title": "USIMセルフ開通",
+        "description": "受け取って5分で開通完了"
+      },
+      "esim": {
+        "title": "eSIM対応",
+        "description": "QRコードをスキャンして即時開通"
+      },
+      "plans": {
+        "title": "豊富なプラン",
+        "description": "月額3,300ウォン~ぴったりのプラン"
+      },
+      "activation": {
+        "title": "5分セルフ開通",
+        "description": "アプリで簡単に自分で開通"
+      },
+      "intl_call": {
+        "title": "国際電話含む",
+        "description": "一部プランで毎日20分の国際電話"
+      }
+    },
+    "plans": {
+      "title": "あなたに合うプラン",
+      "subtitle": "ライフスタイルに合うプランを見つけよう!",
+      "data": "データ",
+      "voice": "通話",
+      "sms": "SMS",
+      "per_month": "月",
+      "currency": "ウォン",
+      "discount": "割引",
+      "unlimited": "無制限",
+      "empty": "表示するプランがありません",
+      "cta": "全プランを見る"
+    },
+    "process": {
+      "title": "複雑な手続きなく",
+      "title2": "簡単にすぐ開通",
+      "subtitle": "USIMもeSIMも簡単にセルフ開通",
+      "steps": {
+        "step1": {
+          "title": "USIM購入",
+          "description": "オンラインでUSIMを注文"
+        },
+        "step2": {
+          "title": "配送確認",
+          "description": "USIM配送状況を確認"
+        },
+        "step3": {
+          "title": "セルフ開通",
+          "description": "アプリで本人認証&開通"
+        },
+        "step4": {
+          "title": "完了!",
+          "description": "5分で開通完了!"
+        }
+      }
+    },
+    "esim_intro": {
+      "badge": "eSIM",
+      "title": "1台で2つの番号",
+      "description": "eSIMで簡単に始めよう! 仕事とプライベートをはっきり分けて、より良いバランスを。",
+      "cta": "eSIM開通",
+      "tag1": "SIM交換不要",
+      "tag2": "配送不要",
+      "tag3": "セルフ即時開通!"
+    },
+    "usim_intro": {
+      "badge": "USIM",
+      "title": "5分で開通完了!",
+      "description": "セルフ開通時間",
+      "time1_label": "番号移動",
+      "time1_value": "午前10:00 ~ 午後8:00",
+      "time1_note": "日曜・元日・旧正月・秋夕を除く",
+      "time2_label": "新規登録",
+      "time2_value": "午前8:00 ~ 午後10:00",
+      "time2_note": "曜日制限なし",
+      "step1": "USIM購入",
+      "step2": "受取",
+      "step3": "開通",
+      "step4": "完了!",
+      "cta": "USIM購入"
+    },
+    "cta": {
+      "title": "GME Mobileを始めよう",
+      "description": "格安プランで通信費を節約、17言語対応。",
+      "button": "GME Mobileへ"
+    },
+    "categories": {
+      "recommended": "おすすめ",
+      "postpaid": "後払い",
+      "fiveG": "5G/特殊",
+      "prepaid": "前払い"
     }
   }
 }

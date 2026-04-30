@@ -40,7 +40,9 @@
       "notice": "សេចក្តីជូនដំណឹង",
       "press": "សារព័ត៌មាន"
     },
-    "total": "សរុប"
+    "total": "សរុប",
+    "error_title": "មិនអាចផ្ទុកការប្រកាសបានទេ",
+    "error_description": "សូមព្យាយាមម្តងទៀតនៅពេលក្រោយ។"
   },
   "business": {
     "cta": {
@@ -67,7 +69,95 @@
         "title": "Netout"
       },
       "pob": {
-        "description": "កម្រិតខ org ្ពស់នៃតម្លាភាព និងប្រសិទ org្ org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org"
+        "description": "កម្រិតខ org ្ពស់នៃតម្លាភាព និងប្រសិទ org្ org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org org",
+        "title": "ការទូទាត់ជំនួស"
+      },
+      "title": "លក្ខណៈពិសេសសេវាទូទាត់របស់ GME",
+      "technology": {
+        "title": "ហេដ្ឋារចនាសម្ព័ន្ធបច្ចេកវិទ្យា",
+        "description": "ប្រព័ន្ធដែលមានស្ថេរភាព ផ្អែកលើ MSA Architecture និងភ្ជាប់មកជាមួយ AML និងការផ្ទៀងផ្ទាត់អត្តសញ្ញាណ។"
+      }
+    },
+    "hero": {
+      "badge": "កាត់បន្ថយយ៉ាងខ្លាំងនូវតម្លៃផ្ទេរប្រាក់សម្រាប់អាជីវកម្ម",
+      "cta_contact": "ទាក់ទងពួកយើង",
+      "cta_docs": "មើលឯកសារ API",
+      "description": "ពីការផ្ទេរប្រាក់ឆ្លងព្រំដែន រហូតដល់ការទូទាត់ដៃគូ - បង្រួបបង្រួមការទូទាត់អាជីវកម្មស្មុគស្មាញទៅជាមួយគ្នា។ GME កាត់បន្ថយតម្លៃ និងបង្កើនល្បឿន។",
+      "title1": "សម្រាប់អាជីវកម្ម និងអ្នកលក់",
+      "title2": "ដៃគូទូទាត់សកល"
+    },
+    "partners": {
+      "label": "ដៃគូ",
+      "title": "ដៃគូសកលដែលអាចទុកចិត្តបាន",
+      "list": [
+        "Hana Bank",
+        "Alipay",
+        "Skyee",
+        "PayerMax",
+        "Xe",
+        "Veem",
+        "Sandman",
+        "colognes",
+        "BaoFuGlobal",
+        "Ripple",
+        "PingPong",
+        "Tazapay",
+        "LianLian Pay",
+        "Terrapin",
+        "Ria",
+        "Thunes"
+      ]
+    },
+    "process": {
+      "label": "លំហូរសេវាកម្ម",
+      "title": "របៀប GME Payments ដំណើរការ",
+      "step1": {
+        "title": "SPS + VAS",
+        "description": "SPS សម្រាប់ការទូទាត់ឆ្លងព្រំដែន, VAS សម្រាប់ការប្រមូល និងគណនីនិម្មិត។ ផ្តល់ដំណោះស្រាយទាំងពីរ។"
+      },
+      "step2": {
+        "title": "ការដាក់បញ្ចូល API",
+        "description": "ភ្ជាប់ប្រព័ន្ធរបស់អ្នកដោយប្រើឯកសារ API នៅ developers.gmeremit.com។"
+      },
+      "step3": {
+        "title": "ការគ្រប់គ្រង FX និងការទូទាត់",
+        "description": "គ្រប់គ្រង FX ដោយខ្លួនឯង ឬប្តូរប្រាក់ និងបង់ប្រាក់ក្នុងពេលតែមួយ។ តាមដានរាល់ប្រតិបត្តិការតាមពេលវេលាជាក់ស្តែង។"
+      },
+      "step4": {
+        "title": "ការផ្សះផ្សា និងរបាយការណ៍",
+        "description": "ការផ្សះផ្សាងាយស្រួលសម្រាប់ការទូទាត់ បង្កាន់ដៃទូទាត់ភ្លាមៗ និងប្រវត្តិប្រតិបត្តិការពេញលេញ។"
+      }
+    },
+    "solutions": {
+      "label": "ដំណោះស្រាយស្នូល",
+      "title": "ដំណោះស្រាយទូទាត់សម្រាប់អាជីវកម្មរបស់អ្នក",
+      "description": "ដំណោះស្រាយដ៏មានឥទ្ធិពលពីរ - SPS និង VAS - ដើម្បីដោះស្រាយរាល់ផ្នែករបស់ការទូទាត់ឆ្លងព្រំដែន។",
+      "sps": {
+        "title": "SPS",
+        "subtitle": "Seamless Payment Solution",
+        "description": "ដំណោះស្រាយការទូទាត់ឆ្លងព្រំដែនជាដុំ 24/7។ គ្រប់គ្រង FX ផ្ទៀងផ្ទាត់អ្នកទទួល និងដំណើរការការទូទាត់ដ៏ច្រើនទាំងអស់នៅកន្លែងតែមួយ។",
+        "features": [
+          "ទូទាត់ 24/7",
+          "គ្រប់គ្រង FX",
+          "ទូទាត់ច្រើន",
+          "ស្ថានភាពពេលវេលាជាក់ស្តែង",
+          "ការទូទាត់ភ្លាមៗ",
+          "ការផ្ទៀងផ្ទាត់ពេលវេលាជាក់ស្តែង"
+        ]
+      },
+      "vas": {
+        "title": "VAS",
+        "subtitle": "សេវាគណនីនិម្មិត",
+        "description": "ពីការចេញគណនីនិម្មិត រហូតដល់ការប្រមូលជំនួស។ លក្ខណៈពិសេសបន្ថែមទាំងអស់ដែលអ្នកត្រូវការសម្រាប់ប្រតិបត្តិការទូទាត់។",
+        "features": [
+          "ការជូនដំណឹងពេលវេលាជាក់ស្តែង",
+          "ការប្រមូលក្នុងតំបន់ក្នុងតម្លៃទាប",
+          "កំណត់ V/As",
+          "គណនីនិម្មិតក្នុងទម្រង់ច្រើន",
+          "ការប្រមូលជំនួស (COBO)",
+          "គ្មានដែនកំណត់លើអ្នកទទួលផល និងអ្នកបញ្ញើ",
+          "ការចេញ V/A ភ្លាមៗតាម API ឬ Portal"
+        ]
       }
     }
   },
@@ -599,7 +689,15 @@
         "2024_12": "ប្រាក់ផ្ញើក្រៅប្រទេសសរុបលើស KRW 2.8 ពាន់លាន",
         "2025_03": "ដាក់ឲ្យប្រើផលិតផលធានារ៉ាប់រងសម្រាប់ជនបរទេស",
         "2025_06": "ដាក់ឲ្យប្រើកាតឥណពន្ធដែលមានមុខងារកាតធ្វើដំណើរ",
-        "2025_12": "ប្រាក់ផ្ញើក្រៅប្រទេសសរុបលើស KRW 3.5 ពាន់លាន"
+        "2025_12": "ប្រាក់ផ្ញើក្រៅប្រទេសសរុបលើស KRW 3.5 ពាន់លាន",
+        "2017_12": "សម្រេចបានចំនួនការផ្ទេរប្រាក់ប្រចាំឆ្នាំ 10 ពាន់លានវ៉ុន",
+        "2018_12": "សម្រេចបានចំនួនការផ្ទេរប្រាក់ប្រចាំឆ្នាំ 460 ពាន់លានវ៉ុន",
+        "2019_06": "បើកសាខា 12 នៅទូទាំងប្រទេស",
+        "2019_09": "បើកមជ្ឈមណ្ឌល 3 នៅទូទាំងប្រទេស",
+        "2020_09": "ចាប់ផ្តើមសេវា GME Pay",
+        "2020_12": "សម្រេចបានចំនួនការផ្ទេរប្រាក់ប្រចាំឆ្នាំ 1 លានលានវ៉ុន",
+        "2022_12": "សម្រេចបានចំនួនការផ្ទេរប្រាក់ប្រចាំឆ្នាំ 1.7 លានលានវ៉ុន",
+        "2025_04": "ទទួលបានការទទួលស្គាល់ Inno-Biz (សហគ្រាសច្នៃប្រឌិតបច្ចេកវិទ្យា)"
       },
       "title_line1": "ការប៉ុនប៉ងគ្មានទីបញ្ចប់,",
       "title_line2": "ការចាប់ផ្តើមថ្មី"
@@ -641,7 +739,11 @@
       },
       "related_services": "សេវាផ្សេងៗ",
       "subtitle": "គ្រប់តម្រូវការហិរញ្ញវត្ថុសកលរបស់អ្នកនៅកន្លែងតែមួយ",
-      "title": "សេវា GME"
+      "title": "សេវា GME",
+      "telecom": {
+        "title": "Telecom",
+        "desc": "សេវាទូរសព្ទចល័តចាប់ពី 3,300 វ៉ុនក្នុងមួយខែ"
+      }
     },
     "tabs": {
       "ceo_message": "សារ​របស់ CEO",
@@ -654,7 +756,7 @@
     "company_name": "Global Money Express",
     "copyright": "© Global Money Express, រក្សាសិទ្ធិគ្រប់យ៉ាង។",
     "info": {
-      "address": "អាសយដ្ឋាន: B-dong 901~911, Saenggak Gongjangjangsan, 150 Yeongdeungpo-ro, Yeongdeungpo-gu, Seoul",
+      "address": "អាសយដ្ឋាន: 901~911Ho, B-dong, Saenggak Gongjang Bldg., 150, Yeongdeungpo-ro, Yeongdeungpo-gu, Seoul, Korea 07292",
       "email_corporate": "ក្រុមហ៊ុន: corporate@gmeremit.com",
       "email_support": "សំណួរ: support@gmeremit.com",
       "fax": "ទូរសារ: (+82) 2 3674 5559",
@@ -689,7 +791,8 @@
       "services": "សេវា",
       "services_menu": "ម៉ឺនុយសេវា",
       "social_channels": "ឆានែលសង្គម",
-      "support": "ការគាំទ្រ"
+      "support": "ការគាំទ្រ",
+      "telecom": "ទូរសព្ទ"
     }
   },
   "home": {
@@ -711,7 +814,7 @@
         "desc": "កាតពិសេសសម្រាប់ការទូទាត់ក្រៅប្រទេស។ រីករាយនឹងអត្ថប្រយោជន៍ cashback ល្អបំផុត។",
         "highlights": [
           "3% Cashback ក្រៅប្រទេស",
-          "0.3% Cashback ក្នុងស្រុក",
+          "Cashback តាមរដូវ",
           "បញ្ចុះតម្លៃព្រឹត្តិការណ៍ពិសេស",
           "Metro · Bus · Taxi Easy Pay"
         ]
@@ -731,7 +834,7 @@
         "cta": "មើល Red Card",
         "desc": "កាតពណ៌សញ្ញារបស់ GME។ ធ្វើឱ្យរាល់ការបង់ប្រាក់ទំនើប។",
         "highlights": [
-          "0.3% Cashback ក្នុងស្រុក",
+          "Cashback តាមរដូវ",
           "បញ្ចុះតម្លៃព្រឹត្តិការណ៍ពិសេស",
           "Metro · Bus · Taxi Easy Pay",
           "ដឹកជញ្ជូនសាធារណៈ"
@@ -741,7 +844,7 @@
         "cta": "មើល Uniq Card",
         "desc": "ជ្រើសរើសកាតរបស់អ្នកពីរចនា 30+ នៅ 18 ប្រទេស។",
         "highlights": [
-          "0.3% Cashback ក្នុងស្រុក",
+          "Cashback តាមរដូវ",
           "បញ្ចុះតម្លៃព្រឹត្តិការណ៍ពិសេស",
           "18 ប្រទេស 30+ រចនា",
           "Metro · Bus · Taxi Easy Pay"
@@ -751,7 +854,7 @@
         "cta": "មើល White Card",
         "desc": "កាតប្រចាំថ្ងៃសាមញ្ញស្អាត។ ងាយស្រួលសម្រាប់ការទូទាត់ក្នុងស្រុក និងដឹកជញ្ជូនសាធារណៈ។",
         "highlights": [
-          "0.3% Cashback ក្នុងស្រុក",
+          "Cashback តាមរដូវ",
           "បញ្ចុះតម្លៃព្រឹត្តិការណ៍ពិសេស",
           "Metro · Bus · Taxi Easy Pay",
           "ដឹកជញ្ជូនសាធារណៈ"
@@ -774,12 +877,30 @@
         "receive_country": "ប្រទេសទទួល",
         "send_amount": "ចំនួនផ្ញើ",
         "title": "ម៉ាស៊ីនគណនាអត្រាប្តូរប្រាក់ពេលវេលាពិត",
-        "error_unavailable_method": "វិធីបង់ប្រាក់ដែលបានជ្រើសរើសមិនមានបច្ចុប្បន្ននេះទេ។ សូមជ្រើសវិធីផ្សេង។",
-        "fee": "ថ្លៃផ្ទេរ",
-        "rate": "អត្រាប្តូរប្រាក់ផ្ទាល់",
-        "error_max_amount": "ចំនួនអតិបរមាដែលអាចផ្ញើបាន: {{amount}} KRW",
-        "search_placeholder": "ស្វែងរកតាមប្រទេស ឬរូបិយប័ណ្ណ",
-        "no_results": "រកមិនឃើញលទ្ធផល"
+        "mobile_wallet": "កាបូបទូរសព្ទចល័ត",
+        "qr_pay": "ការទូទាត់ QR",
+        "search_placeholder": "ស្វែងរកប្រទេស",
+        "no_results": "មិនមានលទ្ធផល",
+        "fee": "ថ្លៃសេវា",
+        "rate": "អត្រាប្តូរប្រាក់",
+        "error_unavailable_method": "មិនអាចប្រើវិធីផ្ញើនេះបានទេនៅពេលនេះ",
+        "error_max_amount": "ចំនួនទឹកប្រាក់ផ្ញើអតិបរមា: {{amount}} KRW",
+        "payout_methods": {
+          "1": "ទទួលសាច់ប្រាក់",
+          "2": "ដាក់ប្រាក់ធនាគារ",
+          "12": "ដឹកជញ្ជូនដល់ផ្ទះ",
+          "13": "កាបូបទូរសព្ទចល័ត",
+          "14": "ការទូទាត់ដោយកាត",
+          "16": "WeChat Pay",
+          "17": "Alipay",
+          "18": "Visa/Mastercard/UnionPay",
+          "19": "Visa/Mastercard",
+          "25": "UPI",
+          "33": "bKash",
+          "34": "Rocket",
+          "35": "Nagad",
+          "37": "ការទូទាត់ QR"
+        }
       },
       "description1": "អត្រាប្តូរប្រាក់ពេលវេលាពិតសម្រាប់ 200+ ប្រទេស។",
       "description2": "បង្ហាញថ្លៃសេវាដោយច្បាស់។",
@@ -850,14 +971,14 @@
           "AO": "Angola",
           "AR": "អាហ្សង់ទីន",
           "AS": "American Samoa",
-          "AT": "អូទ្រីស",
+          "AT": "Austria",
           "AU": "អូស្ត្រាលី",
           "AW": "Aruba",
           "AZ": "Azerbaijan",
           "BA": "Bosnia and Herzegovina",
           "BB": "Barbados",
           "BD": "បង់ក្លាដែស",
-          "BE": "បែលហ្ស៊ិក",
+          "BE": "Belgium",
           "BF": "Burkina Faso",
           "BG": "Bulgaria",
           "BH": "បារ៉ែន",
@@ -899,12 +1020,12 @@
           "EE": "Estonia",
           "EG": "Egypt",
           "ER": "Eritrea",
-          "ES": "អេស្ប៉ាញ",
+          "ES": "Spain",
           "ET": "Ethiopia",
-          "FI": "ហ្វាំងឡង់",
+          "FI": "Finland",
           "FJ": "ហ្វីជី",
           "FM": "Micronesia",
-          "FR": "បារាំង",
+          "FR": "France",
           "GA": "Gabon",
           "GB": "ចក្រភពអង់គ្លេស",
           "GD": "Grenada",
@@ -916,7 +1037,7 @@
           "GN": "Guinea",
           "GP": "Guadeloupe",
           "GQ": "Equatorial Guinea",
-          "GR": "ក្រិក",
+          "GR": "Greece",
           "GT": "ក្វាតេម៉ាឡា",
           "GU": "Guam",
           "GW": "Guinea-Bissau",
@@ -927,11 +1048,11 @@
           "HT": "Haiti",
           "HU": "ហុងគ្រី",
           "ID": "ឥណ្ឌូណេស៊ី",
-          "IE": "អៀរឡង់",
+          "IE": "Ireland",
           "IL": "អ៊ីស្រាអែល",
           "IN": "ឥណ្ឌា",
           "IS": "Iceland",
-          "IT": "អ៊ីតាលី",
+          "IT": "Italy",
           "JM": "Jamaica",
           "JO": "ហ្សកដានី",
           "JP": "ជប៉ុន",
@@ -943,7 +1064,7 @@
           "KW": "កូវ៉ែត",
           "KY": "Cayman Islands",
           "KZ": "Kazakhstan",
-          "LA": "ឡាវ",
+          "LA": "Laos",
           "LB": "Lebanon",
           "LC": "Saint Lucia",
           "LI": "Liechtenstein",
@@ -981,7 +1102,7 @@
           "NE": "Niger",
           "NG": "នីហ្សេរីយ៉ា",
           "NI": "Nicaragua",
-          "NL": "ហូឡង់",
+          "NL": "Netherlands",
           "NO": "ន័រវែស",
           "NP": "នេប៉ាល់",
           "NZ": "នូវែលសេឡង់",
@@ -995,7 +1116,7 @@
           "PL": "ប៉ូឡូញ",
           "PR": "Puerto Rico",
           "PS": "Palestinian Territory, Occupied",
-          "PT": "ព័រទុយហ្គាល់",
+          "PT": "Portugal",
           "PY": "ប៉ារ៉ាហ្គាយ",
           "QA": "កាតា",
           "RE": "Réunion",
@@ -1174,7 +1295,12 @@
         "title": "ការផ្ញើប្រាក់ក្រៅប្រទេស"
       },
       "title1": "ស្វែងរកសេវា",
-      "title2": "GME ជាច្រើន"
+      "title2": "GME ជាច្រើន",
+      "mobile": {
+        "title": "ទូរសព្ទចល័ត",
+        "desc1": "ចាប់ពី 3,300 វ៉ុនក្នុងមួយខែ",
+        "desc2": "សេវាទូរសព្ទចល័តសម្រាប់ជនបរទេស"
+      }
     },
     "customer_feedback": {
       "subtitle": "បទពិសោធន៍ពិតពីអតិថិជនរបស់យើង។",
@@ -1190,7 +1316,8 @@
     "cta": {
       "button": "ទាញយកកម្មវិធី",
       "description": "ទទួលទឹកប្រាក់ដែលអ្នកត្រូវការយ៉ាងរហ័ស ជាមួយការដាក់ពាក្យតាមទូរស័ព្ទងាយស្រួល។",
-      "title": "ចាប់ផ្តើមកម្ចីរបស់អ្នកជាមួយកម្មវិធី GME ថ្ងៃនេះ"
+      "title": "ចាប់ផ្តើមកម្ចីរបស់អ្នកជាមួយកម្មវិធី GME ថ្ងៃនេះ",
+      "inline_notice": "ⓘ ការចុចប៊ូតុងខាងក្រោមនឹងភ្ជាប់អ្នកទៅសេវាឥណទានដែលផ្តល់ដោយ GME Finance។"
     },
     "details": {
       "contract": {
@@ -1339,6 +1466,20 @@
         "title": "24/7"
       },
       "title": "ហេតុអ្វីជ្រើសរើស GME Loan?"
+    },
+    "disclosure": {
+      "banner": "ផលិតផលឥណទានដែលណែនាំក្នុងទំព័រនេះ ត្រូវបានផ្តល់ដោយ GME Finance (ស្ថាប័នដាច់ដោយឡែក)។ ការទទួលខុសត្រូវទាំងអស់សម្រាប់សេវាឥណទាន រួមមានការប្រឹក្សា ការវាយតម្លៃ កិច្ចសន្យា និងការគ្រប់គ្រងក្រោយការផ្តល់ ស្ថិតនៅលើ GME Finance ហើយ GME Remit គ្រាន់តែផ្តល់នូវការណែនាំ និងមុខងារភ្ជាប់ប៉ុណ្ណោះ។",
+      "disclaimer": "※ GME Remit មិនមែនជាអ្នកលក់ ឬឈ្មួញកណ្តាលនៃផលិតផលឥណទាននេះទេ។ សិទ្ធិ និងកាតព្វកិច្ចទាំងអស់នៃកិច្ចសន្យាឥណទានរវាង GME Finance និងអ្នកប្រើប្រាស់ ស្ថិតនៅលើ GME Finance ហើយវិវាទ និងពាក្យបណ្តឹងពាក់ព័ន្ធគួរតែដាក់ទៅ GME Finance។",
+      "law_notice": "ការផ្សព្វផ្សាយព័ត៌មានអត្តសញ្ញាណអាជីវកម្ម យោងតាមមាត្រា 10 នៃច្បាប់ស្តីពីការការពារអ្នកប្រើប្រាស់ក្នុងពាណិជ្ជកម្មអេឡិចត្រូនិច។",
+      "provider_heading": "GME Finance",
+      "label_address": "ការិយាល័យកណ្តាល",
+      "label_brand_name": "ឈ្មោះម៉ាក",
+      "label_business_number": "លេខចុះបញ្ជីអាជីវកម្ម",
+      "label_ceo": "នាយកប្រតិបត្តិ",
+      "label_email": "អ៊ីមែល",
+      "label_loan_license": "លេខចុះបញ្ជីសេវាឥណទាន",
+      "label_phone": "លេខទូរស័ព្ទ",
+      "label_supervisor": "ស្ថាប័នត្រួតពិនិត្យ"
     }
   },
   "remittance": {
@@ -1550,6 +1691,122 @@
     "tabs": {
       "branches": "សាខា",
       "social_channels": "ឆានែលសង្គម"
+    }
+  },
+  "telecom": {
+    "hero": {
+      "badge": "GME MOBILE",
+      "title1": "ផែនការទូរសព្ទ",
+      "title2": "ល្អឥតខ្ចោះសម្រាប់អ្នក",
+      "description": "សេវាទូរសព្ទសន្សំសំចៃដែលមានគុណភាពស្មើនឹងបណ្តាញ LGU+ និង KT។ សន្សំលើវិក្កយបត្រទូរសព្ទជាមួយផែនការដែលចាប់ផ្តើមតែ ₩3,300/ខែ។",
+      "cta": "មើលផែនការ"
+    },
+    "features": {
+      "title": "ហេតុអ្វី GME Mobile?",
+      "multilang": {
+        "title": "17 ភាសា",
+        "description": "ប្រើជាភាសាកំណើតរបស់អ្នក"
+      },
+      "affordable": {
+        "title": "ចាប់ពី ₩3,300/ខែ",
+        "description": "ផែនការតម្លៃថោកសម្រាប់ជនបរទេស"
+      },
+      "network": {
+        "title": "គុណភាពស្មើនឹង LGU+, KT",
+        "description": "ការគ្របដណ្តប់ដែលអាចទុកចិត្តបានទូទាំងប្រទេស"
+      },
+      "usim": {
+        "title": "ការធ្វើឱ្យសកម្ម USIM ដោយខ្លួនឯង",
+        "description": "បញ្ជូនទៅអ្នក និងធ្វើឱ្យសកម្មក្នុងរយៈពេល 5 នាទី"
+      },
+      "esim": {
+        "title": "ការគាំទ្រ eSIM",
+        "description": "ស្កេនកូដ QR និងធ្វើឱ្យសកម្មភ្លាមៗ"
+      },
+      "plans": {
+        "title": "ផែនការដែលអាចបត់បែនបាន",
+        "description": "ផែនការដែលចាប់ផ្តើមត្រឹមតែ ₩3,300/ខែ"
+      },
+      "activation": {
+        "title": "ការធ្វើឱ្យសកម្ម 5 នាទី",
+        "description": "ធ្វើឱ្យសកម្មដោយខ្លួនឯងយ៉ាងងាយស្រួលពីកម្មវិធី"
+      },
+      "intl_call": {
+        "title": "រួមបញ្ចូលការហៅអន្តរជាតិ",
+        "description": "ផែនការខ្លះមាន 20 នាទី/ថ្ងៃនៃការហៅអន្តរជាតិ"
+      }
+    },
+    "plans": {
+      "title": "ផែនការសម្រាប់អ្នក",
+      "subtitle": "ស្វែងរកផែនការដែលសមនឹងរបៀបរស់នៅរបស់អ្នក!",
+      "data": "ទិន្នន័យ",
+      "voice": "សំឡេង",
+      "sms": "SMS",
+      "per_month": "ខែ",
+      "currency": "KRW",
+      "discount": "បញ្ចុះតម្លៃ",
+      "unlimited": "មិនកំណត់",
+      "empty": "មិនមានផែនការដើម្បីបង្ហាញ",
+      "cta": "មើលផែនការទាំងអស់"
+    },
+    "process": {
+      "title": "មិនមានបញ្ហា,",
+      "title2": "ធ្វើឱ្យសកម្មភ្លាមៗ",
+      "subtitle": "ការធ្វើឱ្យសកម្មដោយខ្លួនឯងសាមញ្ញសម្រាប់ទាំង USIM និង eSIM",
+      "steps": {
+        "step1": {
+          "title": "ទិញ USIM",
+          "description": "បញ្ជាទិញ USIM តាមអ៊ីនធឺណិត"
+        },
+        "step2": {
+          "title": "តាមដានការដឹកជញ្ជូន",
+          "description": "ពិនិត្យស្ថានភាពដឹកជញ្ជូន USIM"
+        },
+        "step3": {
+          "title": "ធ្វើឱ្យសកម្មដោយខ្លួនឯង",
+          "description": "ផ្ទៀងផ្ទាត់អត្តសញ្ញាណ និងធ្វើឱ្យសកម្មពីកម្មវិធី"
+        },
+        "step4": {
+          "title": "រួចរាល់!",
+          "description": "ការធ្វើឱ្យសកម្មបញ្ចប់ក្នុងរយៈពេល 5 នាទី!"
+        }
+      }
+    },
+    "esim_intro": {
+      "badge": "eSIM",
+      "title": "ទូរសព្ទមួយ លេខពីរ",
+      "description": "ចាប់ផ្តើមយ៉ាងងាយស្រួលជាមួយ eSIM! បំបែកការងារ និងជីវិតផ្ទាល់ខ្លួនយ៉ាងច្បាស់សម្រាប់តុល្យភាពកាន់តែប្រសើរ។",
+      "cta": "ធ្វើឱ្យសកម្ម eSIM",
+      "tag1": "មិនចាំបាច់ប្តូរ SIM",
+      "tag2": "មិនចាំបាច់ដឹកជញ្ជូន",
+      "tag3": "ធ្វើឱ្យសកម្មដោយខ្លួនឯងភ្លាមៗ!"
+    },
+    "usim_intro": {
+      "badge": "USIM",
+      "title": "ធ្វើឱ្យសកម្មក្នុងរយៈពេល 5 នាទី!",
+      "description": "ម៉ោងធ្វើឱ្យសកម្មដោយខ្លួនឯង",
+      "time1_label": "ការផ្ទេរលេខ",
+      "time1_value": "10:00 ព្រឹក - 8:00 យប់",
+      "time1_note": "លើកលែងថ្ងៃអាទិត្យ ឆ្នាំថ្មី សេឱឡាល់/ឈូសេអុក",
+      "time2_label": "ការចុះឈ្មោះថ្មី",
+      "time2_value": "8:00 ព្រឹក - 10:00 យប់",
+      "time2_note": "មិនមានដែនកំណត់ថ្ងៃ",
+      "step1": "ទិញ USIM",
+      "step2": "ទទួល",
+      "step3": "ធ្វើឱ្យសកម្ម",
+      "step4": "រួចរាល់!",
+      "cta": "ទិញ USIM"
+    },
+    "cta": {
+      "title": "ចាប់ផ្តើមជាមួយ GME Mobile",
+      "description": "សន្សំលើវិក្កយបត្រទូរសព្ទជាមួយផែនការតម្លៃសមរម្យ មានជា 17 ភាសា។",
+      "button": "ទៅកាន់ GME Mobile"
+    },
+    "categories": {
+      "recommended": "ណែនាំ",
+      "postpaid": "ក្រោយ",
+      "fiveG": "5G/ពិសេស",
+      "prepaid": "មុន"
     }
   }
 }

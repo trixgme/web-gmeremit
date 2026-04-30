@@ -40,7 +40,9 @@
       "notice": "Thông báo",
       "press": "Báo chí"
     },
-    "total": "Tổng"
+    "total": "Tổng",
+    "error_title": "Không thể tải bài viết",
+    "error_description": "Vui lòng thử lại sau."
   },
   "business": {
     "cta": {
@@ -154,7 +156,7 @@
           "Không giới hạn người nhận & người gửi",
           "Phát hành V/A tức thì qua API hoặc Portal"
         ],
-        "subtitle": "Dịch vụ giá trị gia tăng",
+        "subtitle": "Dịch vụ tài khoản ảo",
         "title": "VAS"
       }
     }
@@ -687,7 +689,13 @@
         "2024_12": "Tổng chuyển tiền nước ngoài lũy kế vượt 2,8 nghìn tỷ Won",
         "2025_03": "Ra mắt sản phẩm bảo hiểm cho cư dân nước ngoài",
         "2025_06": "Ra mắt thẻ ghi nợ tích hợp thẻ giao thông",
-        "2025_12": "Tổng chuyển tiền nước ngoài lũy kế vượt 3,5 nghìn tỷ Won"
+        "2025_12": "Tổng chuyển tiền nước ngoài lũy kế vượt 3,5 nghìn tỷ Won",
+        "2017_12": "Tổng chuyển tiền nước ngoài hàng năm vượt 10 tỷ KRW",
+        "2018_12": "Tổng chuyển tiền nước ngoài hàng năm vượt 460 tỷ KRW",
+        "2020_09": "Ra mắt dịch vụ GME Pay",
+        "2020_12": "Tổng chuyển tiền nước ngoài hàng năm vượt 1,0 nghìn tỷ KRW",
+        "2022_12": "Tổng chuyển tiền nước ngoài hàng năm vượt 1,7 nghìn tỷ KRW",
+        "2025_04": "Được chứng nhận là SME đổi mới sáng tạo (Inno-Biz)"
       },
       "title_line1": "Thử thách không ngừng,",
       "title_line2": "Khởi đầu mới"
@@ -729,7 +737,11 @@
       },
       "related_services": "Dịch vụ liên quan",
       "subtitle": "Tất cả dịch vụ tài chính toàn cầu trong một nơi",
-      "title": "Dịch vụ GME"
+      "title": "Dịch vụ GME",
+      "telecom": {
+        "title": "Telecom",
+        "desc": "Gói cước di động giá rẻ từ ₩3.300/tháng"
+      }
     },
     "tabs": {
       "ceo_message": "Thông điệp CEO",
@@ -742,7 +754,7 @@
     "company_name": "Global Money Express",
     "copyright": "© Global Money Express, All rights reserved.",
     "info": {
-      "address": "Địa chỉ: 901~911, Tòa B, Senggak Gongjang Jangsan, 150 Yeongdeungpo-ro, Yeongdeungpo-gu, Seoul",
+      "address": "Địa chỉ: 901~911Ho, B-dong, Saenggak Gongjang Bldg., 150, Yeongdeungpo-ro, Yeongdeungpo-gu, Seoul, Korea 07292",
       "email_corporate": "Doanh nghiệp: corporate@gmeremit.com",
       "email_support": "Hỗ trợ: support@gmeremit.com",
       "fax": "Fax: (+82) 2 3674 5559",
@@ -777,7 +789,8 @@
       "services": "Dịch vụ",
       "services_menu": "Dịch vụ",
       "social_channels": "Kênh mạng xã hội",
-      "support": "Hỗ trợ"
+      "support": "Hỗ trợ",
+      "telecom": "Di động"
     }
   },
   "home": {
@@ -799,7 +812,7 @@
         "desc": "Thẻ cao cấp chuyên biệt cho thanh toán nước ngoài. Tận hưởng quyền lợi hoàn tiền tốt nhất mọi nơi.",
         "highlights": [
           "Hoàn tiền 3% ở nước ngoài",
-          "Hoàn tiền 0,3% trong nước",
+          "Hoàn tiền theo mùa",
           "Giảm giá sự kiện đặc biệt",
           "Tàu điện · Xe buýt · Taxi thanh toán dễ dàng"
         ]
@@ -819,7 +832,7 @@
         "cta": "Xem Red Card",
         "desc": "Thẻ mang màu sắc đặc trưng của GME. Biến mỗi thanh toán trở nên phong cách.",
         "highlights": [
-          "Hoàn tiền 0,3% trong nước",
+          "Hoàn tiền theo mùa",
           "Giảm giá sự kiện đặc biệt",
           "Tàu điện · Xe buýt · Taxi thanh toán dễ dàng",
           "Giao thông công cộng"
@@ -829,7 +842,7 @@
         "cta": "Xem Uniq Card",
         "desc": "Chọn thẻ của riêng bạn từ hơn 30 thiết kế của 18 quốc gia.",
         "highlights": [
-          "Hoàn tiền 0,3% trong nước",
+          "Hoàn tiền theo mùa",
           "Giảm giá sự kiện đặc biệt",
           "18 quốc gia hơn 30 thiết kế",
           "Tàu điện · Xe buýt · Taxi thanh toán dễ dàng"
@@ -839,7 +852,7 @@
         "cta": "Xem White Card",
         "desc": "Thẻ đơn giản và gọn gàng cho hàng ngày. Tiện lợi cho thanh toán trong nước và giao thông công cộng.",
         "highlights": [
-          "Hoàn tiền 0,3% trong nước",
+          "Hoàn tiền theo mùa",
           "Giảm giá sự kiện đặc biệt",
           "Tàu điện · Xe buýt · Taxi thanh toán dễ dàng",
           "Giao thông công cộng"
@@ -862,12 +875,30 @@
         "receive_country": "Quốc gia nhận",
         "send_amount": "Số tiền gửi",
         "title": "Máy tính tỷ giá thời gian thực",
-        "error_unavailable_method": "Phương thức thanh toán này hiện không khả dụng. Vui lòng chọn phương thức khác.",
-        "fee": "Phí chuyển tiền",
-        "rate": "Tỷ giá thời gian thực",
-        "error_max_amount": "Số tiền tối đa có thể gửi: {{amount}} KRW",
-        "search_placeholder": "Tìm theo quốc gia hoặc tiền tệ",
-        "no_results": "Không có kết quả"
+        "mobile_wallet": "Ví di động",
+        "qr_pay": "Thanh toán QR",
+        "search_placeholder": "Tìm kiếm quốc gia",
+        "no_results": "Không có kết quả",
+        "fee": "Phí",
+        "rate": "Tỷ giá",
+        "error_unavailable_method": "Phương thức chuyển tiền này hiện không khả dụng",
+        "error_max_amount": "Số tiền chuyển tối đa: {{amount}} KRW",
+        "payout_methods": {
+          "1": "Nhận tiền mặt",
+          "2": "Chuyển khoản",
+          "12": "Giao tận nơi",
+          "13": "Ví di động",
+          "14": "Thanh toán thẻ",
+          "16": "WeChat Pay",
+          "17": "Alipay",
+          "18": "Visa/Mastercard/UnionPay",
+          "19": "Visa/Mastercard",
+          "25": "UPI",
+          "33": "bKash",
+          "34": "Rocket",
+          "35": "Nagad",
+          "37": "Thanh toán QR"
+        }
       },
       "description1": "Tỷ giá thời gian thực cho hơn 200 quốc gia.",
       "description2": "Công khai phí minh bạch.",
@@ -1262,7 +1293,12 @@
         "title": "Chuyển tiền quốc tế"
       },
       "title1": "Khám phá các",
-      "title2": "Dịch vụ đa dạng của GME"
+      "title2": "Dịch vụ đa dạng của GME",
+      "mobile": {
+        "title": "Di động",
+        "desc1": "Gói cước di động giá rẻ từ",
+        "desc2": "₩3.300/tháng dành cho người nước ngoài"
+      }
     },
     "customer_feedback": {
       "subtitle": "Trải nghiệm thực tế từ khách hàng của chúng tôi.",
@@ -1278,7 +1314,8 @@
     "cta": {
       "button": "Tải ứng dụng",
       "description": "Nhận khoản vay bạn cần nhanh chóng với đăng ký dễ dàng trên di động.",
-      "title": "Bắt đầu vay với ứng dụng GME ngay hôm nay"
+      "title": "Bắt đầu vay với ứng dụng GME ngay hôm nay",
+      "inline_notice": "ⓘ Khi nhấp vào nút bên dưới, bạn sẽ được kết nối đến dịch vụ cho vay do GME Finance cung cấp."
     },
     "details": {
       "contract": {
@@ -1427,6 +1464,20 @@
         "title": "24/7"
       },
       "title": "Tại sao chọn GME Loan?"
+    },
+    "disclosure": {
+      "banner": "Các sản phẩm cho vay được giới thiệu trên trang này được cung cấp bởi GME Finance (một thực thể pháp lý riêng). GME Finance chịu hoàn toàn trách nhiệm về tất cả các khía cạnh của dịch vụ cho vay bao gồm tư vấn, xét duyệt, hợp đồng và dịch vụ sau bán hàng. GME Remit chỉ cung cấp thông tin sản phẩm và tính năng kết nối.",
+      "disclaimer": "※ GME Remit không phải là người bán hoặc trung gian của sản phẩm cho vay này. Mọi quyền và nghĩa vụ phát sinh từ hợp đồng cho vay giữa GME Finance và khách hàng đều thuộc về GME Finance. Vui lòng gửi mọi tranh chấp hoặc thắc mắc liên quan trực tiếp đến GME Finance.",
+      "label_address": "Trụ sở chính",
+      "label_brand_name": "Thương hiệu",
+      "label_business_number": "Số đăng ký kinh doanh",
+      "label_ceo": "Giám đốc",
+      "label_email": "Email",
+      "label_loan_license": "Số giấy phép cho vay",
+      "label_phone": "Điện thoại",
+      "label_supervisor": "Cơ quan giám sát",
+      "law_notice": "Công bố thông tin nhận dạng doanh nghiệp theo Điều 10 của Luật Bảo vệ Người tiêu dùng trong Thương mại Điện tử.",
+      "provider_heading": "GME Finance"
     }
   },
   "remittance": {
@@ -1638,6 +1689,122 @@
     "tabs": {
       "branches": "Chi nhánh",
       "social_channels": "Kênh mạng xã hội"
+    }
+  },
+  "telecom": {
+    "hero": {
+      "badge": "GME MOBILE",
+      "title1": "Gói cước di động",
+      "title2": "phù hợp với bạn",
+      "description": "Dịch vụ di động giá rẻ với chất lượng tương đương mạng LGU+ và KT. Tiết kiệm cước phí với gói cước chỉ từ 3.300 KRW/tháng.",
+      "cta": "Xem gói cước"
+    },
+    "features": {
+      "title": "Tại sao chọn GME Mobile?",
+      "multilang": {
+        "title": "Hỗ trợ 17 ngôn ngữ",
+        "description": "Sử dụng bằng tiếng mẹ đẻ"
+      },
+      "affordable": {
+        "title": "Từ 3.300 KRW/tháng",
+        "description": "Gói cước siêu rẻ cho người nước ngoài"
+      },
+      "network": {
+        "title": "Chất lượng tương đương LGU+, KT",
+        "description": "Phủ sóng ổn định toàn quốc"
+      },
+      "usim": {
+        "title": "Tự kích hoạt USIM",
+        "description": "Giao hàng và kích hoạt trong 5 phút"
+      },
+      "esim": {
+        "title": "Hỗ trợ eSIM",
+        "description": "Quét mã QR và kích hoạt ngay"
+      },
+      "plans": {
+        "title": "Gói cước đa dạng",
+        "description": "Gói cước phù hợp từ 3.300 KRW/tháng"
+      },
+      "activation": {
+        "title": "Kích hoạt 5 phút",
+        "description": "Tự kích hoạt dễ dàng từ ứng dụng"
+      },
+      "intl_call": {
+        "title": "Bao gồm gọi quốc tế",
+        "description": "Một số gói có 20 phút gọi quốc tế/ngày"
+      }
+    },
+    "plans": {
+      "title": "Gói cước cho bạn",
+      "subtitle": "Tìm gói cước phù hợp với cuộc sống của bạn!",
+      "data": "Dữ liệu",
+      "voice": "Thoại",
+      "sms": "SMS",
+      "per_month": "tháng",
+      "currency": "KRW",
+      "discount": "GIẢM",
+      "unlimited": "Không giới hạn",
+      "empty": "Không có gói cước để hiển thị",
+      "cta": "Xem tất cả gói cước"
+    },
+    "process": {
+      "title": "Không phức tạp,",
+      "title2": "Kích hoạt ngay lập tức",
+      "subtitle": "Tự kích hoạt đơn giản cho cả USIM và eSIM",
+      "steps": {
+        "step1": {
+          "title": "Mua USIM",
+          "description": "Đặt USIM trực tuyến"
+        },
+        "step2": {
+          "title": "Theo dõi giao hàng",
+          "description": "Kiểm tra trạng thái giao USIM"
+        },
+        "step3": {
+          "title": "Tự kích hoạt",
+          "description": "Xác minh danh tính và kích hoạt từ ứng dụng"
+        },
+        "step4": {
+          "title": "Hoàn tất!",
+          "description": "Kích hoạt hoàn tất trong 5 phút!"
+        }
+      }
+    },
+    "esim_intro": {
+      "badge": "eSIM",
+      "title": "Một điện thoại, hai số",
+      "description": "Bắt đầu dễ dàng với eSIM! Tách biệt công việc và cuộc sống cá nhân để có sự cân bằng tốt hơn.",
+      "cta": "Kích hoạt eSIM",
+      "tag1": "Không đổi SIM",
+      "tag2": "Không giao hàng",
+      "tag3": "Tự kích hoạt ngay!"
+    },
+    "usim_intro": {
+      "badge": "USIM",
+      "title": "Kích hoạt trong 5 phút!",
+      "description": "Giờ tự kích hoạt",
+      "time1_label": "Chuyển mạng giữ số",
+      "time1_value": "10:00 - 20:00",
+      "time1_note": "Trừ Chủ nhật, Tết Dương lịch, Tết Âm lịch, Trung thu",
+      "time2_label": "Đăng ký mới",
+      "time2_value": "08:00 - 22:00",
+      "time2_note": "Không giới hạn ngày",
+      "step1": "Mua USIM",
+      "step2": "Nhận hàng",
+      "step3": "Kích hoạt",
+      "step4": "Hoàn tất!",
+      "cta": "Mua USIM"
+    },
+    "cta": {
+      "title": "Bắt đầu với GME Mobile",
+      "description": "Tiết kiệm cước phí với gói cước giá rẻ, hỗ trợ 17 ngôn ngữ.",
+      "button": "Đến GME Mobile"
+    },
+    "categories": {
+      "recommended": "Đề xuất",
+      "postpaid": "Trả sau",
+      "fiveG": "5G/Đặc biệt",
+      "prepaid": "Trả trước"
     }
   }
 }

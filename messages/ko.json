@@ -156,7 +156,7 @@
           "수취인·입금자 제한 없음",
           "API·포털로 즉시 발급"
         ],
-        "subtitle": "Value Added Services",
+        "subtitle": "Virtual Account Service",
         "title": "VAS"
       }
     }
@@ -869,12 +869,30 @@
         "receive_country": "받는 국가",
         "send_amount": "보내는 금액",
         "title": "실시간 환율 계산기",
-        "error_unavailable_method": "현재 선택하신 결제수단을 이용할 수 없습니다. 다른 수단을 선택해주세요.",
-        "fee": "송금 수수료",
-        "rate": "실시간 환율",
-        "error_max_amount": "송금 가능 최대 금액: {{amount}} KRW",
-        "search_placeholder": "국가명 또는 통화 검색",
-        "no_results": "검색 결과가 없습니다"
+        "mobile_wallet": "모바일 월렛",
+        "qr_pay": "QR 결제",
+        "search_placeholder": "국가 검색",
+        "no_results": "검색 결과가 없습니다",
+        "fee": "수수료",
+        "rate": "환율",
+        "error_unavailable_method": "현재 이용할 수 없는 송금 방식입니다",
+        "error_max_amount": "최대 송금 가능 금액: {{amount}} KRW",
+        "payout_methods": {
+          "1": "현금 수령",
+          "2": "계좌 입금",
+          "12": "방문 배송",
+          "13": "모바일 월렛",
+          "14": "카드 결제",
+          "16": "위챗페이",
+          "17": "알리페이",
+          "18": "비자/마스터/유니온페이",
+          "19": "비자/마스터카드",
+          "25": "UPI",
+          "33": "비캐시",
+          "34": "로켓",
+          "35": "나가드",
+          "37": "QR 결제"
+        }
       },
       "description1": "200개국 이상 실시간 환율 조회.",
       "description2": "수수료 확인을 투명하게.",
@@ -1090,7 +1108,7 @@
           "PL": "폴란드",
           "PR": "푸에르토리코",
           "PS": "팔레스타인",
-          "PT": "포르투갈",
+          "PT": "Portugal",
           "PY": "파라과이",
           "QA": "카타르",
           "RE": "레위니옹",
@@ -1564,6 +1582,12 @@
       "title": "지금 GME Mobile을 시작하세요",
       "description": "합리적인 요금제로 통신비를 절약하고, 17개 언어로 편리하게 이용하세요.",
       "button": "GME Mobile 바로가기"
+    },
+    "categories": {
+      "recommended": "추천",
+      "postpaid": "후불",
+      "fiveG": "5G/특수",
+      "prepaid": "선불"
     }
   },
   "remittance": {

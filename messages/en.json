@@ -156,7 +156,7 @@
           "No Restrictions on Beneficiaries & Depositors",
           "Instant V/A Issuance via API or Portal"
         ],
-        "subtitle": "Value Added Services",
+        "subtitle": "Virtual Account Service",
         "title": "VAS"
       }
     }
@@ -750,7 +750,7 @@
     "company_name": "Global Money Express",
     "copyright": "© Global Money Express, All rights reserved.",
     "info": {
-      "address": "Address: B-dong 901~911, Saenggak Gongjangjangsan, 150 Yeongdeungpo-ro, Yeongdeungpo-gu, Seoul",
+      "address": "Address: 901~911Ho, B-dong, Saenggak Gongjang Bldg., 150, Yeongdeungpo-ro, Yeongdeungpo-gu, Seoul, Korea 07292",
       "email_corporate": "Corporate: corporate@gmeremit.com",
       "email_support": "Queries: support@gmeremit.com",
       "fax": "Fax: (+82) 2 3674 5559",
@@ -808,7 +808,7 @@
         "desc": "Premium card specialized for overseas payments. Enjoy the best cashback benefits wherever you are.",
         "highlights": [
           "3% Cashback on Overseas",
-          "0.3% Cashback Domestic",
+          "Seasonal Cashback",
           "Special Event Discounts",
           "Metro · Bus · Taxi Easy Pay"
         ]
@@ -828,7 +828,7 @@
         "cta": "View The Red Card",
         "desc": "Card with GME's signature color. Make every payment stylish.",
         "highlights": [
-          "0.3% Cashback Domestic",
+          "Seasonal Cashback",
           "Special Event Discounts",
           "Metro · Bus · Taxi Easy Pay",
           "Public Transit"
@@ -838,7 +838,7 @@
         "cta": "View The Uniq Card",
         "desc": "Choose your own card from 30+ designs across 18 countries.",
         "highlights": [
-          "0.3% Cashback Domestic",
+          "Seasonal Cashback",
           "Special Event Discounts",
           "18 Countries 30+ Designs",
           "Metro · Bus · Taxi Easy Pay"
@@ -848,7 +848,7 @@
         "cta": "View The White Card",
         "desc": "Simple and clean everyday card. Convenient for domestic payments and public transit.",
         "highlights": [
-          "0.3% Cashback Domestic",
+          "Seasonal Cashback",
           "Special Event Discounts",
           "Metro · Bus · Taxi Easy Pay",
           "Public Transit"
@@ -871,12 +871,30 @@
         "receive_country": "Recipient Country",
         "send_amount": "Send Amount",
         "title": "Real-time Exchange Calculator",
-        "error_unavailable_method": "This payment method is currently unavailable. Please choose another option.",
-        "fee": "Transfer fee",
-        "rate": "Real-time rate",
+        "mobile_wallet": "Mobile Wallet",
+        "qr_pay": "QR Pay",
+        "search_placeholder": "Search country",
+        "no_results": "No results",
+        "fee": "Fee",
+        "rate": "Exchange Rate",
+        "error_unavailable_method": "This delivery method is currently unavailable",
         "error_max_amount": "Maximum sending amount: {{amount}} KRW",
-        "search_placeholder": "Search by country or currency",
-        "no_results": "No results found"
+        "payout_methods": {
+          "1": "Cash Payment",
+          "2": "Bank Deposit",
+          "12": "Home Delivery",
+          "13": "Mobile Wallet",
+          "14": "Card Payment",
+          "16": "WeChat Pay",
+          "17": "Alipay",
+          "18": "Visa/Mastercard/UnionPay",
+          "19": "Visa/Mastercard",
+          "25": "UPI",
+          "33": "bKash",
+          "34": "Rocket",
+          "35": "Nagad",
+          "37": "QR Pay"
+        }
       },
       "description1": "Real-time exchange rates for 200+ countries.",
       "description2": "Transparent fee disclosure.",
@@ -1566,6 +1584,12 @@
       "title": "Get Started with GME Mobile",
       "description": "Save on phone bills with affordable plans, available in 17 languages.",
       "button": "Go to GME Mobile"
+    },
+    "categories": {
+      "recommended": "Recommended",
+      "postpaid": "Postpaid",
+      "fiveG": "5G/Special",
+      "prepaid": "Prepaid"
     }
   },
   "remittance": {

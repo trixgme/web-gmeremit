@@ -40,7 +40,9 @@
       "notice": "Pengumuman",
       "press": "Pers"
     },
-    "total": "Total"
+    "total": "Total",
+    "error_title": "Gagal memuat postingan",
+    "error_description": "Silakan coba lagi nanti."
   },
   "business": {
     "cta": {
@@ -154,7 +156,7 @@
           "Tidak Ada Batasan Penerima & Penyetor",
           "Penerbitan V/A Instan via API atau Portal"
         ],
-        "subtitle": "Layanan Nilai Tambah",
+        "subtitle": "Layanan Akun Virtual",
         "title": "VAS"
       }
     }
@@ -687,7 +689,13 @@
         "2024_12": "Total pengiriman uang luar negeri kumulatif melampaui ₩2,8 triliun",
         "2025_03": "Peluncuran produk asuransi untuk penduduk asing",
         "2025_06": "Peluncuran kartu debit dengan fungsi kartu transportasi",
-        "2025_12": "Total pengiriman uang luar negeri kumulatif melampaui ₩3,5 triliun"
+        "2025_12": "Total pengiriman uang luar negeri kumulatif melampaui ₩3,5 triliun",
+        "2017_12": "Total pengiriman uang tahunan ke luar negeri melebihi KRW 10 miliar",
+        "2018_12": "Total pengiriman uang tahunan ke luar negeri melebihi KRW 460 miliar",
+        "2020_09": "Meluncurkan layanan GME Pay",
+        "2020_12": "Total pengiriman uang tahunan ke luar negeri melebihi KRW 1,0 triliun",
+        "2022_12": "Total pengiriman uang tahunan ke luar negeri melebihi KRW 1,7 triliun",
+        "2025_04": "Disertifikasi sebagai UKM Inovatif (Inno-Biz)"
       },
       "title_line1": "Tantangan Tanpa Henti,",
       "title_line2": "Awal yang Baru"
@@ -729,7 +737,11 @@
       },
       "related_services": "Layanan Terkait",
       "subtitle": "Semua layanan keuangan global dalam satu tempat",
-      "title": "Layanan GME"
+      "title": "Layanan GME",
+      "telecom": {
+        "title": "Telecom",
+        "desc": "Paket seluler hemat mulai dari ₩3.300/bulan"
+      }
     },
     "tabs": {
       "ceo_message": "Pesan CEO",
@@ -742,7 +754,7 @@
     "company_name": "Global Money Express",
     "copyright": "© Global Money Express, All rights reserved.",
     "info": {
-      "address": "Alamat: 901~911, Gedung B, Senggak Gongjang Jangsan, 150 Yeongdeungpo-ro, Yeongdeungpo-gu, Seoul",
+      "address": "Alamat: 901~911Ho, B-dong, Saenggak Gongjang Bldg., 150, Yeongdeungpo-ro, Yeongdeungpo-gu, Seoul, Korea 07292",
       "email_corporate": "Korporat: corporate@gmeremit.com",
       "email_support": "Dukungan: support@gmeremit.com",
       "fax": "Fax: (+82) 2 3674 5559",
@@ -777,7 +789,8 @@
       "services": "Layanan",
       "services_menu": "Layanan",
       "social_channels": "Saluran Sosial",
-      "support": "Dukungan"
+      "support": "Dukungan",
+      "telecom": "Seluler"
     }
   },
   "home": {
@@ -799,7 +812,7 @@
         "desc": "Kartu premium untuk pembayaran luar negeri. Nikmati cashback terbaik di mana saja.",
         "highlights": [
           "Cashback 3% luar negeri",
-          "Cashback 0,3% domestik",
+          "Cashback Musiman",
           "Diskon event khusus",
           "Kereta · Bus · Taksi bayar mudah"
         ]
@@ -819,7 +832,7 @@
         "cta": "Lihat Red Card",
         "desc": "Kartu warna khas GME. Jadikan setiap pembayaran penuh gaya.",
         "highlights": [
-          "Cashback 0,3% domestik",
+          "Cashback Musiman",
           "Diskon event khusus",
           "Kereta · Bus · Taksi bayar mudah",
           "Transportasi umum"
@@ -829,7 +842,7 @@
         "cta": "Lihat Uniq Card",
         "desc": "Pilih kartu Anda dari 30+ desain dari 18 negara.",
         "highlights": [
-          "Cashback 0,3% domestik",
+          "Cashback Musiman",
           "Diskon event khusus",
           "18 Negara 30+ Desain",
           "Kereta · Bus · Taksi bayar mudah"
@@ -839,7 +852,7 @@
         "cta": "Lihat White Card",
         "desc": "Kartu harian yang simpel dan bersih. Nyaman untuk pembayaran domestik dan transportasi umum.",
         "highlights": [
-          "Cashback 0,3% domestik",
+          "Cashback Musiman",
           "Diskon event khusus",
           "Kereta · Bus · Taksi bayar mudah",
           "Transportasi umum"
@@ -862,12 +875,30 @@
         "receive_country": "Negara Penerima",
         "send_amount": "Jumlah Kirim",
         "title": "Kalkulator Kurs Real-Time",
-        "error_unavailable_method": "Metode pembayaran ini sedang tidak tersedia. Silakan pilih opsi lain.",
-        "fee": "Biaya transfer",
-        "rate": "Kurs real-time",
-        "error_max_amount": "Jumlah maksimum yang dapat dikirim: {{amount}} KRW",
-        "search_placeholder": "Cari berdasarkan negara atau mata uang",
-        "no_results": "Tidak ada hasil"
+        "mobile_wallet": "Dompet Seluler",
+        "qr_pay": "Pembayaran QR",
+        "search_placeholder": "Cari negara",
+        "no_results": "Tidak ada hasil",
+        "fee": "Biaya",
+        "rate": "Kurs",
+        "error_unavailable_method": "Metode pengiriman ini saat ini tidak tersedia",
+        "error_max_amount": "Jumlah maksimum pengiriman: {{amount}} KRW",
+        "payout_methods": {
+          "1": "Tunai",
+          "2": "Transfer Bank",
+          "12": "Antar ke Rumah",
+          "13": "Dompet Seluler",
+          "14": "Pembayaran Kartu",
+          "16": "WeChat Pay",
+          "17": "Alipay",
+          "18": "Visa/Mastercard/UnionPay",
+          "19": "Visa/Mastercard",
+          "25": "UPI",
+          "33": "bKash",
+          "34": "Rocket",
+          "35": "Nagad",
+          "37": "Pembayaran QR"
+        }
       },
       "description1": "Kurs real-time untuk 200+ negara.",
       "description2": "Biaya transparan.",
@@ -945,7 +976,7 @@
           "BA": "Bosnia and Herzegovina",
           "BB": "Barbados",
           "BD": "Bangladesh",
-          "BE": "Belgia",
+          "BE": "Belgium",
           "BF": "Burkina Faso",
           "BG": "Bulgaria",
           "BH": "Bahrain",
@@ -987,12 +1018,12 @@
           "EE": "Estonia",
           "EG": "Egypt",
           "ER": "Eritrea",
-          "ES": "Spanyol",
+          "ES": "Spain",
           "ET": "Ethiopia",
-          "FI": "Finlandia",
+          "FI": "Finland",
           "FJ": "Fiji",
           "FM": "Micronesia",
-          "FR": "Prancis",
+          "FR": "France",
           "GA": "Gabon",
           "GB": "Inggris",
           "GD": "Grenada",
@@ -1004,7 +1035,7 @@
           "GN": "Guinea",
           "GP": "Guadeloupe",
           "GQ": "Equatorial Guinea",
-          "GR": "Yunani",
+          "GR": "Greece",
           "GT": "Guatemala",
           "GU": "Guam",
           "GW": "Guinea-Bissau",
@@ -1015,11 +1046,11 @@
           "HT": "Haiti",
           "HU": "Hungaria",
           "ID": "Indonesia",
-          "IE": "Irlandia",
+          "IE": "Ireland",
           "IL": "Israel",
           "IN": "India",
           "IS": "Iceland",
-          "IT": "Italia",
+          "IT": "Italy",
           "JM": "Jamaica",
           "JO": "Yordania",
           "JP": "Jepang",
@@ -1069,7 +1100,7 @@
           "NE": "Niger",
           "NG": "Nigeria",
           "NI": "Nicaragua",
-          "NL": "Belanda",
+          "NL": "Netherlands",
           "NO": "Norwegia",
           "NP": "Nepal",
           "NZ": "Selandia Baru",
@@ -1262,7 +1293,12 @@
         "title": "Pengiriman Uang Internasional"
       },
       "title1": "Jelajahi",
-      "title2": "Berbagai Layanan GME"
+      "title2": "Berbagai Layanan GME",
+      "mobile": {
+        "title": "Seluler",
+        "desc1": "Paket seluler hemat mulai",
+        "desc2": "dari hanya ₩3.300/bulan"
+      }
     },
     "customer_feedback": {
       "subtitle": "Pengalaman nyata dari pelanggan kami.",
@@ -1278,7 +1314,8 @@
     "cta": {
       "button": "Unduh Aplikasi",
       "description": "Dapatkan pinjaman yang Anda butuhkan dengan cepat melalui pendaftaran mudah di ponsel.",
-      "title": "Mulai Pinjaman dengan Aplikasi GME Hari Ini"
+      "title": "Mulai Pinjaman dengan Aplikasi GME Hari Ini",
+      "inline_notice": "ⓘ Mengklik tombol di bawah akan menghubungkan Anda ke layanan pinjaman yang disediakan oleh GME Finance."
     },
     "details": {
       "contract": {
@@ -1427,6 +1464,20 @@
         "title": "24/7"
       },
       "title": "Mengapa Memilih GME Loan?"
+    },
+    "disclosure": {
+      "banner": "Produk pinjaman yang diperkenalkan di halaman ini disediakan oleh GME Finance (entitas hukum terpisah). GME Finance bertanggung jawab penuh atas semua aspek layanan pinjaman termasuk konsultasi, peninjauan, kontrak, dan layanan purnajual. GME Remit hanya menyediakan informasi produk dan fitur penghubung.",
+      "disclaimer": "* GME Remit bukan penjual atau perantara produk pinjaman ini. Semua hak dan kewajiban yang timbul dari kontrak pinjaman antara GME Finance dan pelanggan sepenuhnya menjadi milik GME Finance. Silakan ajukan sengketa atau pertanyaan terkait langsung ke GME Finance.",
+      "label_address": "Kantor Pusat",
+      "label_brand_name": "Merek",
+      "label_business_number": "No. Registrasi Bisnis",
+      "label_ceo": "CEO",
+      "label_email": "Email",
+      "label_loan_license": "No. Lisensi Pemberian Pinjaman",
+      "label_phone": "Telepon",
+      "label_supervisor": "Otoritas Pengawas",
+      "law_notice": "Pengungkapan identitas bisnis sesuai dengan Pasal 10 Undang-Undang Perlindungan Konsumen dalam Perdagangan Elektronik.",
+      "provider_heading": "GME Finance"
     }
   },
   "remittance": {
@@ -1638,6 +1689,122 @@
     "tabs": {
       "branches": "Cabang",
       "social_channels": "Saluran Sosial"
+    }
+  },
+  "telecom": {
+    "hero": {
+      "badge": "GME MOBILE",
+      "title1": "Paket seluler",
+      "title2": "yang tepat untuk Anda",
+      "description": "Layanan seluler hemat dengan kualitas setara jaringan LGU+ dan KT. Hemat biaya telepon dengan paket mulai dari 3.300 KRW/bulan.",
+      "cta": "Lihat Paket"
+    },
+    "features": {
+      "title": "Mengapa GME Mobile?",
+      "multilang": {
+        "title": "17 Bahasa",
+        "description": "Gunakan dalam bahasa Anda"
+      },
+      "affordable": {
+        "title": "Mulai 3.300 KRW/bln",
+        "description": "Paket super hemat untuk warga asing"
+      },
+      "network": {
+        "title": "Kualitas Setara LGU+, KT",
+        "description": "Jangkauan stabil di seluruh negeri"
+      },
+      "usim": {
+        "title": "Aktivasi Mandiri USIM",
+        "description": "Diantar dan aktifkan dalam 5 menit"
+      },
+      "esim": {
+        "title": "Dukungan eSIM",
+        "description": "Pindai QR code dan aktifkan langsung"
+      },
+      "plans": {
+        "title": "Paket Fleksibel",
+        "description": "Paket cocok mulai 3.300 KRW/bulan"
+      },
+      "activation": {
+        "title": "Aktivasi 5 Menit",
+        "description": "Aktifkan sendiri dengan mudah dari aplikasi"
+      },
+      "intl_call": {
+        "title": "Termasuk Panggilan Internasional",
+        "description": "Beberapa paket termasuk 20 mnt/hari panggilan internasional"
+      }
+    },
+    "plans": {
+      "title": "Paket untuk Anda",
+      "subtitle": "Temukan paket yang sesuai dengan gaya hidup Anda!",
+      "data": "Data",
+      "voice": "Telepon",
+      "sms": "SMS",
+      "per_month": "bulan",
+      "currency": "KRW",
+      "discount": "DISKON",
+      "unlimited": "Tanpa Batas",
+      "empty": "Tidak ada paket untuk ditampilkan",
+      "cta": "Lihat Semua Paket"
+    },
+    "process": {
+      "title": "Tanpa Repot,",
+      "title2": "Aktivasi Langsung",
+      "subtitle": "Aktivasi mandiri sederhana untuk USIM dan eSIM",
+      "steps": {
+        "step1": {
+          "title": "Beli USIM",
+          "description": "Pesan USIM secara online"
+        },
+        "step2": {
+          "title": "Lacak Pengiriman",
+          "description": "Cek status pengiriman USIM"
+        },
+        "step3": {
+          "title": "Aktivasi Mandiri",
+          "description": "Verifikasi identitas dan aktifkan dari aplikasi"
+        },
+        "step4": {
+          "title": "Selesai!",
+          "description": "Aktivasi selesai dalam 5 menit!"
+        }
+      }
+    },
+    "esim_intro": {
+      "badge": "eSIM",
+      "title": "Satu Ponsel, Dua Nomor",
+      "description": "Mulai dengan mudah menggunakan eSIM! Pisahkan pekerjaan dan kehidupan pribadi dengan jelas untuk keseimbangan yang lebih baik.",
+      "cta": "Aktivasi eSIM",
+      "tag1": "Tanpa ganti SIM",
+      "tag2": "Tanpa pengiriman",
+      "tag3": "Aktivasi mandiri langsung!"
+    },
+    "usim_intro": {
+      "badge": "USIM",
+      "title": "Aktivasi dalam 5 Menit!",
+      "description": "Jam aktivasi mandiri",
+      "time1_label": "Port Nomor",
+      "time1_value": "10:00 - 20:00",
+      "time1_note": "Kecuali Minggu, Tahun Baru, Seollal/Chuseok",
+      "time2_label": "Registrasi Baru",
+      "time2_value": "08:00 - 22:00",
+      "time2_note": "Tanpa batasan hari",
+      "step1": "Beli USIM",
+      "step2": "Terima",
+      "step3": "Aktifkan",
+      "step4": "Selesai!",
+      "cta": "Beli USIM"
+    },
+    "cta": {
+      "title": "Mulai dengan GME Mobile",
+      "description": "Hemat biaya telepon dengan paket terjangkau, tersedia dalam 17 bahasa.",
+      "button": "Ke GME Mobile"
+    },
+    "categories": {
+      "recommended": "Rekomendasi",
+      "postpaid": "Pascabayar",
+      "fiveG": "5G/Khusus",
+      "prepaid": "Prabayar"
     }
   }
 }
