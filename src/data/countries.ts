@@ -637,7 +637,7 @@ export const countryConfigs: CountryConfig[] = [
     { code: "AED", payoutMethods: [{ key: "1", label: "CASH PAYMENT" }, { key: "2", label: "BANK DEPOSIT" }, { key: "19", label: "VISA/MASTERCARD" }] },
   ] },
   { countryCode: "US", countryName: "United States", flag: "🇺🇸", currencies: [
-    { code: "USD", payoutMethods: [{ key: "2", label: "BANK DEPOSIT" }, { key: "1", label: "CASH PAYMENT" }] },
+    { code: "USD", payoutMethods: [{ key: "1", label: "CASH PAYMENT" }, { key: "2", label: "BANK DEPOSIT" }] },
   ] },
   { countryCode: "GB", countryName: "United kingdom", flag: "🇬🇧", currencies: [
     { code: "GBP", payoutMethods: [{ key: "1", label: "CASH PAYMENT" }, { key: "2", label: "BANK DEPOSIT" }] },
